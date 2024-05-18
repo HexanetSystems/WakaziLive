@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h2>You are a Admin User.</h2>
 
                     <div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -27,8 +27,6 @@
                             @csrf
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
