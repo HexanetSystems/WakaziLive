@@ -29,11 +29,18 @@ class CreateUsersSeeder extends Seeder
                'password'=> bcrypt('123456'),
             ],
             [
+                'name'=>'Suppliers',
+                'email'=>'supplier@wakazi.co.ke',
+                'type'=>3,
+                'password'=> bcrypt('123456'),
+            ],
+            [
                'name'=>'User',
                'email'=>'user@wakazi.co.ke',
                'type'=>0,
                'password'=> bcrypt('123456'),
             ],
+
         ];
 
         foreach ($users as $key => $user) {
