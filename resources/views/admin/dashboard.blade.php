@@ -13,27 +13,8 @@
                 </div>
             </li>
 
-            <li>
-                <div class="ad-hom-box ad-hom-box-1">
-                    <span class="ad-hom-col-com ad-hom-col-1"><i class="fa fa-podcast"></i></span>
-                    <div class="ad-hom-view-com">
-                    <p><i class="fa  fa-arrow-up up"></i> Podcasts</p>
-                    <?php $Message = App\Models\Podcast::all() ?>
-                    <h3><?php echo count($Message) ?></h3>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="ad-hom-box ad-hom-box-2">
-                    <span class="ad-hom-col-com ad-hom-col-2"><i class="fa fa-video-camera"></i></span>
-                    <div class="ad-hom-view-com">
-                    <p><i class="fa  fa-arrow-up up"></i> Videos</p>
-                    <?php $Message = App\Models\Video::all() ?>
-                    <h3><?php echo count($Message) ?></h3>
-                    </div>
-                </div>
-            </li>
-            <li>
+
+            {{-- <li>
                 <div class="ad-hom-box ad-hom-box-5">
                     <span class="ad-hom-col-com ad-hom-col-4"><i class="fa fa-fa-newspaper-o"></i></span>
                     <div class="ad-hom-view-com">
@@ -42,7 +23,7 @@
                     <h3><?php echo count($Message) ?></h3>
                     </div>
                 </div>
-            </li>
+            </li> --}}
         </ul>
     </div>
 </div>

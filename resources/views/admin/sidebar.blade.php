@@ -44,84 +44,9 @@
                 </div>
             </li>
 
-         <li>
-            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-podcast" aria-hidden="true"></i> Podcasts </a>
-            <div class="collapsible-body left-sub-menu">
-               <ul>
-                  <li><a href="{{url('/')}}/admin/podcasts">All Podcasts</a>
-                  </li>
-                  <li><a href="{{url('/')}}/admin/addPodcast">Add Podcast</a>
-                  </li>
-               </ul>
-            </div>
-         </li>
-         <li>
-            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-video-camera" aria-hidden="true"></i> Videos </a>
-            <div class="collapsible-body left-sub-menu">
-               <ul>
-                  <li><a href="{{url('/')}}/admin/videos">All Videos</a>
-                  </li>
-                  <li><a href="{{url('/')}}/admin/addVideo">Add Video</a>
-                  </li>
-               </ul>
-            </div>
-         </li>
 
-         <li>
-            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-bar-chart" aria-hidden="true"></i> Manage Ads  </a>
-            <div class="collapsible-body left-sub-menu">
-               <ul>
 
-                  <li>
-                    <a href="{{url('/')}}/admin/advertisements">All Ads</a>
-                  </li>
-               </ul>
-            </div>
-         </li>
 
-         <li>
-            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-file-image-o" aria-hidden="true"></i> Banners </a>
-            <div class="collapsible-body left-sub-menu">
-               <ul>
-                  <li><a href="{{url('/')}}/admin/banners">All Banners</a>
-                  </li>
-                  {{--
-                  <li><a href="{{url('/')}}/admin/addBanner">Add Banners</a>
-                  </li>
-                  --}}
-               </ul>
-            </div>
-         </li>
-         {{--  --}}
-
-         <li>
-            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-handshake-o" aria-hidden="true"></i> Partners </a>
-            <div class="collapsible-body left-sub-menu">
-               <ul>
-                  <li>
-                     <a href="{{url('/')}}/admin/partners">All Partners </a>
-                  </li>
-                  <li>
-                     <a href="{{url('/')}}/admin/addPartner">Add Partner</a>
-                  </li>
-               </ul>
-            </div>
-         </li>
-         {{--  --}}
-
-         {{--  --}}
-         <li>
-            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-comment" aria-hidden="true"></i> Testimonials </a>
-            <div class="collapsible-body left-sub-menu">
-               <ul>
-                  <li><a href="{{url('/')}}/admin/testimonials">All Testimonials </a>
-                  </li>
-                  <li><a href="{{url('/')}}/admin/addTestimonials">Add Testimonials</a>
-                  </li>
-               </ul>
-            </div>
-         </li>
-         {{--  --}}
          {{--  --}}
          <li>
             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-ticket" aria-hidden="true"></i> Payments</a>

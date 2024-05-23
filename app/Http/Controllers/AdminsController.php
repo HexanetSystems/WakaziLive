@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use BinaryCats\Sku\HasSku;
 use App\Models\Product;
+use App\Models\Podcast;
+use App\Models\Message;
 use Datetime;
 use Hash;
 use Session;
@@ -15,7 +17,7 @@ use App\Models\User;
 use App\Models\Category;
 use DB;
 
-class AdminController extends Controller
+class AdminsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -419,6 +421,86 @@ class AdminController extends Controller
         return Redirect::back();
     }
 
+    public function users(){
+        activity()->log('Access All users Page');
+        $Users = DB::table('users')->get();
+        $page_title = 'list';
+        $page_name = 'Users';
+        return view('admin.users',compact('page_title','Users','page_name'));
+    }
+
+    public function addUser(){
+        activity()->log('Access Addd user Page');
+        $page_title = 'formfiletext';
+        $page_name = 'Add User';
+        return view('admin.addUser',compact('page_title','page_name'));
+    }
+
+    public function add_User(Request $request){
+        activity()->log('Evoked and add User Operation');
+        $path = 'uploads/users';
+        if(isset($request->image)){
+            $file = $request->file('image');
+            $filename = $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $image = $filename;
+        }else{
+            $image = "0";
+        }
+
+        $Password = $request->mobile;
+        $password = Hash::make($Password);
+        $User = new User;
+        $User->name = $request->name;
+        $User->email = $request->email;
+        $User->mobile = $request->mobile;
+        $User->address = $request->address;
+        $User->country = $request->country;
+        $User->is_admin = $request->is_admin;
+        $User->password = $password;
+        $User->image = $image;
+        $User->save();
+        Session::flash('message', "User Has Been Added");
+        return Redirect::back();
+    }
+
+    public function editUser($id){
+        activity()->log('Edited User ID number '.$id.' ');
+        $User = User::find($id);
+        $page_title = 'formfiletext';
+        $page_name = 'Edit User';
+        return view('admin.editUser',compact('page_title','User','page_name'));
+    }
+
+    public function edit_User(Request $request, $id){
+        activity()->log('Evoked an edit user for user with ID number '.$id.' ');
+        $path = 'uploads/users';
+            if(isset($request->image)){
+                $file = $request->file('image');
+                $filename = $file->getClientOriginalName();
+                $file->move($path, $filename);
+                $image = $filename;
+            }else{
+                $image = $request->image_cheat;
+            }
+        $updateDetails = array(
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'mobile'=>$request->mobile,
+            'address'=>$request->address,
+            'image'=>$image
+
+        );
+        DB::table('users')->where('id',$id)->update($updateDetails);
+        Session::flash('message', "Changes have been saved");
+        return Redirect::back();
+    }
+
+    public function delete_user($id){
+        activity()->log('Evoked a Delete user operations for ID number '.$id.' ');
+        DB::table('users')->where('id',$id)->delete();
+        return Redirect::back();
+    }
 
     // S3
     public function genericFIleUpload($file,$dir,$realPath){
