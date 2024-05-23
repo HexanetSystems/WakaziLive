@@ -406,8 +406,6 @@ class AdminController extends Controller
             'price'=>$request->price,
             'category_id'=>$request->category,
             'image'=>$image_one,
-
-
         );
         DB::table('products')->where('id',$id)->update($updateDetails);
         Session::flash('message', "Changes have been saved");
