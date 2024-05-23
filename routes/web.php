@@ -40,7 +40,6 @@ All Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:supplier'])->group(function () {
-
     Route::get('/supplier/home', [SupplierController::class, 'index'])->name('supplier.home');
 });
 
@@ -51,7 +50,6 @@ All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
-
     Route::get('/admin/home', [AdminController::class, 'adminHome'])->name('admin.home');
 });
 
