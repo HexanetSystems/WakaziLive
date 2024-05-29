@@ -144,6 +144,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::get('switchStatus/{id}', [AdminsController::class, 'switchStatus']);
         Route::get('slungify', [AdminsController::class, 'slungify']);
 
+
+
+        // Orders
         Route::get('orders', [AdminsController::class, 'orders']);
         Route::get('process-order', [AdminsController::class, 'process_order']);
 
