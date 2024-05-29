@@ -12,6 +12,7 @@ use App\Models\Message;
 use Datetime;
 use Hash;
 use Session;
+use Storage;
 use Redirect;
 use App\Models\User;
 use App\Models\Category;
@@ -500,6 +501,11 @@ class AdminsController extends Controller
         activity()->log('Evoked a Delete user operations for ID number '.$id.' ');
         DB::table('users')->where('id',$id)->delete();
         return Redirect::back();
+    }
+
+    // Add Image Proccessing
+    public function processImage(){
+
     }
 
     // S3

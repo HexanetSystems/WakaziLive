@@ -53,7 +53,7 @@
                                                 <th>Name</th>
                                                 <th>Contacts</th>
 
-                                                <th>Country</th>
+                                                <th>Role</th>
                                                 <th>Status</th>
                                                 <th>Delete</th>
                                             </tr>
@@ -68,7 +68,17 @@
                                                 </td>
                                                 <td>{{$item->mobile}}<br>{{$item->email}}<br>{{$item->address}}<br>{{$item->country}}</td>
 
-                                                <td>{{$item->country}}</td>
+                                                <td>
+                                                    @if($item->type == 1)
+                                                     Admin
+                                                    @elseif($item->type == 2)
+                                                    Manager
+                                                    @elseif($item->type == 2)
+                                                    Suppliers
+                                                    @else
+                                                    User
+                                                    @endif
+                                                </td>
                                                 @if($item->status == 1)
                                                 <td>
                                                     <span class="label label-success">Active</span>
