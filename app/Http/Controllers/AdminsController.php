@@ -9,6 +9,7 @@ use BinaryCats\Sku\HasSku;
 use App\Models\Product;
 use App\Models\Podcast;
 use App\Models\Message;
+use App\Models\Order;
 use Datetime;
 use Hash;
 use Session;
@@ -324,6 +325,14 @@ class AdminsController extends Controller
         return view('admin.products',compact('page_title','Product','page_name'));
     }
 
+    public function orders(){
+        activity()->log('Accessed All Products');
+        $Orders = Order::all();
+        $page_title = 'list';
+        $page_name = 'Products';
+        return view('admin.orders',compact('page_title','Orders','page_name'));
+    }
+
     public function addProduct(){
         $Category = Category::all();
         activity()->log('Accessed Add Product Page');
@@ -425,6 +434,22 @@ class AdminsController extends Controller
     public function users(){
         activity()->log('Access All users Page');
         $Users = DB::table('users')->get();
+        $page_title = 'list';
+        $page_name = 'Users';
+        return view('admin.users',compact('page_title','Users','page_name'));
+    }
+
+    public function managers(){
+        activity()->log('Access All users Page');
+        $Users = DB::table('users')->where('type','2')->get();
+        $page_title = 'list';
+        $page_name = 'Users';
+        return view('admin.users',compact('page_title','Users','page_name'));
+    }
+
+    public function admins(){
+        activity()->log('Access All users Page');
+        $Users = DB::table('users')->where('type','1')->get();
         $page_title = 'list';
         $page_name = 'Users';
         return view('admin.users',compact('page_title','Users','page_name'));

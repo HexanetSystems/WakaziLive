@@ -32,6 +32,23 @@
                 </div>
              </li>
              {{--  --}}
+             <li>
+                <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-suitcase" aria-hidden="true"></i> Products </a>
+                <div class="collapsible-body left-sub-menu">
+                   <ul>
+                      <li><a href="{{url('/')}}/admin/products">All Products </a>
+                      </li>
+                      <li><a href="{{url('/')}}/admin/addProduct">Add Products</a>
+                      </li>
+                   </ul>
+                </div>
+             </li>
+
+             <li>
+                <a href="{{url('/')}}/admin/orders" class="collapsible-header"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Orders </a>
+
+             </li>
+
             <li>
                 <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i> News, Interviews & Articles</a>
                 <div class="collapsible-body left-sub-menu">
@@ -76,11 +93,14 @@
             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-user" aria-hidden="true"></i>System Users</a>
             <div class="collapsible-body left-sub-menu">
                <ul>
-                  <li><a href="{{url('/')}}/admin/users">Manage Users</a>
-                  </li>
+
                   <li><a href="{{url('/')}}/admin/addUser">Add User</a>
                   </li>
+                  <li><a href="{{url('/')}}/admin/users">Manage Users</a>
+                  </li>
                   <li><a href="{{url('/')}}/admin/admins">Manage Admins</a>
+                  </li>
+                  <li><a href="{{url('/')}}/admin/managers">Manage Managers</a>
                   </li>
                </ul>
             </div>

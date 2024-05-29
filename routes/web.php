@@ -134,6 +134,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         //Manage Users
         Route::get('users', [AdminsController::class, 'users']);
         Route::get('admins', [AdminsController::class, 'admins']);
+        Route::get('managers', [AdminsController::class, 'managers']);
         Route::get('addUser', [AdminsController::class, 'addUser']);
         Route::get('editUser/{id}', [AdminsController::class, 'editUser']);
         Route::post('add_User', [AdminsController::class, 'add_User']);
@@ -142,6 +143,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::get('switchRole/{id}', [AdminsController::class, 'switchRole']);
         Route::get('switchStatus/{id}', [AdminsController::class, 'switchStatus']);
         Route::get('slungify', [AdminsController::class, 'slungify']);
+
+        Route::get('orders', [AdminsController::class, 'orders']);
+        Route::get('process-order', [AdminsController::class, 'process_order']);
+
 
         // AJAX REQUESTS
         Route::post('addCategoryAjaxRequest', [AdminsController::class, 'addCategoryAjaxRequest']);

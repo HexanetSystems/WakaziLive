@@ -90,30 +90,25 @@
                             </div>
 
 
-
-
-
-
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea required name="dimensions" class="materialize-textarea"></textarea>
-                                    <label for="textarea1">Product Dimensions:</label>
-                                </div>
-                            </div>
-
                             <div class="row">
                                 <div class="input-field col s12">
                                     <textarea required name="meta" class="materialize-textarea"></textarea>
                                     <label for="textarea1">Meta Descriptions:</label>
                                 </div>
                             </div>
+
+
                             <div class="row">
                                 <div class="input-field col s12">
-                                    {{-- <textarea required id="article-ckeditor" name="content" class="materialilze-textarea" placeholder="content"></textarea> --}}
-                                    <textarea required id="article-ckeditor" name="ckeditor" class="materialilze-textarea" placeholder="content"></textarea>
-                                    {{-- <label for="textarea1">Blog Descriptions:</label> --}}
+                                    <textarea name="content" id="article_ckeditor" rows="10" cols="80"></textarea>
                                 </div>
-                            </div><br><br>
+                            </div>
+
+                                    <script src="https://amanivehiclesounds.co.ke/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+                                    <script>
+                                        CKEDITOR.replace( 'article_ckeditor' );
+                                    </script>
+                                    <br><br>
 
 
                                 <script src="{{ asset('ckeditor/ckeditor.js')}}"></script>
