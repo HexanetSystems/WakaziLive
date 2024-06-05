@@ -36,11 +36,41 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 /*------------------------------------------
 --------------------------------------------
-All Users Routes List
+All Suppliers Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:supplier'])->group(function () {
-    Route::get('/supplier/home', [SupplierController::class, 'index'])->name('supplier.home');
+    Route::group(['prefix' => '/supplier'], function () {
+      Route::get('/home', [SupplierController::class, 'index'])->name('supplier.home');
+      // Route for my orders
+      Route::get('/my-orders', [SupplierController::class, 'myOrders'])->name('supplier.my-orders');
+      // Route for my orders
+      Route::get('/my-orders/{id}', [SupplierController::class, 'orderDetails'])->name('supplier.order-details');
+      Route::get('/my-orders/status/pending', [SupplierController::class, 'orderDetails'])->name('supplier.order-status-pending');
+      Route::get('/my-orders/status/completed', [SupplierController::class, 'orderDetails'])->name('supplier.order-status-completed');
+
+      //My products Routes
+      Route::get('/my-products', [SupplierController::class, 'myProducts'])->name('supplier.my-products');
+      Route::get('/add-product', [SupplierController::class, 'addProduct'])->name('supplier.add-product');
+      Route::post('/add-product', [SupplierController::class, 'addProductPost'])->name('supplier.add-product');
+      Route::get('/edit-product/{id}', [SupplierController::class, 'editProduct'])->name('supplier.edit-product');
+      Route::get('/profile/products', [SupplierController::class, 'supplierProducts'])->name('supplier.profile.products');
+
+      //Three routes invoices, my payments and Make payments
+      Route::get('/my-invoices', [SupplierController::class, 'myInvoices'])->name('supplier.my-invoices');
+      Route::get('/my-payments', [SupplierController::class, 'myPayments'])->name('supplier.my-payments');
+      Route::get('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
+      Route::post('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
+
+      //terms and conditions
+      Route::get('/terms', [SupplierController::class, 'terms'])->name('supplier.terms');
+      Route::get('/privacy', [SupplierController::class, 'privacy'])->name('supplier.privacy');
+
+
+
+
+
+    });
 });
 
 

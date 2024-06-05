@@ -10,4 +10,7 @@ class Product extends Model
 {
     use HasFactory;
     use HasSku;
+
+    //Order Product Table
+
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart; //introduces the cart lib
 use App\Models\Product;
+use App\Models\SMS;
 
 class orders extends Model
 {
@@ -27,10 +28,15 @@ class orders extends Model
         foreach($cartItems as $cartItem)
 
             $order->orderFields()->attach($cartItem->id,['qty'=>$cartItem->qty, 'tax' =>Cart::tax(), 'total'=>Cart::total()]);
+
             //Insert Notification
             $Notifications = new Notifications;
             $Notifications->type = 'Order';
             $Notifications->content = 'You have a new Order';
             $Notifications->save();
+
+            // Notify Supplier
        }
+
+    //    SMS::sendMessage();
 }
