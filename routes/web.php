@@ -61,6 +61,8 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
       Route::get('/my-payments', [SupplierController::class, 'myPayments'])->name('supplier.my-payments');
       Route::get('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
       Route::post('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
+      Route::get('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.commisions');
+
 
       //terms and conditions
       Route::get('/terms', [SupplierController::class, 'terms'])->name('supplier.terms');
