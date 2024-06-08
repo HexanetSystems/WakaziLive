@@ -11,7 +11,7 @@ use App\Http\Controllers\ManagerController;
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home-page');
 
 
 Auth::routes();
@@ -31,7 +31,7 @@ All Users Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-    Route::get('/home', [UserController::class, 'index'])->name('home');
+    Route::get('/dashboard', [UserController::class, 'index'])->name('home');
 });
 
 /*------------------------------------------
