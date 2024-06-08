@@ -38,6 +38,8 @@
                    <ul>
                       <li><a href="{{url('/')}}/admin/products">All Products </a>
                       </li>
+                      <li><a href="{{route('product-approve')}}">Pending Approval(2) </a>
+                      </li>
                       <li><a href="{{url('/')}}/admin/addProduct">Add Products</a>
                       </li>
                    </ul>

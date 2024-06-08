@@ -1,11 +1,9 @@
 /**
 	Template Name 	 : Pixio
 	Author			 : DexignZone
-    Editor			 : Designekta Studios
-	Version			 : 1.3.1
+	Version			 : 1.3
 	File Name	     : custom.js
 	Author Portfolio : https://themeforest.net/user/dexignzone/portfolio
-    Editor Portfolio : https://designekta.com
 	
 	Core script to handle the entire theme and core functions
 **/

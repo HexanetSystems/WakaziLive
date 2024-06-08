@@ -8,57 +8,57 @@
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.2s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/1.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Shirts</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Necklace</a></h6>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.4s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/2.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Shorts</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Bracelets</a></h6>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.6s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/3.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">t-Shirt</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Mkekas</a></h6>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.8s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/4.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">t-Jeans</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Murals</a></h6>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.9s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/5.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">t-Jeans</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Drawings</a></h6>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="1.0s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/2.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Shorts</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Bags</a></h6>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="1.1s">
                                     <div class="dz-media">
-                                        <img src="{{asset('theme/images/shop/product/clothes/3.png')}}" alt="image">
+                                        <img src="#" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">t-Shirt</a></h6>
+                                    <h6 class="product-name"><a href="shop-with-category.html">Sandaks</a></h6>
                                 </div>
                             </div>
                         </div>

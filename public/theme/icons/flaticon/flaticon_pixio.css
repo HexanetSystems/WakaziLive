@@ -1,9 +1,9 @@
 @font-face {
     font-family: "flaticon_pixio";
-    src:url("./flaticon_pixio.woff?49dfca1679f8ebe110d21a07d523c078") format("woff"),
-    url("./flaticon_pixio.woff2?49dfca1679f8ebe110d21a07d523c078") format("woff2"),
-    url("./flaticon_pixio.eot?49dfca1679f8ebe110d21a07d523c078#iefix") format("embedded-opentype"),
-    url("./flaticon_pixio.svg?49dfca1679f8ebe110d21a07d523c078#flaticon_pixio") format("svg");
+    src:url("flaticon_pixio.woff") format("woff"),
+    url("flaticon_pixio.woff2") format("woff2"),
+    url("flaticon_pixio.eot") format("embedded-opentype"),
+    url("flaticon_pixio.svg") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {

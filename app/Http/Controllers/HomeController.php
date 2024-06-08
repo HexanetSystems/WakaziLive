@@ -17,5 +17,8 @@ class HomeController extends Controller
         return view('front.index');
     }
 
+    public function select(){
+        return view('front.select');
+    }
 
 }

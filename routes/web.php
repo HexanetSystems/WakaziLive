@@ -12,6 +12,10 @@ use App\Http\Controllers\ManagerController;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home-page');
+Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
+
+
+
 
 
 Auth::routes();
@@ -67,6 +71,9 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
       //terms and conditions
       Route::get('/terms', [SupplierController::class, 'terms'])->name('supplier.terms');
       Route::get('/privacy', [SupplierController::class, 'privacy'])->name('supplier.privacy');
+
+
+
 
 
 
@@ -142,6 +149,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::get('editProducts/{id}', [AdminsController::class, 'editProducts']);
         Route::post('edit_Product/{id}', [AdminsController::class, 'edit_Product']);
         Route::get('deleteProduct/{id}', [AdminsController::class, 'deleteProduct']);
+
+
+        Route::get('product-approve', [AdminsController::class, 'approve'])->name('product-approve');
 
 
         // Blog
