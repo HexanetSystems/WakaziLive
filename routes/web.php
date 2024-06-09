@@ -55,10 +55,16 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
 
       //My products Routes
       Route::get('/my-products', [SupplierController::class, 'myProducts'])->name('supplier.my-products');
+      Route::get('upload-ui/{id}', [SupplierController::class, 'uploadUi' ]);
+      Route::post('file-upload', [SupplierController::class, 'FileUpload' ])->name('FileUpload');
       Route::get('/add-product', [SupplierController::class, 'addProduct'])->name('supplier.add-product');
       Route::post('/add-product', [SupplierController::class, 'addProductPost'])->name('supplier.add-product');
       Route::get('/edit-product/{id}', [SupplierController::class, 'editProduct'])->name('supplier.edit-product');
+      Route::post('/edit-Product/{id}', [SupplierController::class, 'editProductPost'])->name('supplier.edit-product-post');
+
       Route::get('/profile/products', [SupplierController::class, 'supplierProducts'])->name('supplier.profile.products');
+    //   delete product
+      Route::get('/delete-product/{id}',[SupplierController::class, 'deleteProducts'])->name('supplier.delete.product');
 
       //Three routes invoices, my payments and Make payments
       Route::get('/my-invoices', [SupplierController::class, 'myInvoices'])->name('supplier.my-invoices');

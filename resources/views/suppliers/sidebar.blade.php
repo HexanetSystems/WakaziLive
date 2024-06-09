@@ -33,22 +33,7 @@
                 </span>
             </a>
         </li>
-        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">
-            <a href="{{url('/')}}/supplier/my-orders/status/pending" class="sa-nav__link">
-                <span class="sa-nav__icon"><i class="fa fa-shopping-cart"></i></span><span class="sa-nav__title">Pending Orders</span>
-                <span class="sa-nav__arrow fa fa-time">
 
-                </span>
-            </a>
-        </li>
-        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">
-            <a href="{{url('/')}}/supplier/my-orders/status/completed" class="sa-nav__link">
-                <span class="sa-nav__icon"><i class="fa fa-shopping-cart"></i></span><span class="sa-nav__title">Completed Orders</span>
-                <span class="sa-nav__arrow fa fa-check">
-
-                </span>
-            </a>
-        </li>
     </ul>
     </li>
     <li class="sa-nav__section">

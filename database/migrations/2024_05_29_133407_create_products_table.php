@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('pro_condition')->default('New');
             $table->string('slung')->nullable();
+            $table->string('UserID')->nullable();
+            $table->string('status')->default('0');
             $table->string('video')->nullable();
             $table->string('category')->nullable();
             $table->integer('google_product_category')->default(6552);
@@ -30,9 +32,6 @@ return new class extends Migration
             $table->text('meta')->nullable();
             $table->text('content')->nullable();
             $table->string('image_one')->nullable();
-            $table->string('image_two')->nullable();
-            $table->string('image_three')->nullable();
-            $table->string('image_four')->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use Hash;
+use DB;
+use Session;
+use App\Models\Product;
+use Redirect;
+
+use Illuminate\Support\Facades\Crypt;
+
+use Stevebauman\Hypertext\Transformer;
+
+use Illuminate\Support\Str;
+
+use Illuminate\Support\Facades\Storage;
 
 class SupplierController extends Controller
 {
@@ -50,7 +64,35 @@ class SupplierController extends Controller
     public function myProducts(){
         $UserID = Auth::User()->id;
         $products = \App\Models\Product::where('UserID',$UserID)->get();
-        return view('suppliers.myProducts', compact($products));
+        return view('suppliers.myProducts', compact('products'));
+    }
+
+    public function uploadUi ($id){
+        $UserID = Auth::User()->id;
+        $products = \App\Models\Product::where('UserID',$UserID)->where('id',$id)->get();
+        return view('suppliers.drop', compact('products'));
+    }
+
+    public  function FileUpload(Request $request)
+    {
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('images'),$imageName);
+        // Add To Database
+        $product_id = $request->product_id;
+        $Gallery = new \App\Models\Gallery;
+        $Gallery->product_id = $product_id;
+        $Gallery->image = $imageName;
+        $Gallery->save();
+
+        return response()->json(['success'=>$imageName]);
+    }
+
+    public function deleteProducts($id){
+        $product = \App\Models\Product::find($id);
+        $product->delete();
+        Session::flash('message', "Product Has Been Deleted");
+        return redirect('/supplier/my-products');
     }
 
     // Add Product Method
@@ -61,15 +103,34 @@ class SupplierController extends Controller
 
     // post method for addProduct
     public function addProductPost(Request $request){
-        $UserID = Auth::User()->id;
-        $product = new \App\Models\Product();
-        $product->UserID = $UserID;
-        $product->Name = $request->Name;
-        $product->Price = $request->Price;
-        $product->Quantity = $request->Quantity;
-        $product->CategoryID = $request->CategoryID;
-        $product->save();
-        return redirect('/myProducts');
+        activity()->log('Evoked add Product Operation');
+        $path = 'uploads/products';
+        if(isset($request->image_one)){
+            $dir = 'uploads/products';
+            $file = $request->file('image_one');
+            $realPath = $request->file('image_one')->getRealPath();
+            $image_one = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $image_one = "0";
+        }
+
+        // dd($request->all());
+
+        $Product = new Product;
+        $Product->name = $request->name;
+        $Product->slung = Str::slug($request->name);
+        $Product->category = $request->category;
+        $Product->UserID = Auth::User()->id;
+        $Product->stock = "In Stock";
+        $Product->price_raw = $request->price;
+        $Product->price = $request->price;
+        $Product->content = $request->content;
+        $Product->meta = $request->meta;
+        $Product->image_one = $image_one;
+        $Product->save();
+        Session::flash('message', "Product Has Been Added");
+        // return Redirect::back();
+        return redirect('/supplier/my-products');
     }
 
     // Edit Product Method
@@ -79,15 +140,33 @@ class SupplierController extends Controller
         return view('suppliers.editProduct', compact('product', 'Categories'));
     }
 
+
     //Edit product post
-    public function editProductPost(Request $request){
-        $product = \App\Models\Product::find($request->id);
-        $product->Name = $request->Name;
-        $product->Price = $request->Price;
-        $product->Quantity = $request->Quantity;
-        $product->CategoryID = $request->CategoryID;
-        $product->save();
-        return redirect('/myProducts');
+    public function editProductPost(Request $request,$id){
+        $product = \App\Models\Product::find($id);
+        activity()->log('Evoked edit Product Operation');
+
+        if(isset($request->image_one)){
+            $dir = 'uploads/products';
+            $file = $request->file('image_one');
+            $realPath = $request->file('image_one')->getRealPath();
+            $image_one = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $image_one = $request->image_one_cheat;
+        }
+
+        $update = array(
+            'name' => $request->name,
+            'slung' => Str::slug($request->name),
+            'category' => $request->category,
+            'price' => $request->price,
+            'content' => $request->content,
+            'meta' => $request->meta,
+            'image_one' => $image_one,
+        );
+        DB::table('products')->where('id', $id)->update($update);
+        Session::flash('message', "$product->name has been Updated");
+        return redirect('/supplier/my-products');
     }
 
     // Invoices Method
@@ -120,6 +199,17 @@ class SupplierController extends Controller
     public function profile(){
         $User = User::find(Auth::User()->id);
         return view('suppliers.profile', compact('User'));
+    }
+
+
+     // S3
+     public function genericFIleUpload($file,$dir,$realPath){
+        $filename = $file->getClientOriginalName();
+        $store = $file->storeAs(path: ''.$dir.'/'.$filename, options: 's3');
+        Storage::disk('s3')->put(''.$dir.'/'.$filename, file_get_contents($realPath));
+        // $url = Storage::disk('s3')->temporaryUrl('podcasts/'.$filename,now()->addMinutes(10));
+        $SaveFilePath = "https://africanpharmaceuticalreviewbucket.s3.eu-central-1.amazonaws.com/$dir/$filename";
+        return $SaveFilePath;
     }
 
 }
