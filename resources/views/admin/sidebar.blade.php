@@ -32,13 +32,15 @@
                 </div>
              </li>
              {{--  --}}
+             <?php $ProductCount = DB::table('products')->where('status',"0")->count(); ?>
              <li>
                 <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-suitcase" aria-hidden="true"></i> Products </a>
                 <div class="collapsible-body left-sub-menu">
                    <ul>
+
                       <li><a href="{{url('/')}}/admin/products">All Products </a>
                       </li>
-                      <li><a href="{{route('product-approve')}}">Pending Approval(2) </a>
+                      <li><a href="{{route('product-approve')}}">Pending Approval <sup class="text-danger" style="border-radius: 50%; font-weight:900">{{$ProductCount}}</sup> </a>
                       </li>
                       <li><a href="{{url('/')}}/admin/addProduct">Add Products</a>
                       </li>
@@ -52,7 +54,7 @@
              </li>
 
             <li>
-                <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i> News, Interviews & Articles</a>
+                <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-rss" aria-hidden="true"></i> News & Blogs</a>
                 <div class="collapsible-body left-sub-menu">
                 <ul>
                     <li><a href="{{url('/')}}/admin/blog">All Blogs</a>
@@ -152,9 +154,18 @@
          </li>
          <li><a href="{{url('/')}}/admin/SocialMediaSettings"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Social Media</a>
          </li>
-         <li><a href="{{url('/')}}/logout" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout </a>
+         <li><a href="{{ route('logout') }}" class="sa-nav__link" onclick="event.preventDefault();   document.getElementById('logout-form').submit();" target="_blank"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout </a>
          </li>
       </ul>
    </div>
 </div>
+<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    @csrf
+</form>
 @endforeach
+
+
+
+
+
+

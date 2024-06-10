@@ -325,6 +325,31 @@ class AdminsController extends Controller
         return view('admin.products',compact('page_title','Product','page_name'));
     }
 
+    public function approve(){
+        activity()->log('Accessed All Products');
+        $Product = Product::where('status','0')->get();
+        $page_title = 'list';
+        $page_name = 'Products';
+        return view('admin.products-approve',compact('page_title','Product','page_name'));
+    }
+
+    public function approve_now($id){
+        activity()->log('Approved Product ID: '.$id.'');
+        $Product = Product::find($id);
+        if($Product->status == 0){
+           $newStatus = "1";
+        }else{
+            $newStatus = "0";
+        }
+        $updateDetails = array('status'=>$newStatus);
+        DB::table('products')->where('id', $id)->update($updateDetails);
+        Session::flash('message', "Product Has Been Approved");
+        return Redirect::back();
+    }
+
+
+
+
     public function orders(){
         activity()->log('Accessed All Products');
         $Orders = Order::all();

@@ -576,22 +576,17 @@
                       </div>
                       <div class="sa-timeline mb-n2 pt-2">
                          <ul class="sa-timeline__list">
+                            <?php
+                                   $Activity = DB::table('activity_log')->where('causer_id', Auth::user()->id)->limit(6)->get()
+                            ?>
+                            @foreach ($Activity as $activity)
                             <li class="sa-timeline__item">
-                               <div class="sa-timeline__item-title">Yesterday</div>
-                               <div class="sa-timeline__item-content">Phasellus id mattis nulla. Mauris velit nisi, imperdiet vitae sodales in, maximus ut lectus. Vivamus commodo scelerisque lacus, at porttitor dui iaculis id. <a href="#">Curabitur imperdiet ultrices fermentum.</a></div>
-                            </li>
-                            <li class="sa-timeline__item">
-                               <div class="sa-timeline__item-title">5 days ago</div>
-                               <div class="sa-timeline__item-content">Nulla ut ex mollis, volutpat tellus vitae, accumsan ligula. <a href="#">Curabitur imperdiet ultrices fermentum.</a></div>
-                            </li>
-                            <li class="sa-timeline__item">
-                               <div class="sa-timeline__item-title">March 27</div>
-                               <div class="sa-timeline__item-content">Donec tempor sapien et fringilla facilisis. Nam maximus consectetur diam.</div>
-                            </li>
-                            <li class="sa-timeline__item">
-                               <div class="sa-timeline__item-title">November 30</div>
-                               <div class="sa-timeline__item-content">Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.</div>
-                            </li>
+                                <div class="sa-timeline__item-title"><?php echo timeAgo($activity->created_at) ?></div>
+                                <div class="sa-timeline__item-content">{{$activity->description}}</a></div>
+                             </li>
+                            @endforeach
+
+
                          </ul>
                       </div>
                    </div>
@@ -622,6 +617,7 @@
                       </div>
                    </div>
                    <ul class="list-group list-group-flush">
+
                       <li class="list-group-item py-2">
                          <div class="d-flex align-items-center py-3">
                             <a href="app-product.html" class="me-4">
@@ -630,97 +626,7 @@
                             <div class="d-flex align-items-center flex-grow-1 flex-wrap">
                                <div class="col">
                                   <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Amos kichumber</a></div>
-                               </div>
-                               <div class="col-12 col-sm-auto">
-                                  <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">
-                                     <div class="sa-rating__body"></div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </li>
-                      <li class="list-group-item py-2">
-                         <div class="d-flex align-items-center py-3">
-                            <a href="app-product.html" class="me-4">
-                               <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg"><img src="{{asset('supplier-theme/images/products/product-7-40x40.jpg')}}" width="40" height="40" alt=""/></div>
-                            </a>
-                            <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                               <div class="col">
-                                <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Ebby Addai</a></div>
-                               </div>
-                               <div class="col-12 col-sm-auto">
-                                  <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">
-                                     <div class="sa-rating__body"></div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </li>
-                      <li class="list-group-item py-2">
-                         <div class="d-flex align-items-center py-3">
-                            <a href="app-product.html" class="me-4">
-                               <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg"><img src="{{asset('supplier-theme/images/products/product-10-40x40.jpg')}}" width="40" height="40" alt=""/></div>
-                            </a>
-                            <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                               <div class="col">
-                                <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Juliet Wangoi</a></div>
-                               </div>
-                               <div class="col-12 col-sm-auto">
-                                  <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">
-                                     <div class="sa-rating__body"></div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </li>
-                      <li class="list-group-item py-2">
-                         <div class="d-flex align-items-center py-3">
-                            <a href="app-product.html" class="me-4">
-                               <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg"><img src="{{asset('supplier-theme/images/products/product-5-40x40.jpg')}}" width="40" height="40" alt=""/></div>
-                            </a>
-                            <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                               <div class="col">
-                                <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Arnold Orupia</a></div>
-                               </div>
-                               <div class="col-12 col-sm-auto">
-                                  <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">
-                                     <div class="sa-rating__body"></div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </li>
-                      <li class="list-group-item py-2">
-                         <div class="d-flex align-items-center py-3">
-                            <a href="app-product.html" class="me-4">
-                               <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg"><img src="{{asset('supplier-theme/images/products/product-2-40x40.jpg')}}" width="40" height="40" alt=""/></div>
-                            </a>
-                            <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                               <div class="col">
-                                <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Amos kichumber</a></div>
-                               </div>
-                               <div class="col-12 col-sm-auto">
-                                  <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">
-                                     <div class="sa-rating__body"></div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </li>
-                      <li class="list-group-item py-2">
-                         <div class="d-flex align-items-center py-3">
-                            <a href="app-product.html" class="me-4">
-                               <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg"><img src="{{asset('supplier-theme/images/products/product-16-40x40.jpg')}}" width="40" height="40" alt=""/></div>
-                            </a>
-                            <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                               <div class="col">
-                                <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Charlotte Serem</a></div>
+                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Amos Kipchumba</a></div>
                                </div>
                                <div class="col-12 col-sm-auto">
                                   <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">

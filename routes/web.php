@@ -149,6 +149,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
          Route::get('deleteCategory/{id}', [AdminsController::class, 'deleteCategory']);
 
         // Products
+        Route::get('product-approve', [AdminsController::class, 'approve']);
+        Route::get('approve-product/{id}', [AdminsController::class, 'approve_now']);
         Route::get('products', [AdminsController::class, 'products']);
         Route::get('addProduct', [AdminsController::class, 'addProduct']);
         Route::post('add_Product', [AdminsController::class, 'add_Product']);

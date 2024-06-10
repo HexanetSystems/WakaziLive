@@ -86,8 +86,11 @@
                     <li><a href="{{url('/')}}/create-backup" class="waves-effect"><i class="fa fa-undo" aria-hidden="true"></i> Backup Data</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="{{url('/')}}/logout" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+                    <li><a href="{{ route('logout') }}" class="sa-nav__link" onclick="event.preventDefault();   document.getElementById('logout-form').submit();" class="ho-dr-con-last waves-effect"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
                     </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </ul>
             </div>
         </div>
