@@ -4,7 +4,7 @@
 	Version			 : 1.3
 	File Name	     : custom.js
 	Author Portfolio : https://themeforest.net/user/dexignzone/portfolio
-	
+
 	Core script to handle the entire theme and core functions
 **/
 
@@ -211,7 +211,7 @@ var Pixio = function () {
 		});
 
 	}
-	
+
 	//lightGallery
 	var handleLightgallery = function () {
 		if (jQuery('#lightgallery').length > 0) {
@@ -375,7 +375,7 @@ var Pixio = function () {
 						self.masonry({
 							gutter: gutter,
 							columnWidth: columnWidthValue,
-							//columnWidth:3, 
+							//columnWidth:3,
 							//gutterWidth: 15,
 							isAnimated: true,
 							itemSelector: ".card-container",
@@ -783,7 +783,7 @@ var Pixio = function () {
 			$('.round').css({ '-moz-transform': 'rotate(' + rotateNum + 'deg)' });
 			$('.round').css({ '-ms-transform': 'rotate(' + rotateNum + 'deg)' });
 
-			// If the count down is over, write some text 
+			// If the count down is over, write some text
 			if (clockTime < 0) {
 				clearInterval(x);
 				jQuery("#day, #hour, #min, #second").html("EXPIRED");
@@ -1042,8 +1042,8 @@ var Pixio = function () {
 
 	/* Pointer Effect ============ */
 	var handlePointerEffect = function () {
-		/* 
-			pointer.js was created by OwL for use on websites, 
+		/*
+			pointer.js was created by OwL for use on websites,
 			and can be found at https://seattleowl.com/pointer.
 		*/
 		const pointer = document.createElement("div")
@@ -1110,7 +1110,7 @@ var Pixio = function () {
 					} else {
 						ring.style.padding = getOption("ringSize") + "px"
 					}
-					
+
 					pointer.style.transform = `translate(${mouseX}px, ${mouseY}px)`
 
 					ring.style.transform = `translate(${ringX - (mouseDown ? getOption("ringClickSize") : getOption("ringSize"))}px, ${ringY - (mouseDown ? getOption("ringClickSize") : getOption("ringSize"))}px)`
@@ -1131,7 +1131,7 @@ var Pixio = function () {
 
 		init_pointer({});
 	}
-	
+
 	/* Left Menu ============ */
 	var handleMenuPosition = function(){
 		$(".header-nav li").unbind().each(function (e) {
@@ -1152,7 +1152,7 @@ var Pixio = function () {
 				}
 			}
 		});
-	}	
+	}
 
 	/* Function ============ */
 	return {
@@ -1238,7 +1238,7 @@ jQuery(document).ready(function () {
 	jQuery('.navicon').on('click', function () {
 		$(this).toggleClass('open');
 	});
-	
+
 	jQuery('.toggle-btn').on('click', function () {
 		$(this).toggleClass('active');
 		$('.account-sidebar').toggleClass('show');

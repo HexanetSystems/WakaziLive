@@ -4,17 +4,17 @@
 	Version			 : 1.2
 	File Name	     : custom.js
 	Author Portfolio : https://themeforest.net/user/dexignzone/portfolio
-	
+
 	Core script to handle the entire theme and core functions
 **/
 
 var PixioCarousel = function(){
-	
+
 	// Main Swiper1 ====
 	var handleMainSwiper = function () {
 		jQuery(document).ready(function($) {
 			if ($('.main-swiper').length > 0) {
-				
+
 				// Main Swiper
 				var mainSwiper = new Swiper(".main-swiper", {
 					slidesPerView: 1,
@@ -30,15 +30,15 @@ var PixioCarousel = function(){
 					navigation: {
 						nextEl: ".swiper-button-next",
 						prevEl: ".swiper-button-prev",
-					},					
+					},
 				});
-				
+
 				// Thumbnail Swiper
 				var thumbnailSwiper = new Swiper(".main-swiper-thumb", {
 					slidesPerView: 1.4,
 					spaceBetween: 100,
 					loop: true,
-					
+
 					breakpoints: {
 						300: { slidesPerView: 1, spaceBetween: 30,  },
 						600: { slidesPerView: 1.2, spaceBetween: 30,  },
@@ -54,14 +54,14 @@ var PixioCarousel = function(){
 						prevEl: ".swiper-button-prev",
 					},
 				});
-				
+
 				// Connect the two swipers
 				mainSwiper.controller.control = thumbnailSwiper;
 				thumbnailSwiper.controller.control = mainSwiper;
 			}
 		});
 	}
-	
+
 	// Main Swiper2====
 	var handleMainSwiper2 = function() {
 		if(jQuery('.main-swiper2').length > 0){
@@ -99,7 +99,7 @@ var PixioCarousel = function(){
 	}
 
 	// kanbern Swiper ==
-	var handlekanbernSwiper = function() {	
+	var handlekanbernSwiper = function() {
 		if(jQuery('.kanbern-bnr').length > 0){
 			var swiperTestimonial = new Swiper('.kanbern-bnr', {
 				loop: true,
@@ -114,9 +114,9 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	// Blog slideshow Swiper ==
-	var BlogSlideshowSwiper = function() {	
+	var BlogSlideshowSwiper = function() {
 		if(jQuery('.blog-slideshow').length > 0){
 			var swiperTestimonial = new Swiper('.blog-slideshow', {
 				loop: true,
@@ -133,9 +133,9 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	// Project Carousel Swiper ==
-	var handleProjectCarousel = function() {	
+	var handleProjectCarousel = function() {
 		if(jQuery('.project-carousel').length > 0){
 			var swiperBook = new Swiper('.project-carousel', {
 				loop:true,
@@ -167,11 +167,11 @@ var PixioCarousel = function(){
 					},
 				}
 			});
-		}	
+		}
 	}
-	
+
 	// Swiper Four ==
-	var handleSwiperFour = function() {	
+	var handleSwiperFour = function() {
 		if(jQuery('.swiper-four').length > 0){
 			var swiper = new Swiper( '.swiper-four', {
 				speed: 1000,
@@ -185,7 +185,7 @@ var PixioCarousel = function(){
 				navigation: {
 					nextEl: ".tranding-button-next",
 					prevEl: ".tranding-button-prev",
-				},	
+				},
 				breakpoints: {
 					1200: {
 						slidesPerView: 4,
@@ -208,9 +208,9 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	//  Swiper Five ==
-	var handleSwiperFive = function() {	
+	var handleSwiperFive = function() {
 		if(jQuery('.swiper-five').length > 0){
 			var swiper = new Swiper( '.swiper-five', {
 				slidesPerView: 1,
@@ -232,9 +232,9 @@ var PixioCarousel = function(){
 			} );
 		}
 	}
-	
+
 	// Swiper Six ==
-	var handleSwiperSix = function() {	
+	var handleSwiperSix = function() {
 		if(jQuery('.swiper-six').length > 0){
 			var swiper = new Swiper( '.swiper-six', {
 				slidesPerView: 2,
@@ -257,7 +257,7 @@ var PixioCarousel = function(){
 	}
 
 	//  Swiper Blog Post ==
-	var handleSwiperBlogPost = function() {	
+	var handleSwiperBlogPost = function() {
 		if(jQuery('.swiper-blog-post').length > 0){
 			var swiper = new Swiper( '.swiper-blog-post', {
 				slidesPerView: 4.5,
@@ -267,7 +267,7 @@ var PixioCarousel = function(){
 				pagination: {
 					el: ".swiper-pagination-trading",
 				},
-				
+
 				breakpoints: {
 					1600: {
 						slidesPerView: 4.5,
@@ -295,14 +295,14 @@ var PixioCarousel = function(){
 						slidesPerView: 1.2,
 						spaceBetween: 15,
 					},
-					
+
 				}
 			});
 		}
 	}
-	
+
 	//  handle Category Swiper ==
-	var handleCategorySwiper = function() {	
+	var handleCategorySwiper = function() {
 		if(jQuery('.category-swiper').length > 0){
 			var swiper = new Swiper( '.category-swiper', {
 				slidesPerView: 7,
@@ -316,9 +316,9 @@ var PixioCarousel = function(){
 					delay: 3000,
 				},
 				navigation: {
-					nextEl: ".tranding-button-next", 
+					nextEl: ".tranding-button-next",
 					prevEl: ".tranding-button-prev",
-				},	
+				},
 				breakpoints: {
 					1600: {
 						slidesPerView: 7,
@@ -330,7 +330,7 @@ var PixioCarousel = function(){
 						slidesPerView: 4,
 					},
 					591: {
-						slidesPerView: 3, 	
+						slidesPerView: 3,
 					},
 					320: {
 						slidesPerView: 2,
@@ -340,9 +340,9 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	//  handle Category Swiper2 ==
-	var handleCategorySwiper2 = function() {	
+	var handleCategorySwiper2 = function() {
 		if(jQuery('.category-swiper2').length > 0){
 			var swiper = new Swiper( '.category-swiper2', {
 				slidesPerView: 6,
@@ -356,9 +356,9 @@ var PixioCarousel = function(){
 					delay: 3000,
 				},
 				navigation: {
-					nextEl: ".tranding-button-next", 
+					nextEl: ".tranding-button-next",
 					prevEl: ".tranding-button-prev",
-				},	
+				},
 				breakpoints: {
 					1600: {
 						slidesPerView: 6,
@@ -373,7 +373,7 @@ var PixioCarousel = function(){
 						spaceBetween: 20,
 					},
 					575: {
-						slidesPerView: 3, 	
+						slidesPerView: 3,
 						spaceBetween: 15,
 					},
 					320: {
@@ -384,9 +384,9 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	//  Product Swiper ==
-	var handleSwiperProduct = function() {	
+	var handleSwiperProduct = function() {
 		if(jQuery('.swiper-product').length > 0){
 			var swiper = new Swiper( '.swiper-product', {
 				speed: 1000,
@@ -426,7 +426,7 @@ var PixioCarousel = function(){
 	}
 
 		//  Product Swiper ==
-		var handleSwiperProduct2 = function() {	
+		var handleSwiperProduct2 = function() {
 			if(jQuery('.swiper-product2').length > 0){
 				var swiper = new Swiper( '.swiper-product2', {
 					speed: 1000,
@@ -467,9 +467,9 @@ var PixioCarousel = function(){
 				});
 			}
 		}
-	
+
 	//  shop Swiper ==
-	var handleSwiperShop = function() {	
+	var handleSwiperShop = function() {
 		if(jQuery('.swiper-shop').length > 0){
 			var swiper = new Swiper( '.swiper-shop', {
 				slidesPerView: 5,
@@ -478,7 +478,7 @@ var PixioCarousel = function(){
 				pagination: {
 					el: ".swiper-pagination-trading",
 				},
-				
+
 				navigation: {
 					nextEl: ".shop-button-next",
 					prevEl: ".shop-button-prev",
@@ -508,7 +508,7 @@ var PixioCarousel = function(){
 	}
 
 	// Swiper Four ==
-	var handleSwiperShop2 = function() {	
+	var handleSwiperShop2 = function() {
 		if(jQuery('.swiper-shop2').length > 0){
 			var swiper = new Swiper( '.swiper-shop2', {
 				speed: 1000,
@@ -522,11 +522,11 @@ var PixioCarousel = function(){
 				pagination: {
 					el: ".swiper-pagination-trading",
 				},
-				
+
 				navigation: {
 					nextEl: ".shop-button-next",
 					prevEl: ".shop-button-prev",
-				},	
+				},
 				breakpoints: {
 					1600: {
 						slidesPerView: 4,
@@ -554,10 +554,10 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
-	
+
+
 	//  company Swiper ==
-	var handleSwiperCompany = function() {	
+	var handleSwiperCompany = function() {
 		if(jQuery('.swiper-company').length > 0){
 			var swiper = new Swiper( '.swiper-company', {
 				slidesPerView: 4,
@@ -587,11 +587,11 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
-	
-	
+
+
+
 	//  Product Gallery Swiper1 ==
-	var ProductGallerySwiper1 = function() {	
+	var ProductGallerySwiper1 = function() {
 		if(jQuery('.product-gallery-swiper').length > 0){
 			var swiper = new Swiper(".product-gallery-swiper", {
 				spaceBetween: 10,
@@ -604,7 +604,7 @@ var PixioCarousel = function(){
 			});
 			var swiper2 = new Swiper(".product-gallery-swiper2", {
 			  spaceBetween: 0,
-			  updateOnWindowResize: true,	
+			  updateOnWindowResize: true,
 			  navigation: {
 				nextEl: ".gallery-button-next",
 				prevEl: ".gallery-button-prev",
@@ -615,9 +615,9 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	//  Quick View Modal Swiper ==
-	var handleQuickModal = function() {	
+	var handleQuickModal = function() {
 		if(jQuery('.quick-modal-swiper').length > 0){
 			var swiper = new Swiper(".quick-modal-swiper", {
 			  spaceBetween: 15,
@@ -627,7 +627,7 @@ var PixioCarousel = function(){
 			});
 			var swiper2 = new Swiper(".quick-modal-swiper2", {
 			  spaceBetween: 0,
-			  updateOnWindowResize: true,	
+			  updateOnWindowResize: true,
 			  navigation: {
 				nextEl: ".gallery-button-next",
 				prevEl: ".gallery-button-prev",
@@ -638,14 +638,14 @@ var PixioCarousel = function(){
 			});
 		}
 	}
-	
+
 	//  Product Gallery Swiper ==
-	var handleProductGallery = function() {	
+	var handleProductGallery = function() {
 		if(jQuery('.product-gallery').length > 0){
 			var swiper = new Swiper(".product-thumb", {
 				slidesPerView: "2",
 				spaceBetween: 0,
-				
+
 				grid: {
 					rows: 2,
 				},
@@ -657,7 +657,7 @@ var PixioCarousel = function(){
 					},
 				},
 				breakpoints: {
-					
+
 					576: {
 						slidesPerView: 2,
 					},
@@ -668,34 +668,34 @@ var PixioCarousel = function(){
 			});
 			var swiper2 = new Swiper(".product-gallery", {
 				slidesPerView: "1",
-				
+
 				thumbs: {
 				  swiper: swiper,
 				},
 			});
 		}
 	}
-	
+
 	//  Portfolio Gallery Swiper1 ==
-	var handlePortfolioGallery = function() {	
+	var handlePortfolioGallery = function() {
 		if(jQuery('.portfolio-gallery').length > 0){
 			var swiper = new Swiper(".portfolio-thumb", {
 				slidesPerView: "auto",
 				spaceBetween: 0,
-				
+
 			});
 			var swiper2 = new Swiper(".portfolio-gallery", {
 				slidesPerView: "1",
-				
+
 				thumbs: {
 				  swiper: swiper,
 				},
 			});
 		}
 	}
-	
+
 	//  Portfolio Gallery Swiper2 ==
-	var handlePortfolioGallery2 = function() {	
+	var handlePortfolioGallery2 = function() {
 		if(jQuery('.portfolio-gallery2').length > 0){
 			var swiper = new Swiper( '.portfolio-gallery2', {
 				slidesPerView: "auto",
@@ -722,12 +722,12 @@ var PixioCarousel = function(){
 						slidesPerView: 1,
 					},
 				}
-			} ); 
+			} );
 		}
 	}
-	
+
 	//  Portfolio Gallery Swiper3 ==
-	var handlePortfolioGallery3 = function() {	
+	var handlePortfolioGallery3 = function() {
 		if(jQuery('.portfolio-gallery3').length > 0){
 			var swiper = new Swiper( '.portfolio-gallery3', {
 				slidesPerView: 3,
@@ -759,12 +759,12 @@ var PixioCarousel = function(){
 						spaceBetween: 15,
 					},
 				}
-			} ); 
+			} );
 		}
 	}
-	
+
 	//  Portfolio Detail Swiper ==
-	var handlePortfolioDetail3 = function() {	
+	var handlePortfolioDetail3 = function() {
 		if(jQuery('.portfolio-detail3').length > 0){
 			var swiper = new Swiper( '.portfolio-detail3', {
 				slidesPerView: 4,
@@ -789,12 +789,12 @@ var PixioCarousel = function(){
 						spaceBetween: 15,
 					},
 				}
-			} ); 
+			} );
 		}
 	}
-	
+
 	// Split Swiper ==
-	var handleSplitSwiper = function() {	
+	var handleSplitSwiper = function() {
 		if(jQuery('.spilt-swiper-slider').length > 0){
 			var spiltSwiper = new Swiper('.spilt-swiper-slider', {
 				direction: "vertical",
@@ -815,7 +815,7 @@ var PixioCarousel = function(){
 	}
 
 	// Split Swiper ==
-	var handleCollectionsSwiper = function() {	
+	var handleCollectionsSwiper = function() {
 		var swiper = new Swiper('.testimonial-swiper', {
 			speed: 1500,
 			parallax: true,
@@ -825,7 +825,7 @@ var PixioCarousel = function(){
 			autoplay: {
 			   delay: 3000,
 			},
-			
+
 			breakpoints: {
 				1600: {
 				slidesPerView: 3,
@@ -862,10 +862,10 @@ var PixioCarousel = function(){
 	        },
 		});
 	}
-	
+
 	// Split Swiper ==
 	var mainSliderSlick = function() {
-		if(jQuery('.slider-main').length > 0){			
+		if(jQuery('.slider-main').length > 0){
 			$('.slider-main').slick({
 				slidesToShow: 1,
 				slidesToScroll: 1,
@@ -886,10 +886,10 @@ var PixioCarousel = function(){
 		}
 	}
 
-	
+
 	/* Function ============ */
 	return {
-	
+
 		init:function(){
 			handleMainSwiper();
 			mainSliderSlick();
@@ -922,37 +922,37 @@ var PixioCarousel = function(){
 			handleSwiperShop();
 			handleSwiperShop2();
 		},
-		
+
 		resize:function(){
 			ProductGallerySwiper1();
 		}
 	}
-	
+
 }();
 
 
-/* Document.ready Start */	
+/* Document.ready Start */
 jQuery(document).ready(function() {
     'use strict';
-	
+
 	PixioCarousel.init();
-	
-	
+
+
 });
 /* Document.ready END */
 
 /* Window Load START */
 jQuery(window).on('load',function () {
-	'use strict'; 
+	'use strict';
 	PixioCarousel.load();
 
-	
+
 });
 /*  Window Load END */
 
 /* Window Resize START */
 jQuery(window).on('resize',function () {
-	'use strict'; 
+	'use strict';
 	PixioCarousel.resize();
 });
 /*  Window Resize END */

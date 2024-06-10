@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label for="form-product/name" class="form-label">Name</label>
-                                    <input type="text" name="name" class="form-control" id="form-product/name" placeholder="Brandix Screwdriver SCREW150"/>
+                                    <input type="text" name="name" class="form-control" id="form-product/name" placeholder=""/>
                                 </div>
 
                                 <div class="mb-4">
