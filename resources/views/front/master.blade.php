@@ -125,9 +125,15 @@
 						<div class="extra-cell">
 							<ul class="header-right">
 								<li class="nav-item login-link">
+                                    @if(Auth::User())
+                                    <a class="nav-link" href="{{url('/')}}/login-select">
+										<span class="fa fa-user"> </span> &nbsp; Dashboard
+									</a>
+                                    @else
 									<a class="nav-link" href="{{url('/')}}/login-select">
 										Login / Register
 									</a>
+                                    @endif
 								</li>
 								<li class="nav-item search-link">
 									<a class="nav-link" href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
