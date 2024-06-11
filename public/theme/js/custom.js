@@ -1205,7 +1205,7 @@ var Pixio = function () {
 			masonryBox();
 			handleMultipleImageSize();
 			handleIsotope();
-			handleOpenModal();
+			// handleOpenModal();
 			jQuery('.modal').on('show.bs.modal', reposition);
 		},
 

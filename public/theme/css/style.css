@@ -40904,3 +40904,13 @@ footer {
     width: 150px; }
 
 /*# sourceMappingURL=style.css.map */
+
+.product-img{
+  min-height:400px;
+}
+
+@media only screen and (max-width: 768px) {
+    .product-img{
+        min-height:100%;
+      }
+}

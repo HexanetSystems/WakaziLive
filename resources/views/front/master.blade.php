@@ -186,9 +186,9 @@
 									</a>
 								</li>
 								<li class="nav-item cart-link">
-									<a href="javascript:void(0);" class="nav-link cart-btn"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+									<a href="{{url('/')}}/cart/shopping-cart" class="nav-link cart-btn"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 										<i class="iconly-Broken-Buy"></i>
-										<span class="badge badge-circle">0</span>
+										<span class="badge badge-circle">{{Cart::count()}}</span>
 									</a>
 								</li>
 								<li class="nav-item filte-link">
@@ -356,31 +356,38 @@
 						<ul class="nav nav-tabs center" id="myTab" role="tablist">
 							<li class="nav-item" role="presentation">
 								<button class="nav-link active" id="shopping-cart" data-bs-toggle="tab" data-bs-target="#shopping-cart-pane" type="button" role="tab" aria-controls="shopping-cart-pane" aria-selected="true">Shopping Cart
-									<span class="badge badge-light">5</span>
+									<span class="badge badge-light">{{Cart::count()}}</span>
 								</button>
 							</li>
-							<li class="nav-item" role="presentation">
+							{{-- <li class="nav-item" role="presentation">
 								<button class="nav-link" id="wishlist" data-bs-toggle="tab" data-bs-target="#wishlist-pane" type="button" role="tab" aria-controls="wishlist-pane" aria-selected="false">Wishlist
 									<span class="badge badge-light">2</span>
 								</button>
-							</li>
+							</li> --}}
 						</ul>
 						<div class="tab-content pt-4" id="dz-shopcart-sidebar">
 							<div class="tab-pane fade show active" id="shopping-cart-pane" role="tabpanel" aria-labelledby="shopping-cart" tabindex="0">
 								<div class="shop-sidebar-cart">
 									<ul class="sidebar-cart-list">
-										<li>
+                                        <?php
+                                           $ShoppingCart = Cart::content();
+                                        ?>
+                                        @foreach ($ShoppingCart as $shoppingCart)
+                                        <?php
+                                           $Product = \App\Models\Product::find($shoppingCart->id);
+                                        ?>
+                                        <li>
 											<div class="cart-widget">
 												<div class="dz-media me-3">
-													<img src="{{asset('theme/images/shop/shop-cart/pic1.jpg')}}" alt="">
+													<img src="{{$Product->image_one}}" alt="">
 												</div>
 												<div class="cart-content">
-													<h6 class="title"><a href="product-thumbnail.html">Sophisticated Swagger Suit</a></h6>
+													<h6 class="title"><a href="{{url('/')}}/product/{{$Product->slung}}">{{$shoppingCart->name}} - {{$shoppingCart->qty}}</a></h6>
 													<div class="d-flex align-items-center">
-														<div class="btn-quantity light quantity-sm me-3">
+														{{-- <div class="btn-quantity light quantity-sm me-3">
 															<input type="text" value="1" name="demo_vertical2">
-														</div>
-														<h6 class="dz-price mb-0">$50.00</h6>
+														</div> --}}
+														<h6 class="dz-price mb-0">kes {{$shoppingCart->price}}</h6>
 													</div>
 												</div>
 												<a href="javascript:void(0);" class="dz-close">
@@ -388,48 +395,20 @@
 												</a>
 											</div>
 										</li>
-										<li>
-											<div class="cart-widget">
-												<div class="dz-media me-3">
-													<img src="{{asset('theme/images/shop/shop-cart/pic2.jpg')}}" alt="">
-												</div>
-												<div class="cart-content">
-													<h6 class="title"><a href="product-thumbnail.html">Cozy Knit Cardigan Sweater</a></h6>
-													<div class="d-flex align-items-center">
-														<div class="btn-quantity light quantity-sm me-3">
-															<input type="text" value="1" name="demo_vertical2">
-														</div>
-														<h6 class="dz-price mb-0">$40.00</h6>
-													</div>
-												</div>
-												<a href="javascript:void(0);" class="dz-close">
-													<i class="ti-close"></i>
-												</a>
-											</div>
-										</li>
-										<li>
-											<div class="cart-widget">
-												<div class="dz-media me-3">
-													<img src="{{asset('theme/images/shop/shop-cart/pic3.jpg')}}" alt="">
-												</div>
-												<div class="cart-content">
-													<h6 class="title"><a href="product-thumbnail.html">Athletic Mesh Sports Leggings</a></h6>
-													<div class="d-flex align-items-center">
-														<div class="btn-quantity light quantity-sm me-3">
-															<input type="text" value="1" name="demo_vertical2">
-														</div>
-														<h6 class="dz-price  mb-0">$65.00</h6>
-													</div>
-												</div>
-												<a href="javascript:void(0);" class="dz-close">
-													<i class="ti-close"></i>
-												</a>
-											</div>
-										</li>
+                                        @endforeach
+
 									</ul>
 									<div class="cart-total">
+										<h5 class="mb-0">VAT:</h5>
+										<h5 class="mb-0">{{Cart::tax()}}</h5>
+									</div>
+                                    <div class="cart-total">
 										<h5 class="mb-0">Subtotal:</h5>
-										<h5 class="mb-0">300.00$</h5>
+										<h5 class="mb-0">{{Cart::subtotal()}}</h5>
+									</div>
+                                    <div class="cart-total">
+										<h5 class="mb-0">Total:</h5>
+										<h5 class="mb-0">{{Cart::total()}}</h5>
 									</div>
 									<div class="mt-auto">
 										<div class="shipping-time">
@@ -450,63 +429,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="tab-pane fade" id="wishlist-pane" role="tabpanel" aria-labelledby="wishlist" tabindex="0">
-								<div class="shop-sidebar-cart">
-									<ul class="sidebar-cart-list">
-										<li>
-											<div class="cart-widget">
-												<div class="dz-media me-3">
-													<img src="{{asset('theme/images/shop/shop-cart/pic1.jpg')}}" alt="">
-												</div>
-												<div class="cart-content">
-													<h6 class="title"><a href="product-thumbnail.html">Sophisticated Swagger Suit</a></h6>
-													<div class="d-flex align-items-center">
-														<h6 class="dz-price  mb-0">$50.00</h6>
-													</div>
-												</div>
-												<a href="javascript:void(0);" class="dz-close">
-													<i class="ti-close"></i>
-												</a>
-											</div>
-										</li>
-										<li>
-											<div class="cart-widget">
-												<div class="dz-media me-3">
-													<img src="{{asset('theme/images/shop/shop-cart/pic2.jpg')}}" alt="">
-												</div>
-												<div class="cart-content">
-													<h6 class="title"><a href="product-thumbnail.html">Cozy Knit Cardigan Sweater</a></h6>
-													<div class="d-flex align-items-center">
-														<h6 class="dz-price  mb-0">$40.00</h6>
-													</div>
-												</div>
-												<a href="javascript:void(0);" class="dz-close">
-													<i class="ti-close"></i>
-												</a>
-											</div>
-										</li>
-										<li>
-											<div class="cart-widget">
-												<div class="dz-media me-3">
-													<img src="{{asset('theme/images/shop/shop-cart/pic3.jpg')}}" alt="">
-												</div>
-												<div class="cart-content">
-													<h6 class="title"><a href="product-thumbnail.html">Athletic Mesh Sports Leggings</a></h6>
-													<div class="d-flex align-items-center">
-														<h6 class="dz-price  mb-0">$65.00</h6>
-													</div>
-												</div>
-												<a href="javascript:void(0);" class="dz-close">
-													<i class="ti-close"></i>
-												</a>
-											</div>
-										</li>
-									</ul>
-									<div class="mt-auto">
-										<a href="shop-wishlist.html" class="btn btn-secondary btn-block">Check Your Favourite</a>
-									</div>
-								</div>
-							</div>
+
 						</div>
 					</div>
 				</div>
