@@ -403,7 +403,7 @@
 					<div class="col-lg-6 col-md-12 text-end">
 						<div class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-xl-end">
 							<span class="me-3">We Accept: </span>
-							<img src="#" alt="Weka Payment Options hapa">
+							<img style="width:80px;" src="{{asset('theme/images/shop/mpesa-logo.png')}}" alt="We Accept Mpesa">
 						</div>
 					</div>
 				</div>

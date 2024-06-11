@@ -1,11 +1,44 @@
-@extends('front.master')
+@extends('front.master-cart')
 
 @section('content')
 
 <div class="page-content bg-light">
-<br><br><br>
+ <!--Banner Start-->
+ <div class="dz-bnr-inr bg-secondary overlay-black-light" style="background-image:url('{{asset('theme/images/background/bg7.jpg')}}');">
+    <div class="container">
+        <div class="dz-bnr-inr-entry">
+            <h1>Your Basket</h1>
+            <nav aria-label="breadcrumb" class="breadcrumb-row">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{url('/')}}"> Home</a></li>
+                    <li class="breadcrumb-item">Shopping Cart</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!--Banner End-->
 
-
+    @if($CartItems->isEmpty())
+    <section class="content-inner-1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-10 col-md-12">
+                    <div class="error-page style-1">
+                        <div class="dz-error-media">
+                            <img src="{{asset('theme/images/pic-404.png')}}" alt="">
+                        </div>
+                        <div class="error-inner">
+                            <h1 class="dz_error">404</h1>
+                            <p class="error-head">Your Cart is Empty</p>
+                            <a href="{{url('/')}}" class="btn btn-secondary  text-uppercase">Go Back to Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @else
     <!-- contact area -->
     <section class="content-inner shop-account">
         <!-- Product -->
@@ -13,39 +46,41 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="table-responsive">
-                        <table class="table check-tbl">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th></th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($CartItems as $shoppingCart)
-                                    <?php
-                                        $Product = \App\Models\Product::find($shoppingCart->id);
-                                    ?>
+
+                            <table class="table check-tbl">
+                                <thead>
                                     <tr>
-                                        <td class="product-item-img"><img src="{{$Product->image_one}}" alt="/"></td>
-                                        <td class="product-item-name">{{$Product->name}}</td>
-                                        <td class="product-item-price">kes {{$shoppingCart->price}}</td>
-                                        <td class="product-item-quantity">
-                                            <div class="quantity btn-quantity style-1 me-3">
-                                                <input type="text" value="{{$shoppingCart->qty}}" name="demo_vertical2">
-                                            </div>
-                                        </td>
-                                        <td class="product-item-totle"> kes {{$shoppingCart->total}}</td>
-                                        <td class="product-item-close"><a href="javascript:void(0);"><i class="ti-close"></i></a></td>
+                                        <th>Product</th>
+                                        <th></th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Subtotal</th>
+                                        <th></th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($CartItems as $shoppingCart)
+                                        <?php
+                                            $Product = \App\Models\Product::find($shoppingCart->id);
+                                        ?>
+                                        <tr>
+                                            <td class="product-item-img"><img src="{{$Product->image_one}}" alt="/"></td>
+                                            <td class="product-item-name">{{$Product->name}}</td>
+                                            <td class="product-item-price">kes {{$shoppingCart->price}}</td>
+                                            <td class="product-item-quantity">
+                                                <div class="quantity btn-quantity style-1 me-3">
+                                                    <input type="text" value="{{$shoppingCart->qty}}" name="demo_vertical2">
+                                                </div>
+                                            </td>
+                                            <td class="product-item-totle"> kes {{$shoppingCart->total}}</td>
+                                            <td class="product-item-close"><a href="{{url('/')}}/cart/remove-item/{{$shoppingCart->rowId}}"><i class="ti-close"></i></a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+
                     </div>
-                    <div class="row shop-form m-t30">
+                    {{-- <div class="row shop-form m-t30">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group mb-0">
@@ -61,7 +96,7 @@
                         <div class="col-md-6 text-end">
                             <a href="shop-cart.html" class="btn btn-secondary">UPDATE CART</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-4">
                     <h4 class="title mb15">Cart Total</h4>
@@ -113,6 +148,7 @@
         <!-- Product END -->
     </section>
     <!-- contact area End-->
+    @endif
 
 </div>
 

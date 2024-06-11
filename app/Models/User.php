@@ -21,8 +21,16 @@ class User extends Authenticatable
         'email',
         'password',
         'google_id',
-        'type'
+        'type',
+        'country',
+        'company',
+        'street',
+        'apartment',
+        'zip',
+        'comment'
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,6 +53,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function orders(){
+        return $this->hasMany(orders::class);
     }
 
     protected function type(): Attribute

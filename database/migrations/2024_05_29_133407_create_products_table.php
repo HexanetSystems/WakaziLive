@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->integer('UserID')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->string('pro_condition')->default('New');
             $table->string('slung')->nullable();
-            $table->string('UserID')->nullable();
-            $table->string('status')->default('0');
             $table->string('video')->nullable();
             $table->string('category')->nullable();
             $table->integer('google_product_category')->default(6552);

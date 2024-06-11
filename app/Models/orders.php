@@ -15,7 +15,7 @@ class orders extends Model
     protected $fillable=['total', 'status'];
     public function orderFields(){
 
-        return $this->belongsToMany(products::class)->withPivot('qty', 'total');
+        return $this->belongsToMany(Product::class)->withPivot('qty', 'total');
 
     }
 
@@ -30,10 +30,10 @@ class orders extends Model
             $order->orderFields()->attach($cartItem->id,['qty'=>$cartItem->qty, 'tax' =>Cart::tax(), 'total'=>Cart::total()]);
 
             //Insert Notification
-            $Notifications = new Notifications;
-            $Notifications->type = 'Order';
-            $Notifications->content = 'You have a new Order';
-            $Notifications->save();
+            // $Notifications = new Notifications;
+            // $Notifications->type = 'Order';
+            // $Notifications->content = 'You have a new Order';
+            // $Notifications->save();
 
             // Notify Supplier
        }
