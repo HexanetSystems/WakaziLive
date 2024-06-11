@@ -62,7 +62,7 @@
 	</div>
 
 	<!-- Header Star -->
-	<header class="site-header mo-left header style-1 header-transparent">
+    <header class="site-header mo-left header ">
 		<!-- Main Header -->
 		<div class="sticky-header main-bar-wraper navbar-expand-lg">
 			<div class="main-bar clearfix">

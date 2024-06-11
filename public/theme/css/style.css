@@ -26159,9 +26159,10 @@ video#video-background {
   margin-bottom: 30px;
   text-align: center; }
   .shop-box.style-1 .dz-media img {
-    width: 160px;
+    width: 170px;
     height: 170px;
-    object-fit: contain; }
+    object-fit: cover;
+}
 
 .shop-box.style-1 .product-name {
   font-size: 16px;
@@ -40913,4 +40914,16 @@ footer {
     .product-img{
         min-height:100%;
       }
+}
+
+.cat-media-img{
+    width: 170px;
+    height: 170px;
+    /* object-fit: contain; */
+}
+
+.cat-media-img img{
+  border-radius:50%;
+  /* object-fit: contain; */
+
 }

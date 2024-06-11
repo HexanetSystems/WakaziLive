@@ -34,4 +34,14 @@ class HomeController extends Controller
         return Redirect::back();
     }
 
+    public function cart(){
+        $CartItems = Cart::content();
+        return view('front.cart', compact('CartItems'));
+    }
+
+    public function checkout(){
+        $CartItems = Cart::content();
+        return view('front.checkout', compact('CartItems'));
+    }
+
 }

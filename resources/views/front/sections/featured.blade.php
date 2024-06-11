@@ -4,63 +4,20 @@
             <div class="row">
                 <div class="col-lg-8 left-box">
                     <div class="swiper swiper-shop">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper" >
+                            <?php
+                               $Categories = DB::table('categories')->get();
+                            ?>
+                            @foreach ($Categories as $categories)
                             <div class="swiper-slide">
                                 <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.2s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
+                                    <div class="dz-media cat-media-img" style="margin:0 auto; text-align:center; ">
+                                        <img src="{{$categories->image}}" alt="image">
                                     </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Necklace</a></h6>
+                                    <h6 class="product-name"><a href="{{url('/')}}/products/{{$categories->slung}}">{{$categories->title}}</a></h6>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.4s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
-                                    </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Bracelets</a></h6>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.6s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
-                                    </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Mkekas</a></h6>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.8s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
-                                    </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Murals</a></h6>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="shop-box style-1 wow fadeInUp" data-wow-delay="0.9s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
-                                    </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Drawings</a></h6>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="shop-box style-1 wow fadeInUp" data-wow-delay="1.0s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
-                                    </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Bags</a></h6>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="shop-box style-1 wow fadeInUp" data-wow-delay="1.1s">
-                                    <div class="dz-media">
-                                        <img src="#" alt="image">
-                                    </div>
-                                    <h6 class="product-name"><a href="shop-with-category.html">Sandaks</a></h6>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <a class="icon-button" href="shop-standard.html">
@@ -74,7 +31,7 @@
                 </div>
                 <div class="col-lg-4 right-box">
                     <div>
-                        <h3 class="title wow fadeInUp" data-wow-delay="1.2s">Featured Categories</h3>
+                        <h3 class="title wow fadeInUp" data-wow-delay="1.2s">Featured Handicrafts</h3>
                         <p class="text wow fadeInUp" data-wow-delay="1.4s">Discover the difference of African artistry blended with creativity.</p>
                         <div class="pagination-align wow fadeInUp" data-wow-delay="1.6s">
                             <div class="shop-button-prev">

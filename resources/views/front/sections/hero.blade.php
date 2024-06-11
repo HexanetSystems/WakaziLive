@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button></div>
+            {{-- <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button></div> --}}
         </div>
 
         {{-- <svg class="star-1" xmlns="http://www.w3.org/2000/svg" width="94" height="94" viewBox="0 0 94 94" fill="none">

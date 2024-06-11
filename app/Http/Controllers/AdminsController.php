@@ -564,7 +564,7 @@ class AdminsController extends Controller
         $store = $file->storeAs(path: ''.$dir.'/'.$filename, options: 's3');
         Storage::disk('s3')->put(''.$dir.'/'.$filename, file_get_contents($realPath));
         // $url = Storage::disk('s3')->temporaryUrl('podcasts/'.$filename,now()->addMinutes(10));
-        $SaveFilePath = "https://wakazibucket.s3.eu-central-1.amazonaws.com/$dir/$filename";
+        $SaveFilePath = "https://africanpharmaceuticalreviewbucket.s3.eu-central-1.amazonaws.com/$dir/$filename";
         return $SaveFilePath;
     }
 }

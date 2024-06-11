@@ -13,14 +13,12 @@ use App\Http\Controllers\ManagerController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home-page');
 Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
-Route::get('/cart/shopping-cart', [HomeController::class, 'cart '])->name('shopping-cart');
-
-
-
+Route::get('/cart/shopping-cart', [HomeController::class, 'cart'])->name('shopping-cart');
 Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add-to-cart');
 
 
 Auth::routes();
+Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 
