@@ -224,7 +224,7 @@
                                         <label class="form-check-label" for="flexRadioDefault4">
                                             M-PESA
                                         </label>
-                                        <img src="{{asset('theme/images/shop/payment.jpg')}}" alt="/">
+                                        <img style="width:90px" src="{{asset('theme/images/shop/mpesa-logo.png')}}" alt="/">
                                         <a href="javascript:void(0);">What is M-PESA?</a>
                                     </div>
                                 </div>
