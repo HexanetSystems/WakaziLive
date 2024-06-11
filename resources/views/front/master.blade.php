@@ -126,7 +126,7 @@
 							<ul class="header-right">
 								<li class="nav-item login-link">
                                     @if(Auth::User())
-                                    <a class="nav-link" href="{{url('/')}}/login-select">
+                                    <a class="nav-link" href="{{url('/')}}/dashboard">
 										<span class="fa fa-user"> </span> &nbsp; Dashboard
 									</a>
                                     @else
