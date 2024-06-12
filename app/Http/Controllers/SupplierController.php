@@ -50,7 +50,7 @@ class SupplierController extends Controller
     // my orders method
     public function myOrders(){
         $UserID = Auth::User()->id;
-        $Orders = \App\Models\Order::where('user_id',$UserID)->get();
+        $Orders = \App\Models\Order::all();
         return view('suppliers.myOrders', compact('Orders'));
     }
 

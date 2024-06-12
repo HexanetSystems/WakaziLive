@@ -48,62 +48,67 @@
                             <th>Order Number</th>
                             <th>Products </th>
                             <th>Unit Price</th>
-                            <th>Price</th>
+                            <th>Applies Taxes</th>
+                            <th>Total Price</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                         {{-- @foreach ($Orders as $item) --}}
+                        @foreach ($Orders as $orders)
                         <tr>
-                            <td>1.</td>
+                            <td>{{$orders->id}}</td>
                             <td>
-                              WKZ001
+                              WKZ-{{$orders->id}}
                             </td>
                             <td>
-                                Lemayan Bracelets [1]<br>
-                                Ruracio Mate Calabash ['3']<br>
+                                <?php
+                                   $OrderProducts = DB::table('orders_product')->where('orders_id',$orders->id)->get();
+                                ?>
+                                @foreach ($OrderProducts as $ordersproducts)
+                                <?php
+                                   $Product = \App\Models\Product::find($ordersproducts->product_id);
+                                ?>
+                                {{$Product->name}} [{{$ordersproducts->qty}}]<br>
+                                @endforeach
+
+
                             </td>
 
                             <td>
-                                12,000<br>
-                                13,500<br>
+                                <?php
+                                $OrderProducts = DB::table('orders_product')->where('orders_id',$orders->id)->get();
+                                ?>
+                                @foreach ($OrderProducts as $ordersproducts)
+                                <?php
+                                   $Product = \App\Models\Product::find($ordersproducts->product_id);
+                                ?>
+                                {{$Product->price}} <br>
+                                @endforeach
                             </td>
+
                             <td>
-                                 12,000<br>
-                                 40,500<br>
+                                <?php
+                                $OrderProducts = DB::table('orders_product')->where('orders_id',$orders->id)->limit(1)->get();
+                                ?>
+                                @foreach ($OrderProducts as $ordersproducts)
+                                 {{$ordersproducts->tax}}<br>
+                                @endforeach
                             </td>
+
+                            <td>
+                               {{$orders->total}}
+                            </td>
+
                             <td>
                                 <a onclick="" href="#" class="sb2-2-1-edit text-success btn">
                                 Process Order
                                 </a>
                             </td>
                         </tr>
+                        @endforeach
 
-                        <tr>
-                            <td>2.</td>
-                            <td>
-                              WKZ002
-                            </td>
-                            <td>
-                                Lemayan Bracelets [2]<br>
-                                Ruracio Mate Calabash ['3']<br>
-                            </td>
-
-                            <td>
-                                12,000<br>
-                                13,500<br>
-                            </td>
-                            <td>
-                                 24,000<br>
-                                 40,500<br>
-                            </td>
-                            <td>
-                                <a onclick="" href="#" class="sb2-2-1-edit text-success btn">
-                                Process Order
-                                </a>
-                            </td>
-                        </tr>
 
                         {{-- @endforeach --}}
                     </tbody>

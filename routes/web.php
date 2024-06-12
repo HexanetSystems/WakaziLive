@@ -25,7 +25,7 @@ Route::get('/cart/checkout/post-order', [HomeController::class, 'post_order'])->
 
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
 
 
 // Auth
@@ -40,8 +40,18 @@ All Users Routes List
 --------------------------------------------
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:user'])->group(function () {
+    Route::group(['prefix' => '/dashboard'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('dashboard');
+        Route::get('/account-orders', [UserController::class, 'orders'])->name('account-orders');
+        Route::get('/account-order/{id}', [UserController::class, 'order'])->name('account-order');
 
-    Route::get('/dashboard', [UserController::class, 'index'])->name('home');
+        Route::get('/account-address', [UserController::class, 'address'])->name('account-address');
+        Route::get('/account-profile', [UserController::class, 'profile'])->name('account-profile');
+        Route::post('/account-profile', [UserController::class, 'profile_save'])->name('account-profile-save');
+        Route::get('/cancel-order/{id}', [UserController::class, 'cancel'])->name('cancel-order');
+
+    });
+
 });
 
 /*------------------------------------------
