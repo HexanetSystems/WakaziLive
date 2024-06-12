@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="dz-content">
-                                <h5 class="title"><a href="{{url('/')}}/products/{{$product->slung}}">{{$product->name}}</a></h5>
+                                <h5 class="title"><a href="{{url('/')}}/product/{{$product->slung}}">{{$product->name}}</a></h5>
                                 <h5 class="price">kes {{$product->price}}</h5>
                             </div>
                             <div class="product-tag">

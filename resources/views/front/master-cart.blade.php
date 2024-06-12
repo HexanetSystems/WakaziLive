@@ -80,7 +80,7 @@
 						<span></span>
 					</button>
                     <?php
-                       $Category = DB::table('categories')->limit(4)->get();
+                       $Category = DB::table('categories')->limit(5)->get();
                     ?>
 					<!-- Main Nav -->
 					<div class="header-nav w3menu navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
@@ -88,9 +88,6 @@
 							<a href="{{url('/')}}"><img src="{{asset('theme/images/logo.png')}}" alt=""></a>
 						</div>
 						<ul class="nav navbar-nav">
-							<li class="auto-width menu-left">
-								<a href="{{url('/')}}"><span>Home</span></a>
-							</li>
 
 
                             @foreach ($Category as $category)
@@ -101,13 +98,6 @@
 
 
 
-                            <li class="auto-width menu-left">
-								<a href="javascript:void(0);"><span>Artisan Voices</span></a>
-							</li>
-
-                            <li class="auto-width menu-left">
-								<a href="javascript:void(0);"><span>County Bounty</span></a>
-							</li>
 
 						</ul>
 						<div class="dz-social-icon">

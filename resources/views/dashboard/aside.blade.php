@@ -23,7 +23,8 @@
                             <div class="nav-title bg-light">ACCOUNT SETTINGS</div>
                             <ul class="account-info-list">
                                 <li><a href="{{route('account-profile')}}">Profile</a></li>
-                                <li><a href="{{route('account-address')}}">Address</a></li>
+                                <li><a href="{{route('account-profile')}}">Address</a></li>
+                                <li><a href="{{route('account-profile')}}">Update Password</a></li>
                                 {{-- <li><a href="account-shipping-methods.html">Shipping methods</a></li>
                                 <li><a href="account-payment-methods.html">Payment Methods</a></li>
                                 <li><a href="account-review.html">Review</a></li> --}}

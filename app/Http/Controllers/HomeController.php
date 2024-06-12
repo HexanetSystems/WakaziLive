@@ -27,6 +27,13 @@ class HomeController extends Controller
         $Product = Product::where('status', 1)->get();
         return view('front.index', compact('Product'));
     }
+    public function product($slung)
+    {
+        $Product = Product::where('status', 1)->where('slung',$slung)->get();
+        return view('front.product', compact('Product'));
+    }
+
+
 
     public function select(){
         return view('front.select');
