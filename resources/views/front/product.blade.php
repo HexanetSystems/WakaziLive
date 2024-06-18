@@ -110,17 +110,17 @@
                                             <ul>
                                                 <li><strong>Category:</strong></li>
                                                 <li><a href="{{url('/')}}/products/{{$Category->slung}}">{{$Category->title}},</a></li>
-                                                <li><a href="shop-standard.html">Jeans,</a></li>
+                                                {{-- <li><a href="shop-standard.html">Jeans,</a></li>
                                                 <li><a href="shop-standard.html">Swimwear,</a></li>
                                                 <li><a href="shop-standard.html">Summer,</a></li>
-                                                <li><a href="shop-standard.html">Clothing,</a></li>
+                                                <li><a href="shop-standard.html">Clothing,</a></li> --}}
                                             </ul>
                                             <ul>
                                                 <li><strong>Tags:</strong></li>
-                                                <li><a href="shop-standard.html">Casual,</a></li>
+                                                {{-- <li><a href="shop-standard.html">Casual,</a></li>
                                                 <li><a href="shop-standard.html">Athletic,</a></li>
                                                 <li><a href="shop-standard.html">Workwear,</a></li>
-                                                <li><a href="shop-standard.html">Accessories,</a></li>
+                                                <li><a href="shop-standard.html">Accessories,</a></li> --}}
                                             </ul>
                                             <ul class="social-icon">
                                                 <li><strong>Share:</strong></li>
