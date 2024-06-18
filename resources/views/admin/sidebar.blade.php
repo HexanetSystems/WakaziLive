@@ -31,6 +31,20 @@
                    </ul>
                 </div>
              </li>
+
+            </li>
+            {{--  --}}
+            <li>
+              <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Sub Categories </a>
+              <div class="collapsible-body left-sub-menu">
+                 <ul>
+                    <li><a href="{{url('/')}}/admin/subcategories">All Sub Category </a>
+                    </li>
+                    <li><a href="{{url('/')}}/admin/addSubCategory">Add Sub Category</a>
+                    </li>
+                 </ul>
+              </div>
+           </li>
              {{--  --}}
              <?php $ProductCount = DB::table('products')->where('status',"0")->count(); ?>
              <li>

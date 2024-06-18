@@ -14,6 +14,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('hom
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-page');
 
 Route::get('/product/{slung}', [App\Http\Controllers\HomeController::class, 'product'])->name('home-product');
+Route::get('/products/{slung}', [App\Http\Controllers\HomeController::class, 'category'])->name('home-category');
 
 Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
 Route::get('/cart/shopping-cart', [HomeController::class, 'cart'])->name('shopping-cart');
@@ -150,6 +151,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::post('edit_privacy/{id}', [AdminsController::class, 'edit_privacy']);
         Route::get('delete_privacy/{id}', [AdminsController::class, 'delete_privacy']);
 
+        Route::get('/get-subcategories/{id}',  [AdminsController::class, 'get_subcategories']);
+
         // Copyright Statement
         Route::get('editCopyright', [AdminsController::class, 'copyright']);
         Route::post('edit_Copyright', [AdminsController::class, 'edit_copyright']);
@@ -166,6 +169,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
          Route::get('extras/{id}', [AdminsController::class, 'extras']);
          Route::post('edit_Category/{id}', [AdminsController::class, 'edit_Category']);
          Route::get('deleteCategory/{id}', [AdminsController::class, 'deleteCategory']);
+
+        // SubCategories
+        Route::get('subcategories', [AdminsController::class, 'subcategories']);
+        Route::get('addSubCategory', [AdminsController::class, 'addSubCategory']);
+        Route::post('add_SubCategory', [AdminsController::class, 'add_SubCategory']);
+        Route::get('editSubCategories/{id}', [AdminsController::class, 'editSubCategories']);
+        Route::get('extras/{id}', [AdminsController::class, 'extras']);
+        Route::post('edit_SubCategory/{id}', [AdminsController::class, 'edit_SubCategory']);
+        Route::get('deleteSubCategory/{id}', [AdminsController::class, 'deleteSubCategory']);
 
         // Products
         Route::get('product-approve', [AdminsController::class, 'approve']);
@@ -226,6 +238,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::post('deleteBlogAjax', [AdminsController::class, 'deleteBlogAjax']);
         Route::put('updateSiteSettingsAjax', [AdminsController::class, 'updateSiteSettingsAjax']);
         Route::put('updateSiteSocialMediaAjax', [AdminsController::class, 'updateSiteSocialMediaAjax']);
+        Route::post('deleteSubCategoryAjax', [AdminsController::class, 'deleteSubCategoryAjax']);
+
         Route::post('deleteCategoryAjax', [AdminsController::class, 'deleteCategoryAjax']);
         Route::post('deleteC2BAjax', [AdminsController::class, 'deleteC2BAjax']);
         Route::post('deleteB2BAjax', [AdminsController::class, 'deleteB2BAjax']);

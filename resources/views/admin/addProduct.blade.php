@@ -75,7 +75,7 @@
                             </div>
                             <div class="row">
                                 {{--  --}}
-                                <div class="input-field col s12">
+                                <div class="input-field col s6">
                                     <select required name="category" class="icons" id="mydiv">
                                         <option value="" disabled selected>Choose your Category</option>
                                         @foreach ($Category as $Categories)
@@ -84,10 +84,18 @@
                                     </select>
                                     <label>Choose Category</label>
                                 </div>
-                                {{-- <a href="#ex1" rel="modal:open"> <strong>+ Add New Category</strong> </a> --}}
-                                {{--  --}}
-                                <div class="section-space col s12"></div>
+
+                                <div class="input-field col s6">
+                                    <select name="sub_cat" id="sub_cat"  class="icons">
+
+                                        <option value="" disabled selected>Choose your Sub Category</option>
+
+                                    </select>
+                                    <label>Choose Sub Category</label>
+                                </div>
+
                             </div>
+                            <div class="section-space col s12"></div>
 
 
                             <div class="row">
@@ -205,6 +213,34 @@
          });
         });
       </script>
+      <script>
+        $(document).ready(function (e) {
+            // $('select').material_select();
+            $('#mydiv').on('change', e => {
+                var val = $('#mydiv').val();
+                $('#sub_cat').empty()
+                $.ajax({
+                    url: `/admin/get-subcategories/${val}`,
+                    success: function(data){
+                            var toAppend = '';
+                            $.each(data,function(i,o){
+                            toAppend += '<option value="'+o.id+'">'+o.title+'</option>';
+                            $('#sub_cat').empty();
+                            $('#sub_cat').append(toAppend);
+                            $("#sub_cat").material_select()
+
+                        });
+                        // $('#sub_cat').append(toAppend);
+
+
+                        }
+                })
+            })
+        })
+    </script>
+
+
+
 </div>
 {{--  --}}
 @endsection

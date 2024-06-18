@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slung')->nullable();
             $table->string('video')->nullable();
             $table->string('category')->nullable();
+            $table->string('sub_category_id')->nullable();
             $table->integer('google_product_category')->default(6552);
             $table->string('brand')->default('Aste');
             $table->tinyInteger('featured')->default(0);

@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Podcast;
 use App\Models\Message;
 use App\Models\Order;
+use App\Models\SubCategory;
 use Datetime;
 use Hash;
 use Session;
@@ -378,16 +379,19 @@ class AdminsController extends Controller
             $image_one = "0";
         }
 
+
         $Product = new Product;
-        $Product->title = $request->title;
+        $Product->name = $request->title;
         $Product->slung = Str::slug($request->title);
-        $Product->category_id = $request->category;
-        $Product->user_id = $request->user;
+        $Product->category = $request->category;
+        $Product->sub_category_id = $request->sub_cat;
+        $Product->UserID = Auth::User()->id;
         $Product->stock = $request->stock;
         $Product->price_raw = $request->price;
         $Product->price = $request->price;
+        $Product->meta = $request->meta;
         $Product->content = $request->content;
-        $Product->image = $image_one;
+        $Product->image_one = $image_one;
         $Product->save();
         Session::flash('message', "Product Has Been Added");
         return Redirect::back();
@@ -552,6 +556,260 @@ class AdminsController extends Controller
         DB::table('users')->where('id',$id)->delete();
         return Redirect::back();
     }
+
+    public function subcategories(){
+        activity()->log('Accessed All SubCategories');
+        $Category = SubCategory::all();
+        $page_title = 'list';
+        $page_name = 'SubCategories';
+        return view('admin.subcategories',compact('page_title','Category','page_name'));
+    }
+
+    public function addSubCategory(){
+        activity()->log('Accessed Add Category Page');
+        $page_title = 'formfiletext';
+        $page_name = 'Add Category';
+        $Category = Category::all();
+        return view('admin.addSubCategory',compact('page_title','page_name','Category'));
+    }
+
+    public function add_SubCategory(Request $request){
+        activity()->log('Evoked add Category Operation');
+        $path = 'uploads/subcategories';
+
+        if(isset($request->image)){
+            $dir = 'uploads/subcategories';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->image_cheat;
+        }
+
+        $Category = new SubCategory;
+        $Category->title = $request->title;
+        $Category->category_id = $request->category_id;
+        $Category->meta = $request->meta;
+        $Category->slug = Str::slug($request->title);
+        $Category->content = $request->ckeditor;
+        $Category->image = $SaveFilePath;
+        $Category->save();
+        Session::flash('message', "Category Has Been Added");
+        return Redirect::back();
+    }
+
+    public function editSubCategories($id){
+        activity()->log('Access Edit Category ID number '.$id.' ');
+        $SubCategory = SubCategory::find($id);
+        $Category = Category::all();
+        $page_title = 'formfiletext';
+        $page_name = 'Edit Home Page Slider';
+        return view('admin.editSubCategories',compact('page_title','Category','page_name','SubCategory'));
+    }
+
+    public function edit_SubCategory(Request $request, $id){
+        activity()->log('Evoked Edit Category For Category ID number '.$id.' ');
+
+        if(isset($request->image)){
+            $dir = 'uploads/subcategories';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->image_cheat;
+        }
+
+        $updateDetails = array(
+            'title'=>$request->title,
+            'slug' => Str::slug($request->title),
+            'meta'=>$request->meta,
+            'category_id'=>$request->category_id,
+            'content'=>$request->ckeditor,
+            'image'=>$SaveFilePath
+        );
+        DB::table('sub_categories')->where('id',$id)->update($updateDetails);
+        Session::flash('message', "Changes have been saved");
+        return Redirect::back();
+    }
+
+    public function deleteSubCategory($id){
+        $Category = Category::find($id);
+        activity()->log('Deleted Category '.$Category->title.' ');
+        DB::table('subcategories')->where('id',$id)->delete();
+        return Redirect::back();
+    }
+
+    public function get_subcategories(Request $request,$id){
+        if ($request->ajax()) {
+            $data = SubCategory::where('category_id', $id)->get();
+            return response()->json($data);
+        }
+    }
+
+     // AJAX REQUESTS
+     public function addCategoryAjaxRequest(Request $request){
+        activity()->log('Evoked an Add Categorgy Request');
+       $Category = new Category;
+       $Category->title = $request->title;
+       $Category->slung = Str::slug($request->title);
+
+       if($Category->save()){
+        return response()->json(['success'=>'Category Added Successfully!']);
+       }else{
+        return response()->json(['success'=>'Something went Wrong!']);
+       }
+
+    }
+
+    public function deleteCategoryAjax(Request $request){
+        activity()->log('Evoked a delete Categorgy Request');
+        $id = $request->id;
+        DB::table('categories')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteSubCategoryAjax(Request $request){
+        activity()->log('Evoked a delete Sub Categorgy Request');
+        $id = $request->id;
+        DB::table('sub_categories')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteBlogAjax(Request $request){
+        activity()->log('Evoked a delete Blog Request');
+        $id = $request->id;
+        DB::table('blogs')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteTestimonialAjax(Request $request){
+        activity()->log('Evoked a delete Testimonial Request');
+        $id = $request->id;
+        DB::table('testimonials')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteSliderAjax(Request $request){
+        activity()->log('Evoked a delete Slider Request');
+        $id = $request->id;
+        DB::table('sliders')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteTransactionAjax(Request $request){
+        activity()->log('Evoked a delete Transaction Request');
+        $id = $request->id;
+        DB::table('transaction_status')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteReverseAjax(Request $request){
+        activity()->log('Evoked a delete Reverse Transaction Request');
+        $id = $request->id;
+        DB::table('reverse_transaction')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteSTKAjax(Request $request){
+        activity()->log('Evoked a delete STK Transaction Request');
+        $id = $request->id;
+        DB::table('lnmo_api_response')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteBalAjax(Request $request){
+        activity()->log('Evoked a delete Balance Transaction Request');
+        $id = $request->id;
+        DB::table('accountbalance')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteB2CAjax(Request $request){
+        activity()->log('Evoked a delete B2C Transaction Request');
+        $id = $request->id;
+        DB::table('b2c_api_response')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteB2BAjax(Request $request){
+        activity()->log('Evoked a delete B2B Transaction Request');
+        $id = $request->id;
+        DB::table('b2b_api_response')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteC2BAjax(Request $request){
+        activity()->log('Evoked a delete C2B Transaction Request');
+        $id = $request->id;
+        DB::table('mobile_payments')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteUserAjax(Request $request){
+        activity()->log('Evoked a delete User Request');
+        $id = $request->id;
+        DB::table('users')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteFaqAjax(Request $request){
+        activity()->log('Evoked a delete FAQ Request');
+        $id = $request->id;
+        DB::table('faq')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deletePrivacyAjax(Request $request){
+        activity()->log('Evoked a delete Privacy Request');
+        $id = $request->id;
+        DB::table('privacies')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteTermsAjax(Request $request){
+        activity()->log('Evoked a delete Privacy Request');
+        $id = $request->id;
+        DB::table('terms')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteHowAjax(Request $request){
+        activity()->log('Evoked a delete How it works Request');
+        $id = $request->id;
+        DB::table('hows')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+
+    public function deleteCoursesAjax(Request $request){
+        activity()->log('Evoked a delete How it works Request');
+        $id = $request->id;
+        DB::table('courses')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+
+    public function deleteTopicsAjax(Request $request){
+        activity()->log('Evoked a delete How it works Request');
+        $id = $request->id;
+        DB::table('topics')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteSignalsAjax(Request $request){
+        activity()->log('Evoked a delete How it works Request');
+        $id = $request->id;
+        DB::table('signals')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
+    public function deleteProductAjax(Request $request){
+        activity()->log('Evoked a delete How it works Request');
+        $id = $request->id;
+        DB::table('products')->where('id',$id)->delete();
+        return response()->json(['success'=>'Deleted Successfully!']);
+    }
+
 
     // Add Image Proccessing
     public function processImage(){

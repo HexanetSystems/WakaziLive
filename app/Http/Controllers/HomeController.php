@@ -7,6 +7,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Product;
 use App\Models\orders;
 use App\Models\User;
+use DB;
 use Redirect;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -96,8 +97,14 @@ class HomeController extends Controller
     public function post_order(){
         orders::createOrder();
         Cart::destroy();
-        // return Redirect::back();
+        // Send notification here
         return view('front.thank');
+    }
+
+    public function category($slung){
+        $Category = DB::table('categories')->where('slung', $slung)->first();
+        $Product = DB::table('products')->where('category', $Category->id)->where('status', 1)->get();
+        return view('front.category', compact('Product','Category'));
     }
 
 }
