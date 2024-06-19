@@ -56,10 +56,10 @@
 <body id="bg">
 <div class="page-wraper">
 
-	<div id="loading-area" class="preloader-wrapper-4">
+	{{-- <div id="loading-area" class="preloader-wrapper-4">
 		<img width="300" src="{{asset('theme/images/logo.png')}}" alt="wakazi.co.ke logo"><br><br>
 
-	</div>
+	</div> --}}
 
 	<!-- Header Star -->
 	<header class="site-header mo-left header style-1 header-transparent">
@@ -70,7 +70,7 @@
 
 					<!-- Website Logo -->
 					<div class="logo-header logo-dark me-md-5">
-						<a href="{{url('/')}}"><img src="{{asset('theme/images/logo.png')}}" alt="logo"></a>
+						<a href="{{url('/')}}"><img src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg')}}" alt="logo"></a>
 					</div>
 
 					<!-- Nav Toggle Button -->
