@@ -53,9 +53,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
         Route::get('/account-profile', [UserController::class, 'profile'])->name('account-profile');
         Route::post('/account-profile', [UserController::class, 'profile_save'])->name('account-profile-save');
         Route::get('/cancel-order/{id}', [UserController::class, 'cancel'])->name('cancel-order');
-
     });
-
 });
 
 /*------------------------------------------
@@ -252,6 +250,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::post('deletePrivacyAjax', [AdminsController::class, 'deletePrivacyAjax']);
         Route::post('deleteTermsAjax', [AdminsController::class, 'deleteTermsAjax']);
         Route::post('deleteProductAjax', [AdminsController::class, 'deleteProductAjax']);
+        //clean facebook pixels
         Route::get('addProductToFacebookPixel', [AdminsController::class, 'addProductToFacebookPixel']);
         Route::get('emptyProductToFacebookPixel', [AdminsController::class, 'emptyProductToFacebookPixel']);
         Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');

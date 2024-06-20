@@ -79,9 +79,13 @@
 
                                 <div class="input-field col s6">
                                     <select name="sub_cat" id="sub_cat"  class="icons">
-                                        <?php $SubCat = \App\Models\SubCategory::find($Product->sub_category_id);  ?>
+                                        <?php $SubCat = \App\Models\SubCategory::find($Product->sub_category_id);   ?>
 
+                                        @if($SubCat ==null)
+
+                                        @else
                                         <option value="{{$SubCat->id}}" disabled selected>{{$SubCat->title}}</option>
+                                        @endif
 
 
                                     </select>
