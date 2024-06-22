@@ -4,7 +4,7 @@
 <head>
 
 	<!-- Title -->
-	<title>Wakazi Works platform: Your one stop shop for all your handcrafted products | Wakazi</title>
+	<title>Wakazi Works: Your one stop shop for all your handcrafted products | Wakazi</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -412,7 +412,7 @@
 			<div class="container">
 				<div class="row fb-inner wow fadeInUp" data-wow-delay="0.1s">
 					<div class="col-lg-6 col-md-12 text-start">
-						<p class="copyright-text">Copyright © <span class="current-year">{{date('Y')}}</span> <a href="https://www.wakaziworks.com/">Wakazi Works platform</a> . All Rights Reserved.</p>
+						<p class="copyright-text">Copyright © <span class="current-year">{{date('Y')}}</span> <a href="https://www.wakaziworks.com/">Wakazi Works </a> . All Rights Reserved.</p>
 					</div>
 					<div class="col-lg-6 col-md-12 text-end">
 						<div class="d-flex align-items-center justify-content-center justify-content-md-center justify-content-xl-end">
