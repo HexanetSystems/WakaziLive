@@ -19,6 +19,20 @@
          </li>
          <li><a target="_blank" href="{{url('/')}}/" class="menu-active"><i class="fa fa-globe" aria-hidden="true"></i> Visit Website</a>
          </li>
+         <li>
+            <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Parent Categories </a>
+            <div class="collapsible-body left-sub-menu">
+               <ul>
+                  <li><a href="{{url('/')}}/admin/mains">All Mains  </a>
+                  </li>
+                  <li><a href="{{url('/')}}/admin/addMain">Add Parent Category</a>
+                  </li>
+               </ul>
+            </div>
+         </li>
+
+        </li>
+        {{--  --}}
               {{--  --}}
               <li>
                 <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Categories </a>
@@ -33,7 +47,8 @@
              </li>
 
             </li>
-            {{--  --}}
+
+
             <li>
               <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Sub Categories </a>
               <div class="collapsible-body left-sub-menu">

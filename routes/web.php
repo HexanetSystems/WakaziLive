@@ -168,6 +168,14 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
          Route::post('edit_Category/{id}', [AdminsController::class, 'edit_Category']);
          Route::get('deleteCategory/{id}', [AdminsController::class, 'deleteCategory']);
 
+        // Mains
+        Route::get('mains', [AdminsController::class, 'mains']);
+        Route::get('addMain', [AdminsController::class, 'addMain']);
+        Route::post('add_Main', [AdminsController::class, 'add_Main']);
+        Route::get('editMains/{id}', [AdminsController::class, 'editMains']);
+        Route::post('edit_Main/{id}', [AdminsController::class, 'edit_Main']);
+        Route::get('deleteMain/{id}', [AdminsController::class, 'deleteMain']);
+
         // SubCategories
         Route::get('subcategories', [AdminsController::class, 'subcategories']);
         Route::get('addSubCategory', [AdminsController::class, 'addSubCategory']);

@@ -52,6 +52,24 @@
                         </div>
                     </div>
 
+                      {{--  --}}
+                      <div class="row">
+                        {{--  --}}
+                        <div class="input-field col s12">
+                            <select required name="main_id" class="icons" id="mydiv">
+                                <option value="" disabled selected>Choose Parent Category</option>
+                                @foreach ($Main as $mains)
+                                <option value="{{$mains->id}}">{{$mains->title}}</option>
+                                @endforeach
+                            </select>
+                            <label>Choose Parent</label>
+                        </div>
+                        {{-- <a href="#ex1" rel="modal:open"> <strong>+ Add New Category</strong> </a> --}}
+                        {{--  --}}
+                        <div class="section-space col s12"></div>
+                    </div>
+                    {{--  --}}
+
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea required name="meta" class="materialize-textarea"></textarea>

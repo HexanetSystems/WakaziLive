@@ -80,7 +80,7 @@
 						<span></span>
 					</button>
                     <?php
-                       $Category = DB::table('categories')->limit(4)->get();
+                       $Category = DB::table('mains')->limit(4)->get();
                     ?>
 					<!-- Main Nav -->
 					<div class="header-nav w3menu navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
@@ -94,11 +94,19 @@
 
 
                             @foreach ($Category as $category)
-                            <li class="has-mega-menu sub-menu-down">
+                            <li class="sub-menu-down">
 								<a href="{{url('/')}}/products/{{$category->slung}}"><span>{{$category->title}}</span><i class="fas fa-chevron-down tabindex"></i></a>
+                                <ul class="sub-menu">
+                                    <?php
+                                       $Main = DB::table('categories')->where('main_id',$category->id)->get();
+                                    ?>
+                                    @foreach ($Main as $mains)
+									<li><a href="{{url('/')}}/products/{{$mains->slung}}">{{$mains->title}}</a></li>
+                                    @endforeach
+
+								</ul>
 							</li>
                             @endforeach
-
 
 
                             <li class="auto-width menu-left">

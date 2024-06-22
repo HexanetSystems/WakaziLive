@@ -8,31 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('mains', function (Blueprint $table) {
+            $table->id();
             $table->string('title')->nullable();
-            $table->string('main_id')->nullable();
-            $table->string('name')->nullable();
-            $table->text('meta')->nullable();
             $table->string('slung')->nullable();
             $table->text('content')->nullable();
-            $table->text('image')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('mains');
     }
 };

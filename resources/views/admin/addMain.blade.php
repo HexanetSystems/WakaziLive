@@ -24,16 +24,16 @@
                 <ul>
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
                     </li>
-                    <li class="active-bre"><a href="#"> Edit {{$Category->title}}</a>
+                    <li class="active-bre"><a href="#"> Add New Main</a>
                     </li>
-                    <li class="page-back"><a href="{{url('/')}}/admin/categories"><i class="fa fa-backward" aria-hidden="true"></i> All Categories</a>
+                    <li class="page-back"><a href="{{url('/')}}/admin/mains"><i class="fa fa-backward" aria-hidden="true"></i> All Main Categories</a>
                     </li>
                 </ul>
 
             </div>
             <div class="sb2-2-add-blog sb2-2-1">
-                <h2>Edit {{$Category->title}}</h2>
-                <p>Categories Are Used In Both Blogs And General Content Classification</p>
+                <h2>Add New Main Categories</h2>
+
                 <center>
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>
@@ -43,62 +43,22 @@
                                   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
                    @endif
                 </center>
-                <form method="POST" action="{{url('/')}}/admin/edit_Category/{{$Category->id}}" enctype="multipart/form-data">
+                <form method="POST" action="{{url('/')}}/admin/add_Main" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="list-title" name="title" type="text" value="{{$Category->title}}" class="validate">
-                            <label for="list-title">Edit Category Title</label>
+                            <input id="list-title" name="title" type="text" value="" class="validate">
+                            <label for="list-title">Title</label>
                         </div>
                     </div>
+
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea required name="meta" class="materialize-textarea">{!!html_entity_decode($Category->meta)!!}</textarea>
-                            <label for="textarea1">Meta</label>
+                            <textarea required id="article-ckeditor" name="ckeditor" class="materialilze-textarea" placeholder="content"></textarea>
+                            {{-- <label for="textarea1">Blog Descriptions:</label> --}}
                         </div>
-                    </div>
-
-                     {{--  --}}
-                     <div class="row">
-                        {{--  --}}
-                        <div class="input-field col s12">
-                            <select required name="main_id" class="icons" id="mydiv">
-                                <?php
-                                  $Parent = \App\Models\Main::find($Category->main_id);
-                                ?>
-                                @if($Parent == null)
-
-                                @foreach ($Main as $mains)
-                                <option value="{{$mains->id}}">{{$mains->title}}</option>
-                                @endforeach
-                                @else
-                                <option value="{{$Parent->id}}" disabled selected>{{$Parent->title;}}</option>
-                                @foreach ($Main as $mains)
-                                <option value="{{$mains->id}}">{{$mains->title}}</option>
-                                @endforeach
-                                @endif
-
-                            </select>
-                            <label>Choose Parent</label>
-                        </div>
-                        {{-- <a href="#ex1" rel="modal:open"> <strong>+ Add New Category</strong> </a> --}}
-                        {{--  --}}
-                        <div class="section-space col s12"></div>
-                    </div>
-                    {{--  --}}
-                    {{--  --}}
-                    <div class="row">
-
-                        <div class="input-field col s12">
-                            <label for="textarea1">Descriptions:</label>
-                            <br>
-                            <textarea required id="article-ckeditor" name="ckeditor" class="materialilze-textarea" placeholder="content">{!!html_entity_decode($Category->content)!!}</textarea>
-
-
-                        </div>
-                    </div><br>
-
+                    </div><br><br>
                      {{-- Images --}}
                                  {{-- Preview --}}
                             {{-- Style --}}
@@ -132,16 +92,16 @@
                                 <div class="">
                                     <div class="input-field col s12">
                                         <div class="form-group">
-                                            <label>Add Category Featured Image</label>
+                                            <label>Add Featured Image</label>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
-                                                        Size: 440 by 550 Browse… <input name="image" type="file" id="imgInp">
+                                                        Browse… <input name="image" type="file" id="imgInp">
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control" readonly>
                                             </div>
-                                            <img class="image-preview" style="width:auto;" src="{{$Category->image}}" id='img-upload'/>
+                                            <img class="image-preview" style="width:auto;" src="" id='img-upload'/>
                                         </div>
                                     </div>
                                 </div>
@@ -151,10 +111,9 @@
                             {{-- Images --}}
                             <br><br>
                             <div class="clearfix"></div>
-                            <input type="hidden" name="image_cheat" value="{{$Category->image}}">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="submit" class="waves-effect waves-light btn-large" value="Save Changes">
+                            <input type="submit" class="waves-effect waves-light btn-large" value="Add Main">
                         </div>
                     </div>
                 </form>

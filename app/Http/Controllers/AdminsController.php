@@ -19,6 +19,7 @@ use Storage;
 use Redirect;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Main;
 use DB;
 
 class AdminsController extends Controller
@@ -239,6 +240,83 @@ class AdminsController extends Controller
         return Redirect::back();
     }
 
+    public function mains(){
+        activity()->log('Accessed All Mains');
+        $Main = Main::all();
+        $page_title = 'list';
+        $page_name = 'Mains';
+        return view('admin.mains',compact('page_title','Main','page_name'));
+    }
+
+    public function addMain(){
+        activity()->log('Accessed Add Main Page');
+        $page_title = 'formfiletext';
+        $page_name = 'Add Main';
+        return view('admin.addMain',compact('page_title','page_name'));
+    }
+
+    public function add_Main(Request $request){
+        activity()->log('Evoked add Main Operation');
+        $path = 'uploads/mains';
+
+        if(isset($request->image)){
+            $dir = 'uploads/mains';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->image_cheat;
+        }
+
+        $Main = new Main;
+        $Main->title = $request->title;
+        $Main->slung = Str::slug($request->title);
+        $Main->content = $request->ckeditor;
+        $Main->image = $SaveFilePath;
+        $Main->save();
+        Session::flash('message', "Main Has Been Added");
+        return Redirect::back();
+    }
+
+    public function editMains($id){
+        activity()->log('Access Edit Main ID number '.$id.' ');
+        $Main = Main::find($id);
+        $page_title = 'formfiletext';
+        $page_name = 'Edit Home Page Slider';
+        return view('admin.editMain',compact('page_title','Main','page_name'));
+    }
+
+    public function edit_Main(Request $request, $id){
+        activity()->log('Evoked Edit Main For Main ID number '.$id.' ');
+
+        if(isset($request->image)){
+            $dir = 'uploads/mains';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->image_cheat;
+        }
+
+        $updateDetails = array(
+            'title'=>$request->title,
+            'slung' => Str::slug($request->title),
+            'content'=>$request->ckeditor,
+            'image'=>$SaveFilePath
+
+        );
+        DB::table('mains')->where('id',$id)->update($updateDetails);
+        Session::flash('message', "Changes have been saved");
+        return Redirect::back();
+    }
+
+    public function deleteMain($id){
+        $Main = Main::find($id);
+        activity()->log('Deleted Main '.$Main->title.' ');
+        DB::table('mains')->where('id',$id)->delete();
+        return Redirect::back();
+    }
+
     public function categories(){
         activity()->log('Accessed All Categories');
         $Category = Category::all();
@@ -248,10 +326,11 @@ class AdminsController extends Controller
     }
 
     public function addCategory(){
+        $Main = Main::all();
         activity()->log('Accessed Add Category Page');
         $page_title = 'formfiletext';
         $page_name = 'Add Category';
-        return view('admin.addCategory',compact('page_title','page_name'));
+        return view('admin.addCategory',compact('page_title','page_name','Main'));
     }
 
     public function add_Category(Request $request){
@@ -270,6 +349,8 @@ class AdminsController extends Controller
         $Category = new Category;
         $Category->title = $request->title;
         $Category->meta = $request->meta;
+        $Category->main_id = $request->main_id;
+
         $Category->slung = Str::slug($request->title);
         $Category->content = $request->ckeditor;
         $Category->image = $SaveFilePath;
@@ -279,11 +360,12 @@ class AdminsController extends Controller
     }
 
     public function editCategories($id){
+        $Main = Main::all();
         activity()->log('Access Edit Category ID number '.$id.' ');
         $Category = Category::find($id);
         $page_title = 'formfiletext';
         $page_name = 'Edit Home Page Slider';
-        return view('admin.editCategory',compact('page_title','Category','page_name'));
+        return view('admin.editCategory',compact('page_title','Category','page_name','Main'));
     }
 
     public function edit_Category(Request $request, $id){
@@ -300,6 +382,7 @@ class AdminsController extends Controller
 
         $updateDetails = array(
             'title'=>$request->title,
+            'main_id'=>$request->main_id,
             'slung' => Str::slug($request->title),
             'meta'=>$request->meta,
             'content'=>$request->ckeditor,
