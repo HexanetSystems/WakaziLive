@@ -10,11 +10,10 @@
     {{-- Create Break --}}
     @include('front.sections.products')
 
-    @include('front.sections.about')
+    {{-- @include('front.sections.about') --}}
 
     {{-- @include('front.sections.horizontal') --}}
-
-   @include('front.sections.products')
+    @include('front.intagram-feeds')
 
 </div>
 

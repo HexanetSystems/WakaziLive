@@ -10,7 +10,7 @@
 	--secondary-light: #A7BFFE;
 	--title: #000;
 	--bg-light: #FFFAF3;
-	--light-dark: #FEEB9D;
+	--light-dark: #e36ff7;
 	--theme-text-color: #000000;
 	--dark: #151F37;
     --dark-light: #F9F9F9;
@@ -27,7 +27,7 @@
 	--rgba-primary-9: rgba(204, 13, 57, 0.9);
 
 	/* Gradient */
-	--gradient1: linear-gradient(307deg, #FEEB9D 1.9%, #FFDFE7 67.57%);
+	--gradient1: linear-gradient(307deg, #e36ff7 1.9%, #FFDFE7 67.57%);
 	--gradient2: linear-gradient(307deg, #FFEA96 1.9%, #FFB0B0 85.96%);
 
 }

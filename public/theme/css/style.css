@@ -130,7 +130,7 @@
   --bs-info-rgb: 1, 148, 217;
   --bs-warning-rgb: 231, 150, 0;
   --bs-danger-rgb: 210, 54, 54;
-  --bs-light-rgb: 255, 250, 243;
+  --bs-light-rgb: 253, 243, 254;
   --bs-dark-rgb: 68, 68, 68;
   --bs-primary-text: #0f0d37;
   --bs-secondary-text: #6c757d;
@@ -38536,7 +38536,7 @@ a {
     font-weight: 400;
     position: relative; }
     .header-nav.w3menu .nav > li:hover {
-       background-color:#ff00ff;
+       background-color:#e36ff7;
        color:#ffffff;
        border-radius:10px;
     }
