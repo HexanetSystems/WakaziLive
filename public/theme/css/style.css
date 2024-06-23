@@ -27538,10 +27538,10 @@ del {
     background-position: center; }
   .image-wrapper:after {
     bottom: 0;
-    background-image: url('data:image/svg+xml,<svg width="1920" height="50" viewBox="0 0 1920 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 50C914 -16.5147 1014.5 -16.8185 1922.5 50H0Z" fill="%23FFFAF3"/></svg>'); }
+    background-image: url('data:image/svg+xml,<svg width="1920" height="50" viewBox="0 0 1920 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 50C914 -16.5147 1014.5 -16.8185 1922.5 50H0Z" fill="%e36ff7"/></svg>'); }
   .image-wrapper:before {
     top: 0;
-    background-image: url('data:image/svg+xml,<svg width="1920" height="50" viewBox="0 0 1920 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0C914 66.5147 1014.5 66.8185 1922.5 0H0Z" fill="%23FFFAF3"/></svg>'); }
+    background-image: url('data:image/svg+xml,<svg width="1920" height="50" viewBox="0 0 1920 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0C914 66.5147 1014.5 66.8185 1922.5 0H0Z" fill="%e36ff7"/></svg>'); }
   @media only screen and (max-width: 1480px) {
     .image-wrapper:after, .image-wrapper:before {
       display: none; } }
