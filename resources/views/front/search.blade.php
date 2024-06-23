@@ -10,7 +10,7 @@
         <div class="dz-bnr-inr bg-secondary overlay-black-light" style="background-image:url('{{asset('theme/images/background/bg7.jpg')}}');">
             <div class="container">
                 <div class="dz-bnr-inr-entry">
-                    <h1>{{$Category->title}}</h1>
+                    <h1>{{$keyword}}</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-row">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('/')}}"> Home</a></li>

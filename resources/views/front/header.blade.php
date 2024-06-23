@@ -32,9 +32,10 @@
 
 				<!-- header search nav -->
 				<div class="header-search-nav">
-					<form class="header-item-search">
+					<form class="header-item-search" action="{{route('search-product')}}" method="POST">
+                        @csrf
 						<div class="input-group search-input">
-							<select class="default-select">
+							<select class="default-select" name="category_id">
 								<option>All Categories</option>
                                 <?php
                                     $CatList = DB::table('categories')->get();
@@ -43,8 +44,8 @@
                                 <option value="{{$catlist->id}}">{{$catlist->title}} </option>
                                 @endforeach
 							</select>
-							<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Search for products">
-							<button class="btn" type="button">
+							<input type="text" name="keyword" class="form-control" aria-label="Text input with dropdown button" placeholder="Search for products">
+							<button class="btn" type="submit">
 								<i class="iconly-Light-Search text-secondary"></i>
 							</button>
 						</div>
@@ -93,7 +94,7 @@
 								<ul class="nav navbar-nav">
                                     @foreach ($CatList as $catlist)
 									<li class="has-mega-menu cate-drop">
-										<a href="javascript:void(0);">
+										<a href="{{url('/')}}/products/{{$catlist->slung}}">
 											<i class="icon feather icon-arrow-right"></i>
 											<span>{{$catlist->title}}</span>
 											<span class="menu-icon">

@@ -19,13 +19,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        $Product = Product::where('status', 1)->get();
+        $Product = Product::where('status', 1)->inRandomOrder()->get();
         return view('welcome', compact('Product'));
     }
 
     public function home()
     {
-        $Product = Product::where('status', 1)->get();
+        $Product = Product::where('status', 1)->inRandomOrder()->get();
         return view('front.index', compact('Product'));
     }
     public function product($slung)
@@ -103,8 +103,21 @@ class HomeController extends Controller
 
     public function category($slung){
         $Category = DB::table('categories')->where('slung', $slung)->first();
-        $Product = DB::table('products')->where('category', $Category->id)->where('status', 1)->get();
+        $Product = DB::table('products')->where('category', $Category->id)->where('status', 1)->paginate(12);
         return view('front.category', compact('Product','Category'));
     }
 
+    public function search(Request $request){
+        
+        $Category = $request->category_id;
+        $keyword = $request->keyword;
+        // dd($request->all());
+        // //Make the search
+        if($Category == "All Categories"){
+            $Product = DB::table('products')->where('name', 'LIKE', "%$keyword%")->where('status','1')->paginate(100);
+        }else{
+            $Product = DB::table('products')->where('category',$Category)->where('status','1')->where('name', 'LIKE', "%$keyword%")->paginate(100);
+        }
+        return view('front.search', compact('Product','Category','keyword'));
+    }
 }

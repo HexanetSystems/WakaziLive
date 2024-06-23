@@ -5,10 +5,15 @@
 
     @include('front.sections.hero')
 
+ 
+
+
     {{-- @include('front.sections.featured') --}}
 
     {{-- Create Break --}}
     @include('front.sections.products')
+
+    {{-- @include('front.sections.featured-categories') --}}
 
     {{-- @include('front.sections.about') --}}
 

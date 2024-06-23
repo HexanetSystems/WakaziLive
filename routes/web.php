@@ -24,7 +24,7 @@ Route::get('/cart/remove-item/{id}', [HomeController::class, 'removeCart'])->nam
 Route::post('/cart/custom-register', [HomeController::class, 'register'])->name('custom-register');
 Route::get('/cart/checkout/post-order', [HomeController::class, 'post_order'])->name('post-order');
 
-
+Route::post('/search-product', [HomeController::class, 'search'])->name('search-product');
 
 
 Auth::routes();

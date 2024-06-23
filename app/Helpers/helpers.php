@@ -67,7 +67,10 @@ function getAuthorDP($id){
 }
 
 
-
+function getCategory($id){
+    $Category = \App\Models\Category::find($id);
+    return $Category;
+}
 
 
 ?>
