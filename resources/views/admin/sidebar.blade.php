@@ -23,7 +23,7 @@
             <a href="javascript:void(0)" class="collapsible-header"><i class="fa fa-folder" aria-hidden="true"></i> Parent Categories </a>
             <div class="collapsible-body left-sub-menu">
                <ul>
-                  <li><a href="{{url('/')}}/admin/mains">All Mains  </a>
+                  <li><a href="{{url('/')}}/admin/mains">All Parent Categorgy  </a>
                   </li>
                   <li><a href="{{url('/')}}/admin/addMain">Add Parent Category</a>
                   </li>

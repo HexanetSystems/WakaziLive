@@ -38535,6 +38535,11 @@ a {
     margin: 0px;
     font-weight: 400;
     position: relative; }
+    .header-nav.w3menu .nav > li:hover {
+       background-color:#ff00ff;
+       color:#ffffff;
+       border-radius:10px;
+    }
     .header-nav.w3menu .nav > li.has-mega-menu {
       position: inherit; }
     @media only screen and (max-width: 991px) {

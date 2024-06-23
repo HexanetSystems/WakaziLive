@@ -521,16 +521,16 @@ class AdminsController extends Controller
         }
 
         $updateDetails = array(
-            'title'=>$request->title,
+            'name'=>$request->title,
             'trending'=>$trending,
             'featured'=>$featured,
             'slung' => Str::slug($request->title),
             'content'=>$request->content,
-            'user_id'=>$request->user,
+            'UserID'=>$request->user,
             'stock'=>$new_stock,
             'price'=>$request->price,
-            'category_id'=>$request->category,
-            'image'=>$image_one,
+            'category'=>$request->category,
+            'image_one'=>$image_one,
         );
         DB::table('products')->where('id',$id)->update($updateDetails);
         Session::flash('message', "Changes have been saved");
@@ -902,11 +902,10 @@ class AdminsController extends Controller
 
     // S3
     public function genericFIleUpload($file,$dir,$realPath){
-        $filename = $file->getClientOriginalName();
-        $store = $file->storeAs(path: ''.$dir.'/'.$filename, options: 's3');
-        Storage::disk('s3')->put(''.$dir.'/'.$filename, file_get_contents($realPath));
-        // $url = Storage::disk('s3')->temporaryUrl('podcasts/'.$filename,now()->addMinutes(10));
-        $SaveFilePath = "https://africanpharmaceuticalreviewbucket.s3.eu-central-1.amazonaws.com/$dir/$filename";
-        return $SaveFilePath;
+        $image_name = $file->getClientOriginalName();
+        $file->move(public_path($dir),$image_name);
+        $url = url('/');
+        $image_path = "$url/$dir/" . $image_name;
+        return $image_path;
     }
 }

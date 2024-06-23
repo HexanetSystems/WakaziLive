@@ -113,9 +113,9 @@
 								<a href="javascript:void(0);"><span>Artisan Voices</span></a>
 							</li>
 
-                            {{-- <li class="auto-width menu-left">
+                            <li class="auto-width menu-left">
 								<a href="javascript:void(0);"><span>County Bounty</span></a>
-							</li> --}}
+							</li>
 
 						</ul>
 						<div class="dz-social-icon">

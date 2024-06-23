@@ -4,7 +4,7 @@
 <head>
 
 	<!-- Title -->
-	<title>Wakazi Works Industries: Your one stop shop for all your handcrafted products | Wakazi</title>
+	<title>Wakazi Works: Your one stop shop for all your handcrafted products | Wakazi</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -56,10 +56,6 @@
 <body id="bg">
 <div class="page-wraper">
 
-	<div id="loading-area" class="preloader-wrapper-4">
-		<img width="300" src="{{asset('theme/images/logo.png')}}" alt="wakazi.co.ke logo"><br><br>
-
-	</div>
 
 	<!-- Header Star -->
     <header class="site-header mo-left header ">
@@ -69,9 +65,10 @@
 				<div class="container-fluid clearfix d-lg-flex d-block">
 
 					<!-- Website Logo -->
-					<div class="logo-header logo-dark me-md-5">
-						<a href="{{url('/')}}"><img src="{{asset('theme/images/logo.png')}}" alt="logo"></a>
+                    <div class="logo-header logo-dark me-md-5">
+						<a href="{{url('/')}}"><img src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg')}}" alt="logo"></a>
 					</div>
+
 
 					<!-- Nav Toggle Button -->
 					<button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,17 +82,34 @@
 					<!-- Main Nav -->
 					<div class="header-nav w3menu navbar-collapse collapse justify-content-start" id="navbarNavDropdown">
 						<div class="logo-header logo-dark">
-							<a href="{{url('/')}}"><img src="{{asset('theme/images/logo.png')}}" alt=""></a>
+							<a href="{{url('/')}}"><img src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpegg')}}" alt=""></a>
 						</div>
 						<ul class="nav navbar-nav">
 
 
                             @foreach ($Category as $category)
-                            <li class="has-mega-menu sub-menu-down">
+                            <li class="sub-menu-down">
 								<a href="{{url('/')}}/products/{{$category->slung}}"><span>{{$category->title}}</span><i class="fas fa-chevron-down tabindex"></i></a>
+                                <ul class="sub-menu">
+                                    <?php
+                                       $Main = DB::table('categories')->where('main_id',$category->id)->get();
+                                    ?>
+                                    @foreach ($Main as $mains)
+									<li><a href="{{url('/')}}/products/{{$mains->slung}}">{{$mains->title}}</a></li>
+                                    @endforeach
+
+								</ul>
 							</li>
                             @endforeach
 
+
+                            <li class="auto-width menu-left">
+								<a href="javascript:void(0);"><span>Artisan Voices</span></a>
+							</li>
+
+                            <li class="auto-width menu-left">
+								<a href="javascript:void(0);"><span>County Bounty</span></a>
+							</li>
 
 
 
