@@ -104,7 +104,7 @@
 										<div class="mega-menu">
 											<div class="row">
                                                 <?php
-                                                    $SubCatList = DB::table('sub_categories')->where('category_id',$catlist->id)->get();    
+                                                    $SubCatList = DB::table('sub_categories')->where('category_id',$catlist->id)->get();
                                                 ?>
                                                 @foreach ($SubCatList as $subCatList)
                                                 <div class="col-md-3 col-sm-4 col-6"><a href="javascript:void(0);" class="menu-title">{{$subCatList->title}}</a>
@@ -115,8 +115,8 @@
                                                         @foreach ($GetProducts as $getProducts)
                                                         <li><a href="{{url('/')}}/product/{{$getProducts->slung}}">{{$getProducts->name}}</a></li>
                                                         @endforeach
-														
-			
+
+
 													</ul>
 												</div>
                                                 @endforeach
@@ -124,7 +124,7 @@
 										</div>
 									</li>
                                     @endforeach
-									
+
 
 									<?php
                                       $Main = \App\Models\Main::InRandomOrder()->limit(1)->get();
@@ -137,7 +137,7 @@
 										</a>
 									</li>
                                     @endforeach
-									
+
 									<li class="menu-items">
 										<a href="javascript:void(0);">
 											<i class="flaticon-blocks me-3"></i>
@@ -148,22 +148,26 @@
 							</div>
 						</div>
 						<ul class="nav navbar-nav">
-							<li class="has-mega-menu sub-menu-down auto-width menu-left">
+							{{-- <li class="has-mega-menu sub-menu-down auto-width menu-left">
 								<a href="{{url('/')}}"><span>Home</span></a>
-							</li>
-							<li class="sub-menu-down">
-								<a href="javascript:void(0);"><span>Artisan Voices</span>  </a>
-							</li>
+							</li> --}}
+
+                            <?php
+                                $Main = DB::table('mains')->inRandomOrder()->limit(4)->get();
+                            ?>
+                            @foreach ($Main as $mains)
+                            <li class="sub-menu-down"><a href="{{url('/')}}/products/{{$mains->slung}}">{{$mains->title}}</a></li>
+                            @endforeach
                             <li class="sub-menu-down">
 								<a href="javascript:void(0);"><span>County Bounty</span>  </a>
 							</li>
-                            <li class="sub-menu-down">
+                            {{-- <li class="sub-menu-down">
 								<a href="javascript:void(0);"><span>News Updates</span>  </a>
 							</li>
                             <li class="sub-menu-down">
 								<a href="javascript:void(0);"><span>Our Story</span>  </a>
-							</li>
-							
+							</li> --}}
+
 						</ul>
 						<div class="dz-social-icon">
 							<ul>
@@ -190,7 +194,7 @@
 									</a>
                                     @endif
 								</li>
-								
+
 								<li class="nav-item cart-link">
 									<a href="{{url('/')}}/cart/shopping-cart" class="nav-link cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 										<i class="iconly-Broken-Buy"></i>
@@ -206,9 +210,9 @@
 		</div>
 		<!-- Main Header End -->
 
-	
 
-	
+
+
 		<!-- Sidebar cart -->
 		<div class="offcanvas dz-offcanvas offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight">
 			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
