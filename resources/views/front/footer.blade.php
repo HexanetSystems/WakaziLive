@@ -7,7 +7,7 @@
 					<div class="col-xl-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
 						<div class="widget widget_about me-2">
 							<div class="footer-logo logo-dark">
-								<a href="{{url('/')}}"><img src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg')}}" alt=""></a> 
+								<a href="{{url('/')}}"><img src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg')}}" alt=""></a>
 							</div>
 							<ul class="widget-address">
 								<li>
@@ -21,7 +21,7 @@
 								</li>
 							</ul>
 							<div class="subscribe_widget">
-								<h6 class="title fw-medium text-capitalize">subscribe to our newsletter</h6>	
+								<h6 class="title fw-medium text-capitalize">subscribe to our newsletter</h6>
 								<form class="dzSubscribe style-1" action="script/mailchamp.php" method="post">
 									<div class="dzSubscribeMsg"></div>
 									<div class="form-group">
@@ -82,7 +82,7 @@
                                 @foreach ($Main as $main)
                                 <li><a href="javascript:void(0);">{{$main->title}}</a></li>
                                 @endforeach
-								
+
 							</ul>
 						</div>
 					</div>
@@ -92,11 +92,11 @@
 							<ul>
 								<li><a href="javascript:void(0);">About Us</a></li>
 								<li><a href="javascript:void(0);">Our Locations</a></li>
-								<li><a href="javascript:void(0);">Become Supplier</a></li>
+								<li><a href="{{route('become-supplier')}}">Become Supplier</a></li>
 								<li><a href="javascript:void(0);">Chat with us</a></li>
 								<li><a href="javascript:void(0);">Contact Us</a></li>
 								<li><a href="javascript:void(0);">Forum</a></li>
-							</ul>   
+							</ul>
 						</div>
 					</div>
 					<div class="col-xl-2 col-md-3 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.4s">
@@ -112,12 +112,12 @@
 							</ul>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
 		<!-- Footer Top End -->
-		
+
 		<!-- Footer Bottom -->
 		<div class="footer-bottom">
 			<div class="container">
@@ -135,6 +135,6 @@
 			</div>
 		</div>
 		<!-- Footer Bottom End -->
-		
+
 	</footer>
 	<!-- Footer End -->

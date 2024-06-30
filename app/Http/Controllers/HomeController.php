@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
+
+
 class HomeController extends Controller
 {
 
@@ -107,8 +109,35 @@ class HomeController extends Controller
         return view('front.category', compact('Product','Category'));
     }
 
+
+    public function become_supplier(){
+        $Product = DB::table('products')->paginate(12);
+        return view('front.become-supplier');
+    }
+
+    public function become_supplier_post(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'type' => 3,
+            'password' => Hash::make($request['password']),
+        ]);
+
+        // Login
+        $user = User::where('email','=',$request->email)->first();
+        Auth::loginUsingId($user->id, TRUE);
+        return redirect()->route('supplier.home');
+
+    }
+
+
     public function search(Request $request){
-        
+
         $Category = $request->category_id;
         $keyword = $request->keyword;
         // dd($request->all());

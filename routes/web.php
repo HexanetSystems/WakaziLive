@@ -55,6 +55,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
         Route::get('/cancel-order/{id}', [UserController::class, 'cancel'])->name('cancel-order');
     });
 });
+Route::get('/become-supplier', [App\Http\Controllers\HomeController::class, 'become_supplier'])->name('become-supplier');
+Route::post('/become-supplier-proceed', [App\Http\Controllers\HomeController::class, 'become_supplier_post'])->name('become-supplier-post');
 
 /*------------------------------------------
 --------------------------------------------
