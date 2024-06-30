@@ -37,6 +37,7 @@
 								</form>
 							</div>
 						</div>
+
 					</div>
 					<div class="col-xl-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
 						<div class="widget widget_post">
@@ -117,6 +118,35 @@
 			</div>
 		</div>
 		<!-- Footer Top End -->
+
+         {{--  --}}
+         <div class=" wow fadeInUp" data-wow-delay="0.1s" style="padding-bottom:20px">
+            <div class="dz-social-icon style-1" style="margin:0 auto">
+                <ul style="margin:0 auto">
+                    <li>
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+         </div>
+        {{--  --}}
 
 		<!-- Footer Bottom -->
 		<div class="footer-bottom">

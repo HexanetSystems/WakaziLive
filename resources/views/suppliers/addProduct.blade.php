@@ -124,8 +124,8 @@
                                 <div class="mb-5">
                                     <h2 class="mb-0 fs-exact-18">Tags</h2>
                                 </div>
-                                <select class="sa-select2 form-select" data-tags="true" multiple="">
-                                    <option selected="">Wakazi</option>
+                                <select name="tags" class="sa-select2 form-select" data-tags="true" multiple="">
+                                    <option value="Wakazi Works" selected="">Wakazi</option>
                                 </select>
                             </div>
                         </div>
