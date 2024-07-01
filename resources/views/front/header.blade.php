@@ -8,7 +8,7 @@
 					<a href="index.html"><img src="images/logo.svg" alt="logo"></a>
 				</div> --}}
                 <div class="logo-header logo-dark">
-                    <a href="{{url('/')}}"><img src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg')}}" alt="logo"></a>
+                    <a href="{{url('/')}}"><img style="border-radius:10px" src="{{asset('theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg')}}" alt="logo"></a>
                 </div>
 
 				<!-- EXTRA NAV -->
@@ -153,7 +153,7 @@
 							</li> --}}
 
                             <?php
-                                $Main = DB::table('mains')->inRandomOrder()->limit(3)->get();
+                                $Main = DB::table('mains')->inRandomOrder()->limit(4)->get();
                             ?>
                             @foreach ($Main as $mains)
                             <li class="sub-menu-down"><a href="{{url('/')}}/products/{{$mains->slung}}">{{$mains->title}}</a></li>
@@ -186,7 +186,7 @@
 					<div class="extra-nav">
 						<div class="extra-cell">
 							<ul class="header-right">
-								<li class="nav-item login-link">
+								{{-- <li class="nav-item login-link">
 									@if(Auth::User())
                                     <a class="nav-link" href="{{url('/')}}/dashboard">
 										<span class="fa fa-user"> </span> &nbsp; Hello, {{Auth::User()->name}}
@@ -196,7 +196,7 @@
 										Login / Register
 									</a>
                                     @endif
-								</li>
+								</li> --}}
 
 								<li class="nav-item cart-link">
 									<a href="{{url('/')}}/cart/shopping-cart" class="nav-link cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">

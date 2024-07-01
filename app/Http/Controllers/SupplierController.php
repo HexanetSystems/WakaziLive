@@ -114,7 +114,7 @@ class SupplierController extends Controller
             $image_one = "0";
         }
 
-        dd($request->all());
+        // dd($request->all());
 
         $Product = new Product;
         $Product->name = $request->name;
