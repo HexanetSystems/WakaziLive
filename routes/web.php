@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\KcbController;
 
 
 
@@ -26,10 +27,17 @@ Route::get('/cart/checkout/post-order', [HomeController::class, 'post_order'])->
 
 Route::post('/search-product', [HomeController::class, 'search'])->name('search-product');
 
+Route::get('/news-updates', [HomeController::class, 'updates'])->name('news-updates');
+Route::get('/news-updates/{slung}', [HomeController::class, 'update'])->name('news-update');
+Route::get('/county-bounty', [HomeController::class, 'county'])->name('county-bounty');
+Route::get('/artisan-voices', [HomeController::class, 'voices'])->name('artisan-voices');
 
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
 
+// KCB
+Route::get('/access-token', [App\Http\Controllers\KcbController::class, 'generateAccessToken'])->name('access-token');
+Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkRequest'])->name('stk-request');
 
 
 // Auth
@@ -238,6 +246,11 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         // Orders
         Route::get('orders', [AdminsController::class, 'orders']);
         Route::get('process-order', [AdminsController::class, 'process_order']);
+
+        Route::get('county-bounty', [AdminsController::class, 'county_bounty']);
+        Route::get('artisan-voices', [AdminsController::class, 'artisan_voices']);
+        Route::post('update-county-bounty', [AdminsController::class, 'update_county_bounty'])->name('update-county-bounty');
+        Route::post('update-artisan-voices', [AdminsController::class, 'update_artisan_voices'])->name('update-artisan-voices');
 
 
         // AJAX REQUESTS

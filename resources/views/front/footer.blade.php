@@ -43,33 +43,22 @@
 						<div class="widget widget_post">
 							<h5 class="footer-title">Recent Updates</h5>
 							<ul>
-								<li>
+                                <?php
+                                   $BlogList = DB::table('blogs')->orderBy('id','DESC')->limit('3')->get();
+                                ?>
+                                @foreach ($BlogList as $blogList)
+                                <li>
 									<div class="dz-media">
-										<img src="{{asset('theme/images/shop/product/small/1.png')}}" alt="">
+										<img src="{{$blogList->image_one}}" alt="">
 									</div>
 									<div class="dz-content">
-										<h6 class="name"><a href="#">Some Update About Creatives 1</a></h6>
-										<span class="time">July 23, 2024</span>
+										<h6 class="name"><a href="{{url('/')}}/news-updates/{{$blogList->slung}}">{{$blogList->title}}</a></h6>
+										<span class="time">{{date('M d, Y', strtotime($blogList->created_at))}}</span>
 									</div>
 								</li>
-								<li>
-									<div class="dz-media">
-										<img src="{{asset('theme/images/shop/product/small/1.png')}}" alt="">
-									</div>
-									<div class="dz-content">
-										<h6 class="name"><a href="post-standard.html">Some Update About Creatives 2</a></h6>
-										<span class="time">July 23, 2024</span>
-									</div>
-								</li>
-								<li>
-									<div class="dz-media">
-										<img src="{{asset('theme/images/shop/product/small/1.png')}}" alt="">
-									</div>
-									<div class="dz-content">
-										<h6 class="name"><a href="post-standard.html">Some Update About Creatives 3</a></h6>
-										<span class="time">July 23, 2024</span>
-									</div>
-								</li>
+                                @endforeach
+
+
 							</ul>
 						</div>
 					</div>

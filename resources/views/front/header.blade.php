@@ -159,10 +159,10 @@
                             <li class="sub-menu-down"><a href="{{url('/')}}/products/{{$mains->slung}}">{{$mains->title}}</a></li>
                             @endforeach
                             <li class="sub-menu-down">
-								<a href="javascript:void(0);"><span>County Bounty</span>  </a>
+								<a href="{{route('county-bounty')}}"><span>County Bounty</span>  </a>
 							</li>
                             <li class="sub-menu-down">
-								<a href="javascript:void(0);"><span>Artisan Voices</span>  </a>
+								<a href="{{route('artisan-voices')}}"><span>Artisan Voices</span>  </a>
 							</li>
                             {{-- <li class="sub-menu-down">
 								<a href="javascript:void(0);"><span>News Updates</span>  </a>

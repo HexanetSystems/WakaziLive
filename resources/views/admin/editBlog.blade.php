@@ -62,10 +62,10 @@
                                 {{--  --}}
                                 <div class="input-field col s12">
                                     <select required name="type" class="icons" >
-                                        <option value="" disabled selected>{{$Blog->type}}</option>
-                                        <option value="News"  class="circle">News</option>
-                                        <option value="Interviews"  class="circle">Interviews</option>
-                                        <option value="Articles"  class="circle">Articles</option>
+                                        <option value="{{$Blog->type}}" selected>{{$Blog->type}}</option>
+                                        <option value="News"  class="circle">Blog</option>
+                                        <option value="County Bounty"  class="circle">County Bounty</option>
+                                        <option value="Artisan Voices"  class="circle">Artisan Voices</option>
                                     </select>
                                     <label>Choose Type</label>
                                 </div>

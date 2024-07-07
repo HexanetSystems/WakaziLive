@@ -147,6 +147,10 @@
                   </li>
                   <li><a href="{{url('/')}}/admin/how">How It Works</a>
                   </li>
+                  <li><a href="{{url('/')}}/admin/county-bounty">County Bounty</a>
+                  </li>
+                  <li><a href="{{url('/')}}/admin/artisan-voices">Artisan Voices</a>
+                  </li>
                </ul>
             </div>
          </li>

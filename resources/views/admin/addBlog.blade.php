@@ -73,9 +73,9 @@
                                 <div class="input-field col s12">
                                     <select required name="type" class="icons" >
                                         <option value="" disabled selected>Choose your Type</option>
-                                        <option value="News"  class="circle">News</option>
-                                        <option value="Interviews"  class="circle">Interviews</option>
-                                        <option value="Articles"  class="circle">Articles</option>
+                                        <option value="News"  class="circle">Blog</option>
+                                        <option value="County Bounty"  class="circle">County Bounty</option>
+                                        <option value="Artisan Voices"  class="circle">Artisan Voices</option>
                                     </select>
                                     <label>Choose Type</label>
                                 </div>
@@ -93,25 +93,7 @@
                                     </select>
                                     <label>Choose Category</label>
                                 </div>
-                                <a href="#ex1" rel="modal:open"> <strong>+ Add New Category</strong> </a>
-                                {{--  --}}
-                                {{-- <div class="section-space col s12"></div>
-                                <div class="input-field col s12">
-                                    <select required name="tags" multiple>
-                                        <option value="" disabled selected>Choose Tags</option>
-                                        <option value="Bitcoin">Bitcoin</option>
-                                        <option value="Forex">Forex</option>
-                                        <option value="Crypto">Crypto</option>
-                                        <option value="Stock">Stock</option>
-                                        <option value="Currency">Currency</option>
-                                        <option value="New York">New York</option>
-                                        <option value="Forbes">Forbes</option>
-                                        <option value="Educations">Educations</option>
-                                        <option value="Events">Events</option>
-                                        <option value="Clubs">Clubs</option>
-                                    </select>
-                                    <label>Select Tags</label>
-                                </div> --}}
+
                             </div>
                             <style>
                                 /* .cke_reset{

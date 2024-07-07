@@ -5,7 +5,7 @@
 
     @include('front.sections.hero')
 
- 
+
 
 
     {{-- @include('front.sections.featured') --}}

@@ -59,6 +59,29 @@ class HomeController extends Controller
         return view('front.checkout', compact('CartItems'));
     }
 
+    public function updates(){
+        $Blog = \App\Models\Blog::all();
+        return view('front.updates', compact('Blog'));
+    }
+
+    public function update($slung){
+        $Blog = \App\Models\Blog::where('slung',$slung)->get();
+        return view('front.update', compact('Blog'));
+    }
+
+    public function county (){
+        $Blog = \App\Models\Blog::where('type','County Bounty')->get();
+        $County = \App\Models\County::all();
+        return view('front.county', compact('Blog','County'));
+    }
+
+    public function voices (){
+        $Voices = \App\Models\Voice::all();
+        $Blog = \App\Models\Blog::where('type','Artisan Voices')->get();
+        return view('front.voices', compact('Blog','Voices'));
+    }
+
+
     public function removeCart($id){
         Cart::remove($id);
         Session::flash('message', "Product Has Been Approved");

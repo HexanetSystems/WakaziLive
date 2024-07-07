@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use BinaryCats\Sku\HasSku;
 use App\Models\Product;
 use App\Models\Podcast;
+use App\Models\Blog;
 use App\Models\Message;
 use App\Models\Order;
 use App\Models\SubCategory;
@@ -894,6 +895,184 @@ class AdminsController extends Controller
         return response()->json(['success'=>'Deleted Successfully!']);
     }
 
+
+    public function artisan_voices(){
+        activity()->log('Accessed Add Blog Page');
+        $Category = DB::table('categories')->orderBy('id','DESC')->get();
+        $page_title = 'formfiletext';//For Layout Inheritance
+        $page_name = 'add County Bounty';
+        $County = DB::table('voices')->get();
+        return view('admin.artisan_voices',compact('page_title','page_name','Category','County'));
+    }
+
+    public function county_bounty(){
+        activity()->log('Accessed Add Blog Page');
+        $County = DB::table('counties')->get();
+        $page_title = 'formfiletext';//For Layout Inheritance
+        $page_name = 'add County Bounty';
+        return view('admin.county_bounty',compact('page_title','page_name','County'));
+    }
+
+
+    public function update_county_bounty(Request $request){
+        activity()->log('Update County Bounty');
+        $category = $request->cat;
+        $path = 'uploads/county';
+        if(isset($request->image)){
+            $dir = 'uploads/county';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->pro_img_cheat;
+        }
+
+        if(isset($request->video)){
+            $dir = 'uploads/county';
+            $file = $request->file('video');
+            $realPath = $request->file('video')->getRealPath();
+            $SaveFilePathVideo = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePathVideo = $request->pro_vid_cheat;
+        }
+        $updateDetails = array(
+            'meta'=>$request->meta,
+            'video'=>$SaveFilePathVideo,
+            'content'=>$request->ckeditor,
+            'image'=>$SaveFilePath,
+        );
+
+        DB::table('counties')->update($updateDetails);
+        Session::flash('message', "Post Saved Successfully");
+        return Redirect::back();
+    }
+
+    public function update_artisan_voices(Request $request){
+        activity()->log('Update County Bounty');
+        $category = $request->cat;
+        $path = 'uploads/voices';
+        if(isset($request->image)){
+            $dir = 'uploads/voices';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->pro_img_cheat;
+        }
+
+        // if(isset($request->video)){
+        //     $dir = 'uploads/voices';
+        //     $file = $request->file('video');
+        //     $realPath = $request->file('video')->getRealPath();
+        //     $SaveFilePathVideo = $this->genericFIleUpload($file,$dir,$realPath);
+        // }else{
+        //     $SaveFilePathVideo = $request->pro_vid_cheat;
+        // }
+        $updateDetails = array(
+            'meta'=>$request->meta,
+
+            'content'=>$request->ckeditor,
+            'image'=>$SaveFilePath,
+        );
+
+        DB::table('voices')->update($updateDetails);
+        Session::flash('message', "Post Saved Successfully");
+        return Redirect::back();
+    }
+
+    public function addBlog(){
+        activity()->log('Accessed Add Blog Page');
+        $Category = DB::table('categories')->orderBy('id','DESC')->get();
+        $page_title = 'formfiletext';//For Layout Inheritance
+        $page_name = 'add Blog';
+        return view('admin.addBlog',compact('page_title','page_name','Category'));
+    }
+
+    public function add_blog(Request $request){
+        activity()->log('Evoked an add Blog Operation');
+        $title = $request->title;
+        $description = $request->content;
+
+
+
+        $category = $request->cat;
+        $path = 'uploads/blogs';
+        if(isset($request->image_one)){
+            $dir = 'uploads/blogs';
+            $file = $request->file('image_one');
+            $realPath = $request->file('image_one')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->pro_img_cheat;
+        }
+
+
+        $blog = new Blog;
+        $blog->title = $request->title;
+        $blog->type = $request->type;
+        $blog->meta = $request->meta;
+        $blog->video = $request->video_url;
+        // $blog->podcast_url = $request->podcast_url;
+        $blog->slung = Str::slug($request->title);
+        $blog->content = $request->ckeditor;
+        $blog->author = Auth::User()->id;
+        $blog->category = $request->category;
+        $blog->image_one = $SaveFilePath;
+        $blog->save();
+        Session::flash('message', "Post Saved Successfully");
+        return Redirect::back();
+    }
+
+    public function blog(){
+        activity()->log('Accessed the all blogs page ');
+        $Blog = Blog::orderBy('id','DESC')->get();
+        $page_title = 'list';
+        $page_name = 'Blog';
+        return view('admin.blog',compact('page_title','Blog','page_name'));
+    }
+
+    public function editBlog($id){
+        activity()->log('Accessed Edit Blog For Blog ID number '.$id.' ');
+        $Category = DB::table('categories')->orderBy('id','DESC')->get();
+        $Blog = Blog::find($id);
+        $page_title = 'formfiletext';
+        $page_name = 'Edit Blog';
+        return view('admin.editBlog',compact('page_title','Blog','page_name','Category'));
+    }
+
+
+    public function edit_Blog(Request $request, $id){
+        activity()->log('Evoked an Edit Blog Operation For Blog ID number '.$id.' ');
+        $path = 'uploads/blogs';
+        if(isset($request->image_one)){
+            $dir = 'uploads/blogs';
+            $file = $request->file('image_one');
+            $realPath = $request->file('image_one')->getRealPath();
+            $SaveFilePath = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $SaveFilePath = $request->image_one_cheat;
+        }
+
+        $updateDetails = array(
+            'title' => $request->title,
+            'type' => $request->type,
+            'slung' => Str::slug($request->title),
+            'content' => $request->ckeditor,
+            'author' => Auth::user()->id,
+            'category' => $request->category,
+            'image_one' =>$SaveFilePath,
+        );
+        DB::table('blogs')->where('id',$id)->update($updateDetails);
+        Session::flash('message', "Changes have been saved");
+        return Redirect::back();
+    }
+
+    public function delete_Blog($id){
+        activity()->log('Deleted Blog With ID number '.$id.' ');
+        DB::table('blogs')->where('id',$id)->delete();
+        Session::flash('message', "Post Deleted Successfully");
+        return Redirect::back();
+    }
 
     // Add Image Proccessing
     public function processImage(){
