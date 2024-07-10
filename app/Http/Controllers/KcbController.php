@@ -56,24 +56,24 @@ class KcbController extends Controller
 
 
     public function stkRequest(){
-        $phoneNumber = "+254723014032";
+        $phoneNumber = "254723014032";
         $amount = "10";
-        $invoiceNumber = "KCBTILLNO-YOURACCREF";
+        $invoiceNumber = "KCBTILLNO#YOURACCREF";
         $sharedShortCode = true;
-        $orgShortCode = "7845649";
+        $orgShortCode = "";
         $orgPassKey = $this->lipaNaMpesaPassword();
-        $callbackUrl = "https://designketa.com";
+        $callbackUrl = "https://posthere.io/f613-4b7f-b82b";
         $transactionDescription = "school fee payment";
 
         $postData = array(
-            'phoneNumber'=>$phoneNumber,
-            'amount'=>$amount,
-            'invoiceNumber'=> 'KCBTILLNO-YOURACCREF',
-            'sharedShortCode'=> true,
-            'orgShortCode'=>$orgShortCode,
-            'orgPassKey'=>$orgPassKey,
-            'callbackUrl'=>$callbackUrl,
-            'transactionDescription'=> 'school fee payment'
+            "phoneNumber"=> "254723014032",
+            "amount"=> "10",
+            "invoiceNumber"=> "ONETILLNO#YOURREF",
+            "sharedShortCode"=> "",
+            "orgShortCode"=> "",
+            "orgPassKey"=> "",
+            "callbackUrl"=> "https://posthere.io/f613-4b7f-b82b",
+            "transactionDescription"=> "school fee payment"
         );
 
         $url="https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
@@ -85,10 +85,11 @@ class KcbController extends Controller
             CURLOPT_RETURNTRANSFER=>true,
             CURLOPT_SSL_VERIFYPEER=>false,
             CURLOPT_HTTPHEADER=>array(
-               'Content-Type:application/json',
+               'Content-Type: application/json',
                'Authorization: Bearer '.$this->generateAccessToken(),
             ),
        );
+
 
        $Curl = curl_init();
        curl_setopt_array($Curl,$options);

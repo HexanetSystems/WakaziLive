@@ -73,4 +73,18 @@ function getCategory($id){
 }
 
 
+
+function getCommision($salesAmount, $commissionRate) {
+    // Validate the inputs
+    if ($salesAmount < 0 || $commissionRate < 0) {
+        return "Invalid input: Sales amount and commission rate must be non-negative.";
+    }
+
+    // Calculate the commission
+    $commission = $salesAmount * ($commissionRate / 100);
+
+    return $commission;
+}
+
+
 ?>

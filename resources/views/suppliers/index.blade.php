@@ -219,27 +219,10 @@
              <div class="col-12 col-md-4 d-flex">
                 <div class="card saw-indicator flex-grow-1" data-sa-container-query="{&quot;340&quot;:&quot;saw-indicator--size--lg&quot;}">
                    <div class="sa-widget-header saw-indicator__header">
-                      <h2 class="sa-widget-header__title">Average order value</h2>
-                      <div class="sa-widget-header__actions">
-                         <div class="dropdown">
-                            <button type="button" class="btn btn-sm btn-sa-muted d-block" id="widget-context-menu-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="3" height="13" fill="currentColor">
-                                  <path d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z"></path>
-                               </svg>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="widget-context-menu-2">
-                               <li><a class="dropdown-item" href="#">Settings</a></li>
-                               <li><a class="dropdown-item" href="#">Move</a></li>
-                               <li>
-                                  <hr class="dropdown-divider"/>
-                               </li>
-                               <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
-                            </ul>
-                         </div>
-                      </div>
+                      <h2 class="sa-widget-header__title">Inventory Value</h2>
                    </div>
                    <div class="saw-indicator__body">
-                      <div class="saw-indicator__value">kes272.98</div>
+                      <div class="saw-indicator__value">kes<?php $sum = DB::table('products')->where('UserID',Auth::User()->id)->sum('price'); echo $sum; ?></div>
                       <div class="saw-indicator__delta saw-indicator__delta--fall">
                          <div class="saw-indicator__delta-direction">
                             <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="currentColor">
@@ -292,73 +275,9 @@
                    </div>
                 </div>
              </div>
-             <div class="col-12 col-lg-4 col-xxl-3 d-flex">
-                <div class="card flex-grow-1 saw-pulse" data-sa-container-query="{&quot;560&quot;:&quot;saw-pulse--size--lg&quot;}">
-                   <div class="sa-widget-header saw-pulse__header">
-                      <h2 class="sa-widget-header__title">Active users</h2>
-                      <div class="sa-widget-header__actions">
-                         <div class="dropdown">
-                            <button type="button" class="btn btn-sm btn-sa-muted d-block" id="widget-context-menu-4" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More">
-                               <svg xmlns="http://www.w3.org/2000/svg" width="3" height="13" fill="currentColor">
-                                  <path d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z"></path>
-                               </svg>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="widget-context-menu-4">
-                               <li><a class="dropdown-item" href="#">Settings</a></li>
-                               <li><a class="dropdown-item" href="#">Move</a></li>
-                               <li>
-                                  <hr class="dropdown-divider"/>
-                               </li>
-                               <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
-                            </ul>
-                         </div>
-                      </div>
-                   </div>
-                   <div class="saw-pulse__counter">148</div>
-                   <div class="sa-widget-table saw-pulse__table">
-                      <table>
-                         <thead>
-                            <tr>
-                               <th>Active pages</th>
-                               <th class="text-end">Users</th>
-                            </tr>
-                         </thead>
-                         <tbody>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p1</a></td>
-                               <td class="text-end">15</td>
-                            </tr>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p2</a></td>
-                               <td class="text-end">11</td>
-                            </tr>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p3</a></td>
-                               <td class="text-end">7</td>
-                            </tr>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p4</a></td>
-                               <td class="text-end">4</td>
-                            </tr>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p5</a></td>
-                               <td class="text-end">3</td>
-                            </tr>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p6</a></td>
-                               <td class="text-end">3</td>
-                            </tr>
-                            <tr>
-                               <td><a href="#" class="text-reset">/products/my-product-p7</a></td>
-                               <td class="text-end">1</td>
-                            </tr>
-                         </tbody>
-                      </table>
-                   </div>
-                </div>
-             </div>
 
-             <div class="col-12 col-lg-8 col-xxl-9 d-flex">
+
+             <div class="col-12 col-lg-12 col-xxl-12 d-flex">
                 <div class="card flex-grow-1 saw-table">
                    <div class="sa-widget-header saw-table__header">
                       <h2 class="sa-widget-header__title">Recent orders</h2>
@@ -551,94 +470,7 @@
                 </div>
              </div>
 
-             <div class="col-12 col-lg-6 d-flex">
-                <div class="card flex-grow-1">
-                   <div class="card-body">
-                      <div class="sa-widget-header mb-4">
-                         <h2 class="sa-widget-header__title">Recent activity</h2>
-                         <div class="sa-widget-header__actions">
-                            <div class="dropdown">
-                               <button type="button" class="btn btn-sm btn-sa-muted d-block" id="widget-context-menu-8" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="3" height="13" fill="currentColor">
-                                     <path d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z"></path>
-                                  </svg>
-                               </button>
-                               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="widget-context-menu-8">
-                                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                                  <li><a class="dropdown-item" href="#">Move</a></li>
-                                  <li>
-                                     <hr class="dropdown-divider"/>
-                                  </li>
-                                  <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
-                               </ul>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="sa-timeline mb-n2 pt-2">
-                         <ul class="sa-timeline__list">
-                            <?php
-                                   $Activity = DB::table('activity_log')->where('causer_id', Auth::user()->id)->limit(6)->get()
-                            ?>
-                            @foreach ($Activity as $activity)
-                            <li class="sa-timeline__item">
-                                <div class="sa-timeline__item-title"><?php echo timeAgo($activity->created_at) ?></div>
-                                <div class="sa-timeline__item-content">{{$activity->description}}</a></div>
-                             </li>
-                            @endforeach
 
-
-                         </ul>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="col-12 col-lg-6 d-flex">
-                <div class="card flex-grow-1">
-                   <div class="card-body">
-                      <div class="sa-widget-header">
-                         <h2 class="sa-widget-header__title">Recent reviews</h2>
-                         <div class="sa-widget-header__actions">
-                            <div class="dropdown">
-                               <button type="button" class="btn btn-sm btn-sa-muted d-block" id="widget-context-menu-9" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="3" height="13" fill="currentColor">
-                                     <path d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z"></path>
-                                  </svg>
-                               </button>
-                               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="widget-context-menu-9">
-                                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                                  <li><a class="dropdown-item" href="#">Move</a></li>
-                                  <li>
-                                     <hr class="dropdown-divider"/>
-                                  </li>
-                                  <li><a class="dropdown-item text-danger" href="#">Remove</a></li>
-                               </ul>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
-                   <ul class="list-group list-group-flush">
-
-                      <li class="list-group-item py-2">
-                         <div class="d-flex align-items-center py-3">
-                            <a href="app-product.html" class="me-4">
-                               <div class="sa-symbol sa-symbol--shape--rounded sa-symbol--size--lg"><img src="{{asset('supplier-theme/images/products/product-1-40x40.jpg')}}" width="40" height="40" alt=""/></div>
-                            </a>
-                            <div class="d-flex align-items-center flex-grow-1 flex-wrap">
-                               <div class="col">
-                                  <a href="app-product.html" class="text-reset fs-exact-14">Wiper Blades Brandix WL2</a>
-                                  <div class="text-muted fs-exact-13">Reviewed by <a href="app-customer.html" class="text-reset">Amos Kipchumba</a></div>
-                               </div>
-                               <div class="col-12 col-sm-auto">
-                                  <div class="sa-rating ms-sm-3 my-2 my-sm-0" style="--sa-rating--value:1">
-                                     <div class="sa-rating__body"></div>
-                                  </div>
-                               </div>
-                            </div>
-                         </div>
-                      </li>
-                   </ul>
-                </div>
-             </div>
           </div>
        </div>
     </div>

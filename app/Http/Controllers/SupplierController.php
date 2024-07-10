@@ -140,6 +140,33 @@ class SupplierController extends Controller
         return view('suppliers.editProduct', compact('product', 'Categories'));
     }
 
+    public function my_profile_update(Request $request){
+
+        $updateDetails = array(
+            'comment' => $request->comment,
+            'company' => $request->company,
+            'email' =>$request->email,
+            'name' =>$request->name,
+            'mobile' =>$request->phone,
+            'address' =>$request->address,
+            'apartment'=>$request->apartment,
+            'country' =>$request->country,
+            'street' =>$request->street
+        );
+        DB::table('users')->where('id', Auth::User()->id)->update($updateDetails);
+
+        Session::flash('message', "Product Has Been Added");
+        return Redirect::back();
+    }
+
+    public function my_profile(){
+        $User = \App\Models\User::find(Auth::User()->id);
+        $Categories = \App\Models\Category::all();
+        return view('suppliers.my_profile', compact('User'));
+    }
+
+
+
 
     //Edit product post
     public function editProductPost(Request $request,$id){

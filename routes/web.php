@@ -94,6 +94,10 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
     //   delete product
       Route::get('/delete-product/{id}',[SupplierController::class, 'deleteProducts'])->name('supplier.delete.product');
 
+    //   my-profile
+    Route::get('/edit-product/{id}', [SupplierController::class, 'editProduct'])->name('supplier.edit-product');
+      Route::post('/edit-Product/{id}', [SupplierController::class, 'editProductPost'])->name('supplier.edit-product-post');
+
       //Three routes invoices, my payments and Make payments
       Route::get('/my-invoices', [SupplierController::class, 'myInvoices'])->name('supplier.my-invoices');
       Route::get('/my-payments', [SupplierController::class, 'myPayments'])->name('supplier.my-payments');
@@ -101,6 +105,8 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
       Route::post('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
       Route::get('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.commisions');
 
+      Route::get('/my-profile', [SupplierController::class, 'my_profile'])->name('my-profile');
+      Route::post('/update-my-profile', [SupplierController::class, 'my_profile_update'])->name('update-my-profile');
 
       //terms and conditions
       Route::get('/terms', [SupplierController::class, 'terms'])->name('supplier.terms');
