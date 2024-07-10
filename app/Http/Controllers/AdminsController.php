@@ -1077,6 +1077,7 @@ class AdminsController extends Controller
         $updateDetails = array(
             'title' => $request->title,
             'type' => $request->type,
+            'meta' => $request->meta,
             'slung' => Str::slug($request->title),
             'content' => $request->ckeditor,
             'author' => Auth::user()->id,
