@@ -27098,7 +27098,9 @@ del {
 .dzSubscribe.style-1 .input-group .woocommerce form .form-row .select2-choice, .woocommerce form .form-row .dzSubscribe.style-1 .input-group .select2-choice {
   height: 45px;
   border-radius: 10px !important;
-  background: #004aad; }
+  /* background: #004aad;  */
+  border:3px solid #501ba5;
+}
 
 .dzSearch .form-group .input-group .form-control, .dzSearch .form-group .input-group .woocommerce #review_form #respond input[type="text"], .woocommerce #review_form #respond .dzSearch .form-group .input-group input[type="text"],
 .dzSearch .form-group .input-group .woocommerce #review_form #respond textarea, .woocommerce #review_form #respond .dzSearch .form-group .input-group textarea,
