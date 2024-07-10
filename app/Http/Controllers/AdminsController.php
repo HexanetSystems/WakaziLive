@@ -482,6 +482,25 @@ class AdminsController extends Controller
         return Redirect::back();
     }
 
+    public function assignProduct($id){
+        $Category = Category::all();
+        activity()->log('Access Edit Product ID number '.$id.' ');
+        $Product = Product::find($id);
+        $Users = User::where('type','3')->get();
+        $page_title = 'formfiletext';
+        $page_name = 'Edit Home Page Slider';
+        return view('admin.assignProduct',compact('page_title','Product','page_name','Category','Users'));
+    }
+
+    public function assign_Product(Request $request){
+        $updateDetails = array(
+            'UserID'=>$request->UserID,
+        );
+        DB::table('products')->where('id',$request->product_id)->update($updateDetails);
+        Session::flash('message', "Product Assign Successfully");
+        return Redirect::back();
+    }
+
     public function editProducts($id){
         $Category = Category::all();
         activity()->log('Access Edit Product ID number '.$id.' ');
@@ -490,6 +509,8 @@ class AdminsController extends Controller
         $page_name = 'Edit Home Page Slider';
         return view('admin.editProduct',compact('page_title','Product','page_name','Category'));
     }
+
+
 
     public function edit_Product(Request $request, $id){
         activity()->log('Evoked Edit Product For Product ID number '.$id.' ');

@@ -48,6 +48,7 @@
                             <th>Title</th>
                             <th>Category & Tags</th>
                             <th>image</th>
+                            <th>ReAssign Product</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -66,6 +67,8 @@
                             </td>
                             <td>
                                 <a target="new" href="{{url('/')}}/product/{{$item->slung}}"><img width="150" src="{{url('/')}}/uploads/products/{{$item->image_one}}"></a>
+                            </td>
+                            <td><a href="{{url('/')}}/admin/assignProduct/{{$item->id}}" class="sb2-2-1-edit btn btn-primary"><i class="fa fa-exchange" aria-hidden="true"></i> Re-Assign</a>
                             </td>
                             <td><a href="{{url('/')}}/admin/editProducts/{{$item->id}}" class="sb2-2-1-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             </td>

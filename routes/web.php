@@ -211,6 +211,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::post('edit_Product/{id}', [AdminsController::class, 'edit_Product']);
         Route::get('deleteProduct/{id}', [AdminsController::class, 'deleteProduct']);
 
+        Route::get('assignProduct/{id}', [AdminsController::class, 'assignProduct']);
+        Route::post('assign-Product', [AdminsController::class, 'assign_Product']);
+
+
 
         Route::get('product-approve', [AdminsController::class, 'approve'])->name('product-approve');
 

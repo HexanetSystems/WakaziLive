@@ -73,6 +73,7 @@
                       </li>
                       <li><a href="{{url('/')}}/admin/addProduct">Add Products</a>
                       </li>
+
                    </ul>
                 </div>
              </li>
