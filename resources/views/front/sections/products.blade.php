@@ -63,7 +63,7 @@
                                 <h5 class="price">kes {{$product->price}}</h5>
                             </div>
                             <?php
-                                       $Main = \App\Models\Main::find($product->main);
+                                $Main = \App\Models\Main::find($product->main);
                             ?>
                             @if($Main==null)
 

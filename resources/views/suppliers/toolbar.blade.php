@@ -144,7 +144,7 @@
              </div>
           </div>
           <div class="dropdown sa-toolbar__item">
-             <button class="sa-toolbar-user" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-offset="0,1" aria-expanded="false"><span class="sa-toolbar-user__avatar sa-symbol sa-symbol--shape--rounded"><img src="{{asset('supplier-theme/images/customers/customer-7-64x64.jpg')}}" width="64" height="64" alt=""/></span><span class="sa-toolbar-user__info"><span class="sa-toolbar-user__title">{{Auth::User()->name}}</span><span class="sa-toolbar-user__subtitle">{{Auth::User()->email}}</span></span></button>
+             <button class="sa-toolbar-user" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-offset="0,1" aria-expanded="false"><span class="sa-toolbar-user__avatar sa-symbol sa-symbol--shape--rounded"><img src="{{Auth::User()->image}}" width="64" height="64" alt=""/></span><span class="sa-toolbar-user__info"><span class="sa-toolbar-user__title">{{Auth::User()->name}}</span><span class="sa-toolbar-user__subtitle">{{Auth::User()->email}}</span></span></button>
              <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="{{url('/')}}/supplier/my-profile">Profile</a></li>
                    <hr class="dropdown-divider"/>

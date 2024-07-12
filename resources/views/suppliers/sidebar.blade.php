@@ -211,6 +211,19 @@
                 </a>
             </li>
 
+            <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">
+                <a href="{{url('/')}}/supplier/update-logo" class="sa-nav__link">
+                    <span class="sa-nav__icon fa fa-user fa-w-14">
+                        <i class="">
+
+                        </i>
+                    </span>
+                    <span class="sa-nav__title">Update Logo
+
+                    </span>
+                </a>
+            </li>
+
 
 
             <li class="sa-nav__menu-item sa-nav__menu-item--has-icon" data-sa-collapse-item="sa-nav__menu-item--open">

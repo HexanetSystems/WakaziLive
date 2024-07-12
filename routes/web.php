@@ -108,6 +108,10 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
       Route::get('/my-profile', [SupplierController::class, 'my_profile'])->name('my-profile');
       Route::post('/update-my-profile', [SupplierController::class, 'my_profile_update'])->name('update-my-profile');
 
+      Route::get('/update-logo', [SupplierController::class, 'my_logo'])->name('update-logo');
+      Route::post('/update-my-logo', [SupplierController::class, 'my_logo_update'])->name('update-my-logo');
+
+
       //terms and conditions
       Route::get('/terms', [SupplierController::class, 'terms'])->name('supplier.terms');
       Route::get('/privacy', [SupplierController::class, 'privacy'])->name('supplier.privacy');

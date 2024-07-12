@@ -165,6 +165,33 @@ class SupplierController extends Controller
         return view('suppliers.my_profile', compact('User'));
     }
 
+    public function my_logo(){
+        $User = \App\Models\User::find(Auth::User()->id);
+        $Categories = \App\Models\Category::all();
+        return view('suppliers.my_logo', compact('User'));
+    }
+
+    public function my_logo_update(Request $request){
+        if(isset($request->image)){
+            $dir = 'uploads/users';
+            $file = $request->file('image');
+            $realPath = $request->file('image')->getRealPath();
+            $image = $this->genericFIleUpload($file,$dir,$realPath);
+        }else{
+            $image = "0";
+        }
+
+        $update = array(
+
+            'image' => $image,
+        );
+        // dd($update);
+        DB::table('users')->where('id', Auth::User()->id)->update($update);
+        $User = Auth::User()->name;
+        Session::flash('message', "$User has been Updated their logo");
+        return Redirect::Back();
+    }
+
 
 
 
