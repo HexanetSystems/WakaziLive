@@ -30,7 +30,7 @@
                 </ul>
             </div>
             <div class="sb2-2-1">
-                <h2>All Products Posted</h2>
+                <h2>All Products from {{\App\Models\User::find($id)->name}}</h2>
                 <center>
                     @if(Session::has('message'))
                                   <div class="alert alert-success">{{ Session::get('message') }}</div>

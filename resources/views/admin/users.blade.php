@@ -52,7 +52,7 @@
                                                 {{-- <th>User</th> --}}
                                                 <th>Name</th>
                                                 <th>Contacts</th>
-
+                                                <th>Products</th>
                                                 <th>Role</th>
                                                 <th>Status</th>
                                                 <th>Delete</th>
@@ -67,6 +67,18 @@
                                                 <td><a href="{{url('/')}}/editUser/{{$item->id}}"><span class="list-enq-name">{{$item->name}}</span></a>
                                                 </td>
                                                 <td>{{$item->mobile}}<br>{{$item->email}}<br>{{$item->address}}<br>{{$item->country}}</td>
+                                                <td>
+
+
+                                                    <a href="{{url('/')}}/admin/supplier-products/{{$item->id}}">
+                                                        <span class="list-enq-name">
+                                                            <?php
+                                                                echo count(DB::table('products')->where('UserID',$item->id)->get())
+                                                            ?>
+                                                        </span>
+                                                    </a>
+                                                </td>
+
 
                                                 <td>
                                                     @if($item->type == 1)

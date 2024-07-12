@@ -156,7 +156,7 @@
                                 $Main = DB::table('mains')->inRandomOrder()->limit(4)->get();
                             ?>
                             @foreach ($Main as $mains)
-                            <li class="sub-menu-down"><a href="{{url('/')}}/products/{{$mains->slung}}">{{$mains->title}}</a></li>
+                            <li class="sub-menu-down"><a href="{{url('/')}}/products-class/{{$mains->slung}}">{{$mains->title}}</a></li>
                             @endforeach
                             <li class="sub-menu-down">
 								<a href="{{route('county-bounty')}}"><span>County Bounty</span>  </a>

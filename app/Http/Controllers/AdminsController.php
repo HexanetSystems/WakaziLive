@@ -402,6 +402,16 @@ class AdminsController extends Controller
         return Redirect::back();
     }
 
+
+    public function supplier_products($id){
+        activity()->log('Accessed All Products');
+        $Product = Product::where('UserID',$id)->get();
+        $page_title = 'list';
+        $page_name = 'Products';
+        return view('admin.supplier_products',compact('page_title','Product','page_name','id'));
+    }
+
+
     // Products
     public function products(){
         activity()->log('Accessed All Products');
@@ -467,6 +477,7 @@ class AdminsController extends Controller
 
         $Product = new Product;
         $Product->name = $request->title;
+        $Product->main = $request->main;
         $Product->slung = Str::slug($request->title);
         $Product->category = $request->category;
         $Product->sub_category_id = $request->sub_cat;

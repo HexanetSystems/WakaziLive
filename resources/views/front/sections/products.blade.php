@@ -39,9 +39,9 @@
             <div class="clearfix">
                 <ul id="masonry" class="row g-xl-4 g-3">
                     @foreach ($Product as $product)
-                    <li class="card-container col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp" data-wow-delay="0.6s">
+                    <li class="card-container col-6 col-xl-4 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp" data-wow-delay="0.6s">
                         <div class="shop-card">
-                            <div class="dz-media">
+                            <div class="dz-media product-imgs">
                                 <img class="product-img" src="{{$product->image_one}}" alt="{{$product->name}}">
                                 <div class="shop-meta">
                                     <a href="{{url('/')}}/add-to-cart/{{$product->id}}" class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modals" data-bs-target="#sssexampleModal">
@@ -62,9 +62,20 @@
                                 <h5 class="title"><a href="{{url('/')}}/product/{{$product->slung}}">{{$product->name}}</a></h5>
                                 <h5 class="price">kes {{$product->price}}</h5>
                             </div>
+                            <?php
+                                       $Main = \App\Models\Main::find($product->main);
+                            ?>
+                            @if($Main==null)
+
+                            @else
                             <div class="product-tag">
-                                <span class="badge ">Custom Tag</span>
-                            </div>
+								<span class="badge ">
+
+                                    {{$Main->title}}
+
+                                </span>
+							</div>
+                            @endif
                         </div>
                     </li>
                     @endforeach

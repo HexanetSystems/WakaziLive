@@ -49,9 +49,21 @@
 								<h5 class="title"><a href="{{url('/')}}/product/{{$Pro->slung}}">{{$Pro->name}}</a></h5>
 								<h5 class="price">kes {{$Pro->price}}</h5>
 							</div>
-							<div class="product-tag">
-								<span class="badge ">Get 20% Off</span>
+                            <?php
+                                       $Main = \App\Models\Main::find($Pro->main);
+                            ?>
+                            @if($Main==null)
+
+                            @else
+                            <div class="product-tag">
+								<span class="badge ">
+
+                                    {{$Main->title}}
+
+                                </span>
 							</div>
+                            @endif
+
 						</div>
 					</div>
                     @endforeach

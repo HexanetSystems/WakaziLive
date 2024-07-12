@@ -16,12 +16,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/product/{slung}', [App\Http\Controllers\HomeController::class, 'product'])->name('home-product');
 Route::get('/products/{slung}', [App\Http\Controllers\HomeController::class, 'category'])->name('home-category');
+Route::get('/products-class/{slung}', [App\Http\Controllers\HomeController::class, 'category_class'])->name('products-class');
 
 Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
 Route::get('/cart/shopping-cart', [HomeController::class, 'cart'])->name('shopping-cart');
 Route::get('/add-to-cart/{id}', [HomeController::class, 'addToCart'])->name('add-to-cart');
 Route::get('/cart/remove-item/{id}', [HomeController::class, 'removeCart'])->name('remove-item');
-
 Route::post('/cart/custom-register', [HomeController::class, 'register'])->name('custom-register');
 Route::get('/cart/checkout/post-order', [HomeController::class, 'post_order'])->name('post-order');
 
@@ -213,6 +213,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
         Route::get('assignProduct/{id}', [AdminsController::class, 'assignProduct']);
         Route::post('assign-Product', [AdminsController::class, 'assign_Product']);
+
+        //supplier products
+        Route::get('supplier-products/{id}', [AdminsController::class, 'supplier_products'])->name('supplier-products');
 
 
 

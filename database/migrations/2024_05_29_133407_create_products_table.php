@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('main')->nullable();
             $table->integer('UserID')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('pro_condition')->default('New');

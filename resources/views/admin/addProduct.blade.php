@@ -73,6 +73,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php
+                                $Main = DB::table('mains')->get();
+                            ?>
+                            <div class="row">
+                                {{--  --}}
+                                <div class="input-field col s6">
+                                    <select required name="main" class="icons">
+                                        <option value="" disabled selected>Choose Product Class</option>
+                                        @foreach ($Main as $main)
+                                        <option value="{{$main->id}}" data-icon="" class="circle">{{$main->title}}</option>
+                                        @endforeach
+                                    </select>
+                                    <label>Product Class</label>
+                                </div>
+                            </div>
+                            <div class="section-space col s12"></div>
                             <div class="row">
                                 {{--  --}}
                                 <div class="input-field col s6">
