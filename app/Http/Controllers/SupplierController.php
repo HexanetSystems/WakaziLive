@@ -120,6 +120,7 @@ class SupplierController extends Controller
         $Product->name = $request->name;
         $Product->slung = Str::slug($request->name);
         $Product->category = $request->category;
+        $Product->main = $request->main;
         $Product->UserID = Auth::User()->id;
         $Product->stock = "In Stock";
         $Product->price_raw = $request->price;
@@ -212,6 +213,8 @@ class SupplierController extends Controller
         $update = array(
             'name' => $request->name,
             'slung' => Str::slug($request->name),
+
+            'main' => $request->main,
             'category' => $request->category,
             'price' => $request->price,
             'content' => $request->content,

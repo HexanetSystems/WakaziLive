@@ -90,6 +90,21 @@
                                 <div><label for="form-product/seo-title" class="form-label">Publish date</label><input value="{{today()}}" type="text" class="form-control datepicker-here" id="form-product/publish-date" data-auto-close="true" data-language="en"/></div>
                             </div>
                         </div>
+                        <?php
+                           $Main = DB::table('mains')->get();
+                        ?>
+                        <div class="card w-100 mt-5">
+                            <div class="card-body p-5">
+                                <div class="mb-5">
+                                    <h2 class="mb-0 fs-exact-18">Product Type</h2>
+                                </div>
+                                <select name="main" class="sa-select2 form-select" >
+                                    @foreach ($Main as $main)
+                                    <option value="{{$main->id}}">{{$main->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="card w-100 mt-5">
                             <div class="card-body p-5">
                                 <div class="mb-5">

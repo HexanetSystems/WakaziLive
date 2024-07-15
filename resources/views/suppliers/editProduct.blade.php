@@ -107,6 +107,31 @@
                         <div class="card w-100 mt-5">
                             <div class="card-body p-5">
                                 <div class="mb-5">
+                                    <h2 class="mb-0 fs-exact-18">Product Type</h2>
+                                </div>
+                                <select name="main" class="sa-select2 form-select" >
+                                    <?php
+                                        $Main = \App\Models\Main::find($product->main);
+                                        $Mains = DB::table('mains')->get();
+
+                                    ?>
+                                    @if($Main == null)
+                                        @foreach ($Mains as $main)
+                                        <option value="{{$main->id}}">{{$main->title}}</option>
+                                        @endforeach
+                                    @else
+                                        <option selected="" value="{{$Main->id}}">{{$Main->title}}</option>
+                                        @foreach ($Mains as $main)
+                                        <option value="{{$main->id}}">{{$main->title}}</option>
+                                        @endforeach
+                                    @endif
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card w-100 mt-5">
+                            <div class="card-body p-5">
+                                <div class="mb-5">
                                     <h2 class="mb-0 fs-exact-18">Categories</h2>
                                 </div>
                                 <select name="category" class="sa-select2 form-select" >

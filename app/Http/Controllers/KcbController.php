@@ -56,14 +56,6 @@ class KcbController extends Controller
 
 
     public function stkRequest(){
-        $phoneNumber = "254723014032";
-        $amount = "10";
-        $invoiceNumber = "KCBTILLNO#YOURACCREF";
-        $sharedShortCode = true;
-        $orgShortCode = "";
-        $orgPassKey = $this->lipaNaMpesaPassword();
-        $callbackUrl = "https://posthere.io/f613-4b7f-b82b";
-        $transactionDescription = "school fee payment";
 
         $postData = array(
             "phoneNumber"=> "254723014032",
@@ -103,7 +95,46 @@ class KcbController extends Controller
        curl_close($Curl);
 
        echo $response;
-        //
+
+    }
+
+    public function tryKen(){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+            "phoneNumber": "254705027335",
+            "amount": "10",
+            "invoiceNumber": "ONETILLNO#YOURREF",
+            "sharedShortCode": true,
+            "orgShortCode": "",
+            "orgPassKey": "",
+            "callbackUrl": "https://posthere.io/f613-4b7f-b82b",
+            "transactionDescription": "school fee payment"
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'accept: application/json',
+            'routeCode: 207',
+            'operation: STKPush',
+            'messageId: 232323_KCBOrg_8875661561',
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$this->generateAccessToken(),
+            'Cookie: 4b1f380494b4bbde9d5435be5996a54d=c8ce1208a0770073a38a1f193b072115; dd73a3039ce793d42fd0d40f64213ce1=8c944c650c1df5dff545043cf35f9e6c'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
     }
 
 }
