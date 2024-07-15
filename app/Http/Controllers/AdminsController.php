@@ -559,6 +559,7 @@ class AdminsController extends Controller
             'featured'=>$featured,
             'slung' => Str::slug($request->title),
             'content'=>$request->content,
+            'main'=>$request->main,
             // 'UserID'=>$request->user,
             'stock'=>$new_stock,
             'price'=>$request->price,

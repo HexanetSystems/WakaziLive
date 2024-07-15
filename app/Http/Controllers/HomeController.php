@@ -128,13 +128,13 @@ class HomeController extends Controller
 
     public function category($slung){
         $Category = DB::table('categories')->where('slung', $slung)->first();
-        $Product = DB::table('products')->where('category', $Category->id)->where('status', 1)->paginate(12);
+        $Product = DB::table('products')->where('category', $Category->id)->where('status', '1')->paginate(12);
         return view('front.category', compact('Product','Category'));
     }
 
     public function category_class($slung){
         $Category = DB::table('mains')->where('slung', $slung)->first();
-        $Product = DB::table('products')->where('main', $Category->id)->where('status', 1)->paginate(12);
+        $Product = DB::table('products')->where('main', $Category->id)->where('status', '1')->paginate(12);
         return view('front.category', compact('Product','Category'));
     }
 
