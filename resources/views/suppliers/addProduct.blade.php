@@ -96,7 +96,7 @@
                         <div class="card w-100 mt-5">
                             <div class="card-body p-5">
                                 <div class="mb-5">
-                                    <h2 class="mb-0 fs-exact-18">Product Type</h2>
+                                    <h2 class="mb-0 fs-exact-18">Product Class</h2>
                                 </div>
                                 <select name="main" class="sa-select2 form-select" >
                                     @foreach ($Main as $main)
