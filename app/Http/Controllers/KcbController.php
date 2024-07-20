@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class KcbController extends Controller
 {
@@ -111,7 +112,7 @@ class KcbController extends Controller
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
         CURLOPT_POSTFIELDS =>'{
-            "phoneNumber": "254705027335",
+            "phoneNumber": "254723014032",
             "amount": "10",
             "invoiceNumber": "ONETILLNO#YOURREF",
             "sharedShortCode": true,
@@ -127,7 +128,7 @@ class KcbController extends Controller
             'messageId: 232323_KCBOrg_8875661561',
             'Content-Type: application/json',
             'Authorization: Bearer '.$this->generateAccessToken(),
-            'Cookie: 4b1f380494b4bbde9d5435be5996a54d=c8ce1208a0770073a38a1f193b072115; dd73a3039ce793d42fd0d40f64213ce1=8c944c650c1df5dff545043cf35f9e6c'
+
         ),
         ));
 
@@ -137,4 +138,61 @@ class KcbController extends Controller
         echo $response;
     }
 
+    public function stkRequestMake(Request $request){
+         $phoneNumber = $request->phoneNumber;
+         $amount = $request->amount;
+         $invoiceNumber = "ONETILLNO#YOURREF";
+         $transactionDescription = "Payment For Invoce Number: $invoiceNumber";
+         //PrepareAmount;
+         $rowAmount = $request->amount;
+         $prepareAmountString = str_replace( ',', '', $rowAmount);
+         $amount = ceil($prepareAmountString);
+         //PreparePhoneNumber
+         $rowPhoneNumber = $request->phoneNumber;
+         $preparePhoneNumberString = str_replace( '+', '', $rowPhoneNumber);
+         $mobile = $preparePhoneNumberString;
+
+         $postData = array(
+            "phoneNumber"=> $mobile,
+            "amount"=> $amount,
+            "invoiceNumber"=> "ONETILLNO#YOURREF",
+            "sharedShortCode"=> "",
+            "orgShortCode"=> "",
+            "orgPassKey"=> "",
+            "callbackUrl"=> "https://b6d4-102-67-153-122.ngrok-free.app/api/stk-callback",
+            "transactionDescription"=> "school fee payment"
+        );
+         $prepare = json_encode($postData);
+
+         $curl = curl_init();
+         curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>$prepare,
+            CURLOPT_HTTPHEADER => array(
+                'accept: application/json',
+                'routeCode: 207',
+                'operation: STKPush',
+                'messageId: 232323_KCBOrg_8875661561',
+                'Content-Type: application/json',
+                'Authorization: Bearer '.$this->generateAccessToken(),
+            ),
+         ));
+
+         $response = curl_exec($curl);
+         curl_close($curl);
+         echo $response;
+    }
+
+
+    public function stkCallback(Request $request){
+        Log::info($request->getContent());
+        return response()->json(['message' => 'CF Form submitted successfully!']);
+    }
 }

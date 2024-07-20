@@ -40944,3 +40944,8 @@ footer {
 .title{
     min-height:50px;
 }
+
+.loading-gif{
+   width:20px;
+   display:none;
+}

@@ -59,7 +59,7 @@ class LoginController extends Controller
             }else if (auth()->user()->type == 'supplier') {
                 return redirect()->route('supplier.home');
             }else{
-                return redirect()->route('dashboard');
+                return redirect()->route('shopping-cart-checkout');
             }
         }else{
             return redirect()->route('login')

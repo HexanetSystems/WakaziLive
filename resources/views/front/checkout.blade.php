@@ -271,7 +271,7 @@
                             </table>
 
                             <div class="accordion dz-accordion accordion-sm" id="accordionFaq1">
-                                <div class="accordion-item">
+                                {{-- <div class="accordion-item">
                                     <div class="accordion-header" id="heading1">
                                         <div class="accordion-button collapsed custom-control custom-checkbox border-0" data-bs-toggle="collapse" data-bs-target="#collapse1" role="navigation" aria-expanded="true" aria-controls="collapse1">
                                             <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
@@ -285,8 +285,8 @@
                                             <p class="m-b0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="accordion-item">
+                                </div> --}}
+                                {{-- <div class="accordion-item">
                                     <div class="accordion-header" id="heading2">
                                         <div class="accordion-button collapsed custom-control custom-checkbox border-0" data-bs-toggle="collapse" data-bs-target="#collapse2" role="navigation" aria-expanded="true" aria-controls="collapse2">
                                             <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
@@ -300,7 +300,7 @@
                                             <p class="m-b0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="accordion-item">
                                     <div class="accordion-header" id="heading3">
                                         <div class="accordion-button collapsed custom-control custom-checkbox border-0" data-bs-toggle="collapse" data-bs-target="#collapse3" role="navigation" aria-expanded="true" aria-controls="collapse3">
@@ -314,7 +314,7 @@
                                     </div>
                                     <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#accordionFaq1">
                                         <div class="accordion-body">
-                                            <p class="m-b0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
+                                            <p class="m-b0">We will initiate the payment for you. Just hold tight and be ready to enter your M-Pesa PIN to complete the purchase. Thank you for your patience and cooperation in this process.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -326,8 +326,15 @@
                                     <label class="form-check-label" for="basic_checkbox_3">I have read and agree to the website terms and conditions </label>
                                 </div>
                             </div>
+
                             @if(Auth::User())
-                            <a href="{{url('/')}}/cart/checkout/post-order" class="btn btn-secondary w-100">PLACE ORDER</a>
+                            <form method="POST" action="{{route('make-stk-request')}}" id="stkDoIt">
+                                @csrf
+                                <input type="hidden" name="phoneNumber" value="{{Auth::User()->mobile}}">
+                                <input type="hidden" name="amount" value="{{Cart::total()}}">
+                                <button type="submit" class="btn btn-secondary w-100">PLACE ORDER  &nbsp; &nbsp; <span><img class="loading-gif" src="{{asset('uploads')}}/loading.gif"></span></button>
+                            </form>
+                            {{-- <a href="{{url('/')}}/cart/checkout/post-order" class="btn btn-secondary w-100">PLACE ORDER</a> --}}
                             @else
                             @endif
                         </div>

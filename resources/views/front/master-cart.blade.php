@@ -69,7 +69,7 @@
 
 	<button class="scroltop" type="button"><i class="fas fa-arrow-up"></i></button>
 
-	
+
 
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
@@ -96,5 +96,31 @@
 <script src="{{asset('theme/js/dz.carousel.js')}}"></script><!-- DZ CAROUSEL JS -->
 <script src="{{asset('theme/js/dz.ajax.js')}}"></script><!-- AJAX -->
 <script src="{{asset('theme/js/custom.js')}}"></script><!-- CUSTOM JS -->
+
+<script>
+    $(document).ready(function() {
+        $('#stkDoIt').submit(function(e) {
+            e.preventDefault();
+            $(".loading-gif").show();
+            // Serialize the form data
+            var formData = $(this).serialize();
+            // Send an AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '{!! route('make-stk-request') !!}',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    // Handle the response message
+                    $('#cf-response-message').text(response.message);
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors if needed
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
