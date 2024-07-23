@@ -40,7 +40,7 @@ Route::get('/access-token', [App\Http\Controllers\KcbController::class, 'generat
 Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkRequest'])->name('stk-request');
 Route::get('/stk-request-ken', [App\Http\Controllers\KcbController::class, 'tryKen'])->name('stk-request-ken');
 Route::post('/make-stk-request', [App\Http\Controllers\KcbController::class, 'stkRequestMake'])->name('make-stk-request');
-Route::post('/api/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCallback'])->name('stk-callback');
+
 
 
 // Auth
