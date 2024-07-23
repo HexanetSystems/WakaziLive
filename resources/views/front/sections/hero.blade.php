@@ -1,102 +1,45 @@
+<?php
+   $Slider = \App\Models\Product::where('status', 1)->limit(4)->inRandomOrder()->get();
+?>
 <div class="main-slider-wrapper">
     <div class="slider-inner">
         <div class="row">
             <div class="col-lg-6">
                 <div class="slider-main">
+                    @foreach ($Slider as $slider)
                     <div class="slick-slide">
                         <div class="content-info">
-                            <h1 class="title">Handcrafted Home Decor.</h1>
+                            <h1 class="title">{{$slider->name}}.</h1>
                             <div class="swiper-meta-items">
                                 <div class="meta-content">
                                     <span class="price-name">From</span>
-                                    <span class="price-num d-inline-block">kes 800.00</span>
+                                    <span class="price-num d-inline-block">kes {{$slider->price}}</span>
                                 </div>
                             </div>
                             <div class="content-btn m-b30">
                                 <a href="#" class="btn btn-secondary me-xl-3 me-2 btnhover20">BUY NOW</a>
-                                <a href="#" class="btn btn-outline-secondary btnhover20">VIEW DETAIL </a>
+                                <a href="{{url('/')}}/product/{{$slider->slung}}" class="btn btn-outline-secondary btnhover20">VIEW DETAIL </a>
                             </div>
                         </div>
                     </div>
-                    <div class="slick-slide">
-                        <div class="content-info">
-                            <h1 class="title">Gifted Hands Necklace & Bracelets.</h1>
-                            <div class="swiper-meta-items">
-                                <div class="meta-content">
-                                    <span class="price-name">From</span>
-                                    <span class="price-num d-inline-block">kes 300.00</span>
-                                </div>
-                            </div>
-                            <div class="content-btn m-b30">
-                                <a href="#" class="btn btn-secondary me-xl-3 me-2 btnhover20">BUY NOW</a>
-                                <a href="#" class="btn btn-outline-secondary btnhover20">VIEW DETAIL </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="content-info">
-                            <h1 class="title">Cultural Wear - Arap Mwafrika</h1>
-                            <div class="swiper-meta-items">
-                                <div class="meta-content">
-                                    <span class="price-name">from</span>
-                                    <span class="price-num d-inline-block">kes 750.00</span>
-                                </div>
-                            </div>
-                            <div class="content-btn m-b30">
-                                <a href="#" class="btn btn-secondary me-xl-3 me-2 btnhover20">BUY NOW</a>
-                                <a href="#" class="btn btn-outline-secondary btnhover20">VIEW DETAIL </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="content-info">
-                            <h1 class="title">Curly Laces Beautiful Ankaras.</h1>
-                            <div class="swiper-meta-items">
-                                <div class="meta-content">
-                                    <span class="price-name">from</span>
-                                    <span class="price-num d-inline-block">kes 7500.00</span>
-                                </div>
-                            </div>
-                            <div class="content-btn m-b30">
-                                <a href="#" class="btn btn-secondary me-xl-3 me-2 btnhover20">BUY NOW</a>
-                                <a href="#" class="btn btn-outline-secondary btnhover20">VIEW DETAIL </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+
+
 
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="slider-thumbs">
+                    @foreach ($Slider as $slider)
                     <div class="slick-slide">
-                        <div class="banner-media" data-name="Ankara">
+                        <div class="banner-media" data-name="Wakazi">
                             <div class="img-preview">
                                 {{-- 780 by 1050 --}}
-                                <img style="max-height:630px" src="{{asset('theme/images/banner/Picture-Hanging-Ideas-Nails-and-Screws-683x1024.webp')}}" alt="banner-media">
+                                <img style="height:630px; object-fit:cover" src="{{$slider->image_one}}" alt="{{$slider->name}}">
                             </div>
                         </div>
                     </div>
-                    <div class="slick-slide">
-                        <div class="banner-media" data-name="Mkeka">
-                            <div class="img-preview">
-                                <img style="max-height:630px" src="{{asset('theme/images/banner/photo-1602173574767-37ac01994b2a.webp')}}" alt="banner-media">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="banner-media" data-name="Necklace">
-                            <div class="img-preview">
-                                <img style="max-height:630px" src="{{asset('theme/images/banner/62a69fbc5fb1381393ea128e78397d2c.webp')}}" alt="banner-media">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-slide">
-                        <div class="banner-media" data-name="Afrika">
-                            <div class="img-preview">
-                                <img style="max-height:630px" src="{{asset('theme/images/banner/4_e2243f16-32d8-480d-a81e-e30e14827a6f_1000x1000.webp')}}" alt="banner-media">
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             {{-- <button class="slick-next slick-arrow" aria-label="Next" type="button" style="">Next</button></div> --}}

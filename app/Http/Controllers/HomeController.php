@@ -21,13 +21,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        $Product = Product::where('status', 1)->inRandomOrder()->get();
+        $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
         return view('welcome', compact('Product'));
     }
 
     public function home()
     {
-        $Product = Product::where('status', 1)->inRandomOrder()->get();
+        $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
         return view('front.index', compact('Product'));
     }
     public function product($slung)
