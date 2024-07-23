@@ -154,7 +154,7 @@ class KcbController extends Controller
 
          $postData = array(
             "phoneNumber"=> $mobile,
-            "amount"=> $amount,
+            "amount"=> "1",
             "invoiceNumber"=> "ONETILLNO#YOURREF",
             "sharedShortCode"=> "",
             "orgShortCode"=> "",
