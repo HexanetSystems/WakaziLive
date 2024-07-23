@@ -41,6 +41,8 @@ Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkReque
 Route::get('/stk-request-ken', [App\Http\Controllers\KcbController::class, 'tryKen'])->name('stk-request-ken');
 Route::post('/make-stk-request', [App\Http\Controllers\KcbController::class, 'stkRequestMake'])->name('make-stk-request');
 
+Route::get('/verify', [App\Http\Controllers\KcbController::class, 'verify'])->name('verify');
+
 
 
 // Auth

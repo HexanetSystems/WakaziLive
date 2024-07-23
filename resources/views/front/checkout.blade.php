@@ -334,6 +334,7 @@
                                 <input type="hidden" name="amount" value="{{Cart::total()}}">
                                 <button type="submit" class="btn btn-secondary w-100">PLACE ORDER  &nbsp; &nbsp; <span><img class="loading-gif" src="{{asset('uploads')}}/loading.gif"></span></button>
                             </form>
+                            <div class="text-success text-center" id="Success"></div>
                             {{-- <a href="{{url('/')}}/cart/checkout/post-order" class="btn btn-secondary w-100">PLACE ORDER</a> --}}
                             @else
                             @endif

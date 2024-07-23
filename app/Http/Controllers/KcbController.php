@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use App\Models\STKRequest;
+use App\Models\STKMpesaTransaction;
 
 class KcbController extends Controller
 {
@@ -41,62 +43,8 @@ class KcbController extends Controller
 
 
         $access_token=json_decode($response);
-        // dd($access_token->access_token);
+        dd($response);
         return $access_token->access_token;
-    }
-
-    public function lipaNaMpesaPassword()
-    {
-        $lipa_time = Carbon::rawParse('now')->format('YmdHms');
-        $passkey = "f8c8d30f750d884990562ad0fd20e5e0c2e867e21ccae3974eff8c841a8d032f";
-        $BusinessShortCode = 928732;
-        $timestamp =$lipa_time;
-        $lipa_na_mpesa_password = base64_encode($BusinessShortCode.$passkey.$timestamp);
-        return $lipa_na_mpesa_password;
-    }
-
-
-    public function stkRequest(){
-
-        $postData = array(
-            "phoneNumber"=> "254723014032",
-            "amount"=> "10",
-            "invoiceNumber"=> "ONETILLNO#YOURREF",
-            "sharedShortCode"=> "",
-            "orgShortCode"=> "",
-            "orgPassKey"=> "",
-            "callbackUrl"=> "https://posthere.io/f613-4b7f-b82b",
-            "transactionDescription"=> "school fee payment"
-        );
-
-        $url="https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush";
-
-        $options=array(
-            CURLOPT_URL=>$url,
-            CURLOPT_POST=>true,
-            CURLOPT_POSTFIELDS=>$postData,
-            CURLOPT_RETURNTRANSFER=>true,
-            CURLOPT_SSL_VERIFYPEER=>false,
-            CURLOPT_HTTPHEADER=>array(
-               'Content-Type: application/json',
-               'Authorization: Bearer '.$this->generateAccessToken(),
-            ),
-       );
-
-
-       $Curl = curl_init();
-       curl_setopt_array($Curl,$options);
-
-       $response = curl_exec($Curl);
-
-       if(curl_errno($Curl)){
-           echo 'cURL error: '.curl_error($Curl);
-       }
-
-       curl_close($Curl);
-
-       echo $response;
-
     }
 
     public function tryKen(){
@@ -185,14 +133,51 @@ class KcbController extends Controller
             ),
          ));
 
-         $response = curl_exec($curl);
+         $curl_response = curl_exec($curl);
+         $curl_content=json_decode($curl_response);
          curl_close($curl);
-         echo $response;
+         Log::info($curl_response);
+         $MerchantRequestID = $curl_content->response->MerchantRequestID;
+         $CheckoutRequestID = $curl_content->response->CheckoutRequestID;
+         $table = 'lnmo_api_response';
+         $user_id = Auth::User()->id;
+
+         // Insert MerchantRequestID
+        $curl_content=json_decode($curl_response);
+        $MerchantRequestID = $curl_content->MerchantRequestID;
+        $mpesa_transaction = new STKRequest;
+        $mpesa_transaction->CheckoutRequestID =  $curl_content->CheckoutRequestID;
+        $mpesa_transaction->MerchantRequestID =  $MerchantRequestID;
+        $mpesa_transaction->user_id =  $user_id;
+        $mpesa_transaction->PhoneNumber =  $mobile;
+        $mpesa_transaction->Amount =  $amount;
+        $mpesa_transaction->save();
+
+         return $this->checklast($CheckoutRequestID,$table,$curl_response,$user_id);
     }
 
 
     public function stkCallback(Request $request){
         Log::info($request->getContent());
         return response()->json(['message' => 'CF Form submitted successfully!']);
+    }
+
+    public function checklast($AccID,$table,$curl_response,$user){
+                $TableData = DB::table('lnmo_api_response')->where('CheckoutRequestID', $AccID)->where('status','1')->get();
+                if($TableData->isEmpty()){
+                    sleep(10);
+                    return $this->checklast($AccID,$table,$curl_response,$user);
+                }else{
+                    // Go To Requestes and set status to 1
+                    $UpdateDetails = array(
+                        'status'=>1,
+                    );
+                    $UpdateDetail = array(
+                        'user_id'=>$user,
+                    );
+                    DB::table('s_t_k_requests')->where('CheckoutRequestID',$AccID)->update($UpdateDetails);
+                    DB::table('lnmo_api_response')->where('CheckoutRequestID',$AccID)->update($UpdateDetail);
+                    return $curl_response;
+                }
     }
 }
