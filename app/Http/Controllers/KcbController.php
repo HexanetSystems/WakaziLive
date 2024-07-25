@@ -126,7 +126,7 @@ class KcbController extends Controller
             "sharedShortCode"=> "",
             "orgShortCode"=> "",
             "orgPassKey"=> "",
-            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/stk-callback",
+            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/api/stk-callback",
             "transactionDescription"=> "school fee payment"
          );
          $prepare = json_encode($postData);
@@ -164,9 +164,9 @@ class KcbController extends Controller
 
          // Insert MerchantRequestID
         $curl_content=json_decode($curl_response);
-        $MerchantRequestID = $curl_content->MerchantRequestID;
+        $MerchantRequestID = $MerchantRequestID;
         $mpesa_transaction = new STKRequest;
-        $mpesa_transaction->CheckoutRequestID =  $curl_content->CheckoutRequestID;
+        $mpesa_transaction->CheckoutRequestID =  $CheckoutRequestID;
         $mpesa_transaction->MerchantRequestID =  $MerchantRequestID;
         $mpesa_transaction->user_id =  $user_id;
         $mpesa_transaction->PhoneNumber =  $mobile;
