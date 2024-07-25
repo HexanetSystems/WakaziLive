@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\STKRequest;
 use App\Models\STKMpesaTransaction;
 use App\Models\User;
+use App\Models\orders;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -106,10 +107,23 @@ class KcbController extends Controller
         echo $response;
     }
 
+    public function invoiceNumber(){
+        $latest = orders::orderBy('created_at','DESC')->first();
+        if($latest == null){
+            $OrderId = 1;
+        }else{
+            $OrderID = $latest->id;
+            $OrderId = $OrderID+1;
+        }
+
+        $InvoiceNumber = "WAKAZI-".$OrderId;
+        return $InvoiceNumber;
+    }
+
     public function stkRequestMake(Request $request){
          $phoneNumber = $request->phoneNumber;
          $amount = $request->amount;
-         $invoiceNumber = "ONETILLNO#YOURREF";
+         $invoiceNumber = $this->invoiceNumber();
          $transactionDescription = "Payment For Invoce Number: $invoiceNumber";
          //PrepareAmount;
          $rowAmount = $request->amount;
@@ -120,14 +134,16 @@ class KcbController extends Controller
          $preparePhoneNumberString = str_replace( '+', '', $rowPhoneNumber);
          $mobile = $preparePhoneNumberString;
 
+        //  Invoioice
+
          $postData = array(
             "phoneNumber"=> $mobile,
             "amount"=> "1",
-            "invoiceNumber"=> "ONETILLNO#YOURREF",
+            "invoiceNumber"=> "ONETILLNO#".$invoiceNumber,
             "sharedShortCode"=> "",
             "orgShortCode"=> "",
             "orgPassKey"=> "",
-            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/api/stk-callback",
+            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/stk-callback",
             "transactionDescription"=> "school fee payment"
          );
          $prepare = json_encode($postData);
@@ -179,6 +195,7 @@ class KcbController extends Controller
 
 
     public function stkCallback(Request $request){
+        dd($request->getContent());
         Log::info($request->getContent());
         return response()->json(['message' => 'CF Form submitted successfully!']);
     }
