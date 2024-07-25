@@ -47,6 +47,9 @@
                     <div class="col-xl-8">
                         <h4 class="title m-b15">Your Billing details</h4>
                         <div class="accordion dz-accordion accordion-sm" id="accordionFaq">
+                            @if(Auth::User())
+
+                            @else
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -60,19 +63,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-                                        Have a coupon? Click here to enter your code
-                                        <span class="toggle-close"></span>
-                                    </a>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFaq">
-                                    <div class="accordion-body">
-                                        <p class="m-b0">If your order has not yet shipped, you can contact us to change your shipping address</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
+
                         </div>
                         <form class="row">
                             @csrf
@@ -160,7 +152,7 @@
                             <div class="col-md-12">
                                 <div class="form-group m-b25">
                                     <label class="label-title">Phone *</label>
-                                    <input name="mobile" required="" class="form-control">
+                                    <input name="mobile" required="" value="254" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-12">

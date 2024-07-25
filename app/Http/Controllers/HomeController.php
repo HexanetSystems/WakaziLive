@@ -103,6 +103,7 @@ class HomeController extends Controller
 
         User::create([
             'name' => $request->name,
+            'mobile'=>$request->mobile,
             'email' => $request->email,
             'country' => $request->country,
             'company' => $request->company,

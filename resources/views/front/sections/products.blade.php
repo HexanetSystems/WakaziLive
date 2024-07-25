@@ -16,22 +16,16 @@
                                 <input type="radio">
                                 <a href="javascript:void(0);">ALL</a>
                             </li>
-                            <li data-filter=".Dresses" class="btn">
+                            <?php
+                              $Mains = DB::table('mains')->get();
+                            ?>
+                            @foreach ($Mains as $main)
+                            <li data-filter=".{{$main->id}}_cat" class="btn">
                                 <input type="radio">
-                                <a href="javascript:void(0);">Bags</a>
+                                <a href="javascript:void(0);">{{$main->title}}</a>
                             </li>
-                            <li data-filter=".Tops" class="btn">
-                                <input type="radio">
-                                <a href="javascript:void(0);">Sandals</a>
-                            </li>
-                            <li data-filter=".Outerwear" class="btn">
-                                <input type="radio">
-                                <a href="javascript:void(0);">Belts</a>
-                            </li>
-                            <li data-filter=".Jacket" class="btn">
-                                <input type="radio">
-                                <a href="javascript:void(0);">Jewels</a>
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -39,14 +33,14 @@
             <div class="clearfix">
                 <ul id="masonry" class="row g-xl-4 g-3">
                     @foreach ($Product as $product)
-                    <li class="card-container col-6 col-xl-4 col-lg-3 col-md-4 col-sm-6 Tops wow fadeInUp" data-wow-delay="0.6s">
+                    <li class="card-container col-6 col-xl-4 col-lg-3 col-md-4 col-sm-6 {{$product->main}}_cat wow fadeInUp" data-wow-delay="0.6s">
                         <div class="shop-card">
                             <div class="dz-media product-imgs">
                                 <img class="product-img" src="{{$product->image_one}}" alt="{{$product->name}}">
                                 <div class="shop-meta">
-                                    <a href="{{url('/')}}/add-to-cart/{{$product->id}}" class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modals" data-bs-target="#sssexampleModal">
+                                    <a href="{{url('/')}}/add-to-cart/{{$product->id}}" class="btn btn-secondary btn-md btn-rounded addToCarts" data-bs-toggle="modals" data-bs-target="#sssexampleModal">
                                         <i class="fa-solid fa-eye d-md-none d-block"></i>
-                                        <span class="d-md-block d-none">Buy Now</span>
+                                        <span class="d-md-block d-none">Buy Now  <span><img  class="loading-gif-cart" style="width:20px !important" src="{{asset('uploads')}}/loading.gif"></span></span>
                                     </a>
                                     <div class="btn btn-primary meta-icon dz-wishicon">
                                         <i class="icon feather icon-heart dz-heart"></i>

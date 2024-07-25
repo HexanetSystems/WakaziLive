@@ -27,6 +27,7 @@ class User extends Authenticatable
         'street',
         'apartment',
         'zip',
+        'mobile',
         'comment'
     ];
 

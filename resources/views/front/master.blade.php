@@ -255,5 +255,47 @@
 <script src="{{asset('theme/js/dz.carousel.js')}}"></script><!-- DZ CAROUSEL JS -->
 <script src="{{asset('theme/js/dz.ajax.js')}}"></script><!-- AJAX -->
 <script src="{{asset('theme/js/custom.js')}}"></script><!-- CUSTOM JS -->
+
+<script>
+    $(document).ready(function() {
+        $('.addToCart').click(function(e) {
+            e.preventDefault();
+            $(".loading-gif-cart").show();
+            $('#Success').html('Please wait.........');
+            setTimeout(function() {
+                $('#Success').html('Checkout your phone....');
+            }, 4000);
+            // Serialize the form data
+            var formData = $(this).serialize();
+            // Send an AJAX request
+            $.ajax({
+                type: 'POST',
+                url: '{!! url('make-stk-request') !!}',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    // Handle the response message
+                    $('#cf-response-message').text(response.message);
+                    console.log(data);
+                    $('#Loading').hide();
+                    $('#Success').hide();
+                    setTimeout(function() {
+                        $('#Success').show();
+                        $('#Success').html('Redirecting you...');
+                    }, 1000);
+                    // Refresh
+                    setTimeout(function() {
+						window.location = "{{url('/thankYou')}}"
+                    }, 5000);
+                    // Success
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors if needed
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
