@@ -9,12 +9,31 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Models\STKRequest;
 use App\Models\STKMpesaTransaction;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class KcbController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+
     public function generateAccessToken (){
-        $consumer_key = env('KCB_CONSUMER_KEY',null);
-        $consumer_secret = env('KCB_CONSUMER_SECRET',null);
+        $consumer_key = config('kcb.consumer');
+        $consumer_secret = config('kcb.secret');
 
         $url = 'https://uat.buni.kcbgroup.com/token';
         $data=array(
@@ -43,7 +62,7 @@ class KcbController extends Controller
 
 
         $access_token=json_decode($response);
-        dd($response);
+
         return $access_token->access_token;
     }
 
@@ -107,9 +126,9 @@ class KcbController extends Controller
             "sharedShortCode"=> "",
             "orgShortCode"=> "",
             "orgPassKey"=> "",
-            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/api/stk-callback",
+            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/stk-callback",
             "transactionDescription"=> "school fee payment"
-        );
+         );
          $prepare = json_encode($postData);
 
          $curl = curl_init();
@@ -133,14 +152,15 @@ class KcbController extends Controller
             ),
          ));
 
-         $curl_response = curl_exec($curl);
-         $curl_content=json_decode($curl_response);
-         curl_close($curl);
-         Log::info($curl_response);
-         $MerchantRequestID = $curl_content->response->MerchantRequestID;
-         $CheckoutRequestID = $curl_content->response->CheckoutRequestID;
-         $table = 'lnmo_api_response';
-         $user_id = Auth::User()->id;
+        $curl_response = curl_exec($curl);
+        $curl_content=json_decode($curl_response);
+        curl_close($curl);
+        Log::info($curl_response);
+        $MerchantRequestID = $curl_content->response->MerchantRequestID;
+        $CheckoutRequestID = $curl_content->response->CheckoutRequestID;
+        $table = 'lnmo_api_response';
+        $user_id = Auth::User()->id;
+
 
          // Insert MerchantRequestID
         $curl_content=json_decode($curl_response);

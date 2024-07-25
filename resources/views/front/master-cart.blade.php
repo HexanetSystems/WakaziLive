@@ -111,7 +111,7 @@
             // Send an AJAX request
             $.ajax({
                 type: 'POST',
-                url: '{!! url('api/make-stk-request') !!}',
+                url: '{!! url('make-stk-request') !!}',
                 data: formData,
                 dataType: 'json',
                 success: function(response) {

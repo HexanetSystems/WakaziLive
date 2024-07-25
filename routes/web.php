@@ -38,6 +38,13 @@ Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shoppin
 
 Route::get('/verify', [App\Http\Controllers\KcbController::class, 'verify'])->name('verify');
 
+Auth::routes();
+
+Route::post('/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCallback'])->name('stk-callback');
+Route::get('/access-token', [App\Http\Controllers\KcbController::class, 'generateAccessToken'])->name('access-token');
+Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkRequest'])->name('stk-request');
+Route::get('/stk-request-ken', [App\Http\Controllers\KcbController::class, 'tryKen'])->name('stk-request-ken');
+Route::post('/make-stk-request', [App\Http\Controllers\KcbController::class, 'stkRequestMake'])->name('make-stk-request');
 
 
 // Auth

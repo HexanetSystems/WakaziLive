@@ -304,7 +304,7 @@
                                 <div class="accordion-item">
                                     <div class="accordion-header" id="heading3">
                                         <div class="accordion-button collapsed custom-control custom-checkbox border-0" data-bs-toggle="collapse" data-bs-target="#collapse3" role="navigation" aria-expanded="true" aria-controls="collapse3">
-                                            <input class="form-check-input radio" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+                                            <input class="form-check-input radio" checked type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                             <label class="form-check-label" for="flexRadioDefault4">
                                                 M-PESA
                                             </label>
