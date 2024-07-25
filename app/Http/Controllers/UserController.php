@@ -9,9 +9,12 @@ use Hash;
 use DB;
 use Session;
 use App\Models\Product;
+use App\Models\User;
 use App\Models\SendEmail;
 use Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Log;
+use App\Models\orders;
 
 class UserController extends Controller
 {
@@ -70,21 +73,40 @@ class UserController extends Controller
 
     public function thankYou()
     {
-        //Send To Supplier
+        $latest = orders::orderBy('created_at','DESC')->first();
+        if($latest == null){
+            $OrderId = 1;
+        }else{
+            $OrderID = $latest->id;
+            $OrderId = $OrderID+1;
+        }
+
+        $InvoiceNumber = "WAKAZI-".$OrderId;
+        // /** Send To Supplier **/ //
         $Cart = Cart::content();
         // dd($Cart);
         foreach($Cart as $cart){
             $ProductID = $cart->id;
             $Product = Product::find($ProductID);
+            $SupplierID = $Product->UserID;
+            $Supplier = User::find($SupplierID);
+            $SupplierEmail = $Supplier->email;
+            $SupplierName = $Supplier->name;
+            $SendEmail = SendEmail::MailSupplier($SupplierEmail,$SupplierName,$InvoiceNumber);
+            if($SendEmail){
+                Log::info("Email Has been Sent:".$SupplierEmail);
+            }
         }
-        // Send Supplier Mail
 
-        // Send To User
+        // /** Send To User **/ //
         $email = Auth::User()->email;
         $name = Auth::User()->name;
-        SendEmail::mailUser($email,$name);
+        SendEmail::mailUser($email,$name,$InvoiceNumber);
+        // Create Order
+        orders::createOrder();
+        // Destroy Cart
+        \Cart::destroy();
 
-        // Send to Admin
         return view('dashboard.thankYou');
     }
 
