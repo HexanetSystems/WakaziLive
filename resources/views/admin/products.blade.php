@@ -46,6 +46,7 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
+                            <th>Slider</th>
                             <th>Category & Tags</th>
                             <th>image</th>
                             <th>ReAssign Product</th>
@@ -59,6 +60,26 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td><a target="new" href="{{url('/')}}/product/{{$item->slung}}">{{$item->name}}</td>
+
+                            <td>
+                                <!-- Switch -->
+                                <div class="switch">
+                                    @if($item->slider == 1)
+                                    <label>
+                                        On
+                                        <input class="switchers" checked type="checkbox" id="{{$item->id}}">
+                                        <span class="lever"></span> On
+                                    </label>
+                                    @else
+                                    <label>
+                                        off
+                                        <input class="switchers" type="checkbox" id="{{$item->id}}">
+                                        <span class="lever"></span> off
+                                    </label>
+                                    @endif
+                                </div>
+                            </td>
+
                             <td>
                                 <?php $Category = DB::table('categories')->where('id',$item->category)->get(); ?>
                                 @foreach ($Category as $cat)
@@ -189,6 +210,53 @@
          });
         });
       </script>
+      {{--  --}}
+      <script>
+        $('.switchers').click(function() {
+        // alert($(this).attr('id'));
+        var id = $(this).attr('id');
+        datas = {
+                TheId: $(this).attr('id'),
+                "_token": "{{ csrf_token() }}",
+            }
+        // alert(id)
+           if(this.checked){
+                $.ajax({
+                    type: "POST",
+                    url: '{{url('/')}}/admin/switchSliderAjaxRequest',
+                    data: datas,  //--> send id of checked checkbox on other page
+                    success: function(data) {
+                        // alert("Success");
+                        // $('#container').html(data);
+                    },
+                     error: function() {
+                        // alert('it broke');
+                    },
+                    complete: function() {
+                        // alert('it completed');
+                    }
+                });
+
+            }else{
+                $.ajax({
+                    type: "POST",
+                    url: '{{url('/')}}/admin/switchSliderAjaxRequest',
+                    data: datas,  //--> send id of checked checkbox on other page
+                    success: function(data) {
+                        // alert("Success");
+                        // $('#container').html(data);
+                    },
+                     error: function() {
+                        // alert('it broke');
+                    },
+                    complete: function() {
+                        // alert('it completed');
+                    }
+                });
+            }
+          });
+    </script>
+      {{--  --}}
 </div>
 {{--  --}}
 @endsection

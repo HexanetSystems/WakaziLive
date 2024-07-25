@@ -163,21 +163,21 @@ class KcbController extends Controller
     }
 
     public function checklast($AccID,$table,$curl_response,$user){
-                $TableData = DB::table('lnmo_api_response')->where('CheckoutRequestID', $AccID)->where('status','1')->get();
-                if($TableData->isEmpty()){
-                    sleep(10);
-                    return $this->checklast($AccID,$table,$curl_response,$user);
-                }else{
-                    // Go To Requestes and set status to 1
-                    $UpdateDetails = array(
-                        'status'=>1,
-                    );
-                    $UpdateDetail = array(
-                        'user_id'=>$user,
-                    );
-                    DB::table('s_t_k_requests')->where('CheckoutRequestID',$AccID)->update($UpdateDetails);
-                    DB::table('lnmo_api_response')->where('CheckoutRequestID',$AccID)->update($UpdateDetail);
-                    return $curl_response;
-                }
+        $TableData = DB::table('lnmo_api_response')->where('CheckoutRequestID', $AccID)->where('status','1')->get();
+        if($TableData->isEmpty()){
+            sleep(10);
+            return $this->checklast($AccID,$table,$curl_response,$user);
+        }else{
+            // Go To Requestes and set status to 1
+            $UpdateDetails = array(
+                'status'=>1,
+            );
+            $UpdateDetail = array(
+                'user_id'=>$user,
+            );
+            DB::table('s_t_k_requests')->where('CheckoutRequestID',$AccID)->update($UpdateDetails);
+            DB::table('lnmo_api_response')->where('CheckoutRequestID',$AccID)->update($UpdateDetail);
+            return $curl_response;
+        }
     }
 }

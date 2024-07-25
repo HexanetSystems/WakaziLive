@@ -66,6 +66,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
         Route::get('/account-profile', [UserController::class, 'profile'])->name('account-profile');
         Route::post('/account-profile', [UserController::class, 'profile_save'])->name('account-profile-save');
         Route::get('/cancel-order/{id}', [UserController::class, 'cancel'])->name('cancel-order');
+
+        Route::get('/thankYou', [UserController::class, 'thankYou'])->name('thankYou');
+
     });
 });
 Route::get('/become-supplier', [App\Http\Controllers\HomeController::class, 'become_supplier'])->name('become-supplier');
@@ -283,6 +286,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::put('updateSiteSocialMediaAjax', [AdminsController::class, 'updateSiteSocialMediaAjax']);
         Route::post('deleteSubCategoryAjax', [AdminsController::class, 'deleteSubCategoryAjax']);
 
+
+        Route::post('switchSliderAjaxRequest', [AdminsController::class, 'switchSliderAjaxRequest']);
         Route::post('deleteCategoryAjax', [AdminsController::class, 'deleteCategoryAjax']);
         Route::post('deleteC2BAjax', [AdminsController::class, 'deleteC2BAjax']);
         Route::post('deleteB2BAjax', [AdminsController::class, 'deleteB2BAjax']);

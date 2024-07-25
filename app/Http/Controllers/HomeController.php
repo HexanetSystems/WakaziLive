@@ -129,13 +129,15 @@ class HomeController extends Controller
     public function category($slung){
         $Category = DB::table('categories')->where('slung', $slung)->first();
         $Product = DB::table('products')->where('category', $Category->id)->where('status', '1')->paginate(12);
-        return view('front.category', compact('Product','Category'));
+        $ProductCount = DB::table('products')->where('category', $Category->id)->where('status', '1')->get();
+        return view('front.category', compact('Product','Category','ProductCount'));
     }
 
     public function category_class($slung){
         $Category = DB::table('mains')->where('slung', $slung)->first();
         $Product = DB::table('products')->where('main', $Category->id)->where('status', '1')->paginate(12);
-        return view('front.category', compact('Product','Category'));
+        $ProductCount = DB::table('products')->where('main', $Category->id)->where('status', '1')->get();
+        return view('front.category', compact('Product','Category','ProductCount'));
     }
 
     public function become_supplier(){

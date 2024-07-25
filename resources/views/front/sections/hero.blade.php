@@ -1,6 +1,9 @@
 <?php
-   $Slider = \App\Models\Product::where('status', 1)->limit(4)->inRandomOrder()->get();
+   $Slider = \App\Models\Product::where('status', 1)->where('slider','1')->limit(4)->inRandomOrder()->get();
 ?>
+@if($Slider->isEmpty())
+
+@else
 <div class="main-slider-wrapper">
     <div class="slider-inner">
         <div class="row">
@@ -13,7 +16,7 @@
                             <div class="swiper-meta-items">
                                 <div class="meta-content">
                                     <span class="price-name">From</span>
-                                    <span class="price-num d-inline-block">kes {{$slider->price}}</span>
+                                    <span class="price-num d-inline-block">Ksh {{$slider->price}}</span>
                                 </div>
                             </div>
                             <div class="content-btn m-b30">
@@ -54,3 +57,4 @@
 
     </div>
 </div>
+@endif

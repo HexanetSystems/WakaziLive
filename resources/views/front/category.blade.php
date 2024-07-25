@@ -28,7 +28,7 @@
                     @foreach ($Product as $Pro)
                     <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6 m-md-b15 m-sm-b0 m-b30">
 						<div class="shop-card style-1">
-							<div class="dz-media">
+							<div class="dz-media product-imgs">
 								<img src="{{$Pro->image_one}}" alt="image">
 								<div class="shop-meta">
 														<a href="{{url('/')}}/add-to-cart/{{$Pro->id}}" class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modala" data-bs-target="#exampleModal">
@@ -70,7 +70,7 @@
 				</div>
 				<div class="row page mt-0">
 					<div class="col-md-6">
-						<p class="page-text">Showing 1–5 Of 50 Results</p>
+						<p class="page-text">Showing {{$Product->count()}} Of {{$ProductCount->count()}} Results</p>
 					</div>
 					<div class="col-md-6">
 						<?php echo $Product ?>

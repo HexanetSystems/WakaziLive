@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('main')->nullable();
+            $table->integer('slider')->default('0');
             $table->integer('UserID')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->string('pro_condition')->default('New');

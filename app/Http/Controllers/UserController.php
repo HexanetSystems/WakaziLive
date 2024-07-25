@@ -9,7 +9,9 @@ use Hash;
 use DB;
 use Session;
 use App\Models\Product;
+use App\Models\SendEmail;
 use Redirect;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class UserController extends Controller
 {
@@ -64,6 +66,26 @@ class UserController extends Controller
         );
         DB::table('users')->where('id', $user)->update($updatedetails);
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+    public function thankYou()
+    {
+        //Send To Supplier
+        $Cart = Cart::content();
+        // dd($Cart);
+        foreach($Cart as $cart){
+            $ProductID = $cart->id;
+            $Product = Product::find($ProductID);
+        }
+        // Send Supplier Mail
+
+        // Send To User
+        $email = Auth::User()->email;
+        $name = Auth::User()->name;
+        SendEmail::mailUser($email,$name);
+
+        // Send to Admin
+        return view('dashboard.thankYou');
     }
 
 }

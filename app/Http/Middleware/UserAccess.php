@@ -13,12 +13,22 @@ class UserAccess
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $userType): Response
+    public function handle(Request $request, Closure $next, $userType)
     {
         if(auth()->user()->type == $userType){
             return $next($request);
         }
 
+        if (auth()->user()->type == 'admin') {
+            return redirect()->route('admin.home');
+        }else if (auth()->user()->type == 'manager') {
+            return redirect()->route('supplier.home');
+        }else{
+            // Check company
+            return redirect()->route('dashboard');
+        }
+
         return response()->json(['You do not have permission to access for this page.']);
+        /* return response()->view('errors.check-permission'); */
     }
 }

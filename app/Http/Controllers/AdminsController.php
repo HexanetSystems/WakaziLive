@@ -929,6 +929,23 @@ class AdminsController extends Controller
     }
 
 
+
+    public function switchSliderAjaxRequest(Request $request){
+        $AdsId = $request->TheId;
+        $Advertisement = Product::find($AdsId);
+        if($Advertisement->slider == 1){
+            $newStatus = "0";
+        }else{
+            $newStatus = "1";
+        }
+        $updateDetails = array(
+            'slider' => $newStatus,
+        );
+        DB::table('products')->where('id', $AdsId)->update($updateDetails);
+        activity()->log('Evoked a Switch Slider Request');
+        return response()->json(['success'=>'Status Successfully!']);
+    }
+
     public function artisan_voices(){
         activity()->log('Accessed Add Blog Page');
         $Category = DB::table('categories')->orderBy('id','DESC')->get();
