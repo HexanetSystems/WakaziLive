@@ -104,7 +104,7 @@
             $(".loading-gif").show();
             $('#Success').html('Please wait.........');
             setTimeout(function() {
-                $('#Success').html('Checkout your phone....');
+                $('#Success').html('Check your phone....');
             }, 4000);
             // Serialize the form data
             var formData = $(this).serialize();
@@ -116,9 +116,9 @@
                 dataType: 'json',
                 success: function(response) {
                     // Handle the response message
-                    $('#cf-response-message').text(response.message);
-                    console.log(data);
-                    $('#Loading').hide();
+                    // $('#cf-response-message').text(response.message);
+                    console.log(response);
+                    $('.loading-gif').hide();
                     $('#Success').hide();
                     setTimeout(function() {
                         $('#Success').show();
@@ -126,7 +126,7 @@
                     }, 1000);
                     // Refresh
                     setTimeout(function() {
-						window.location = "{{url('/thankYou')}}"
+						window.location = "{{url('dashboard/thankYou')}}"
                     }, 5000);
                     // Success
                 },
