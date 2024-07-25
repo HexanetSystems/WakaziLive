@@ -35,11 +35,6 @@ Route::get('/artisan-voices', [HomeController::class, 'voices'])->name('artisan-
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
 
-// KCB
-Route::get('/access-token', [App\Http\Controllers\KcbController::class, 'generateAccessToken'])->name('access-token');
-Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkRequest'])->name('stk-request');
-Route::get('/stk-request-ken', [App\Http\Controllers\KcbController::class, 'tryKen'])->name('stk-request-ken');
-Route::post('/make-stk-request', [App\Http\Controllers\KcbController::class, 'stkRequestMake'])->name('make-stk-request');
 
 Route::get('/verify', [App\Http\Controllers\KcbController::class, 'verify'])->name('verify');
 
