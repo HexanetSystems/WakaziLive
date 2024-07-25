@@ -11,6 +11,7 @@ use App\Models\STKRequest;
 use App\Models\STKMpesaTransaction;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class KcbController extends Controller
 {
