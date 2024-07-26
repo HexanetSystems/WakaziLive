@@ -153,7 +153,7 @@
 							</li> --}}
 
                             <?php
-                                $Main = DB::table('mains')->inRandomOrder()->limit(4)->get();
+                                $Main = DB::table('mains')->inRandomOrder()->limit(3)->get();
                             ?>
                             @foreach ($Main as $mains)
                             <li class="sub-menu-down"><a href="{{url('/')}}/products-class/{{$mains->slung}}">{{$mains->title}}</a></li>
@@ -186,17 +186,17 @@
 					<div class="extra-nav">
 						<div class="extra-cell">
 							<ul class="header-right">
-								{{-- <li class="nav-item login-link">
+								<li class="nav-item login-link">
 									@if(Auth::User())
                                     <a class="nav-link" href="{{url('/')}}/dashboard">
-										<span class="fa fa-user"> </span> &nbsp; Hello, {{Auth::User()->name}}
+										<span class="fa fa-user"> </span> &nbsp; My Account
 									</a>
                                     @else
 									<a class="nav-link" href="{{url('/')}}/login-select">
-										Login / Register
+										<span class="fa fa-lock"></span>&nbsp;  My Account
 									</a>
                                     @endif
-								</li> --}}
+								</li>
 
 								<li class="nav-item cart-link">
 									<a href="{{url('/')}}/cart/shopping-cart" class="nav-link cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">

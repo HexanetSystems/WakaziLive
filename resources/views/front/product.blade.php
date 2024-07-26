@@ -275,7 +275,7 @@
                             @foreach ($Related as $product)
                             <div class="swiper-slide">
                                 <div class="shop-card style-1">
-                                    <div class="dz-media">
+                                    <div class="dz-media product-imgs">
                                         <img class="product-img" src="{{$product->image_one}}" alt="{{$product->name}}">
                                         <div class="shop-meta">
                                             <a href="{{url('/')}}/add-to-cart/{{$product->id}}" class="btn btn-secondary btn-md btn-rounded" data-bs-toggle="modals" data-bs-target="#sssexampleModal">
@@ -296,9 +296,20 @@
                                         <h5 class="title"><a href="{{url('/')}}/product/{{$product->slung}}">{{$product->name}}</a></h5>
                                         <h5 class="price">kes {{$product->price}}</h5>
                                     </div>
-                                    <div class="product-tag">
-                                        <span class="badge ">Custom Tag</span>
-                                    </div>
+                                    <?php
+                                            $Main = \App\Models\Main::find($product->main);
+                                        ?>
+                                        @if($Main==null)
+
+                                        @else
+                                        <div class="product-tag">
+                                            <span class="badge ">
+
+                                                {{$Main->title}}
+
+                                            </span>
+                                        </div>
+                                        @endif
                                 </div>
                             </div>
                             @endforeach

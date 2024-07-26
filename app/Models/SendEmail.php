@@ -11,7 +11,7 @@ class SendEmail extends Model
     use HasFactory;
     public static function mailUser($email,$name,$InvoiceNumber){
         $message = 'Hello '.$name.' Your Order has been received, We have created a summary of the order below:';
-        $subject = 'Your Order Has Been Received';
+        $subject = 'Your Order Has';
         $CartItems = \Cart::Content();
 
         // Process Cart
@@ -25,8 +25,6 @@ class SendEmail extends Model
             'CartItems'=>$CartItems,
 
         );
-
-
         $appName = config('app.name');
         $appEmail = config('mail.username');
 
@@ -46,7 +44,7 @@ class SendEmail extends Model
 
     public static function MailSupplier($SupplierEmail,$SupplierName,$InvoiceNumber){
         $message = 'Hello '.$SupplierName.' You have a new Order, We have created a summary of the order below:';
-        $subject = 'Supplier: You have a new Order!!';
+        $subject = 'Supplier Your Invoice Has Been Created';
         $CartItems = \Cart::Content();
 
         $data = array(

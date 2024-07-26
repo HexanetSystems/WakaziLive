@@ -96,6 +96,7 @@ class UserController extends Controller
             if($SendEmail){
                 Log::info("Email Has been Sent:".$SupplierEmail);
             }
+
         }
 
         // /** Send To User **/ //

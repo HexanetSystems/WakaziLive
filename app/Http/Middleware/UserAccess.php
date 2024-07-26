@@ -21,7 +21,7 @@ class UserAccess
 
         if (auth()->user()->type == 'admin') {
             return redirect()->route('admin.home');
-        }else if (auth()->user()->type == 'manager') {
+        }else if (auth()->user()->type == 'supplier') {
             return redirect()->route('supplier.home');
         }else{
             // Check company
