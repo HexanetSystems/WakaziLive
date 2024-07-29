@@ -190,14 +190,30 @@ class KcbController extends Controller
         $mpesa_transaction->Amount =  $amount;
         $mpesa_transaction->save();
 
-        //  return $this->checklast($CheckoutRequestID,$table,$curl_response,$user_id);
-         return response()->json(['message' => 'CF Form submitted successfully!']);
+         return $this->checklast($CheckoutRequestID,$table,$curl_response,$user_id);
+        //  return response()->json(['message' => 'CF Form submitted successfully!']);
     }
 
 
     public function stkCallback(Request $request){
         Log::info($request->getContent());
-        return response()->json(['message' => 'CF Form submitted successfully!']);
+        $content=json_decode($request->getContent(), true);
+        $CheckoutRequestID = $content['Body']['stkCallback']['CheckoutRequestID'];
+
+        $nameArr = [];
+        foreach ($content['Body']['stkCallback']['CallbackMetadata']['Item'] as $row) {
+
+            if(empty($row['Value'])){
+                continue;
+            }
+            $nameArr[$row['Name']] = $row['Value'];
+        }
+        DB::table('lnmo_api_response')->where('CheckoutRequestID',$CheckoutRequestID)->update($nameArr);
+        $updateStatus = array(
+            'status' =>1
+        );
+        DB::table('lnmo_api_response')->where('CheckoutRequestID',$CheckoutRequestID)->update($updateStatus);
+        return response()->json(['message' => 'CallBack Received successfully!']);
     }
 
     public function checklast($AccID,$table,$curl_response,$user){
