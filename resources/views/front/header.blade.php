@@ -153,14 +153,14 @@
 							</li> --}}
 
                             <?php
-                                $Main = DB::table('mains')->inRandomOrder()->limit(3)->get();
+                                $Main = DB::table('mains')->inRandomOrder()->limit(4)->get();
                             ?>
                             @foreach ($Main as $mains)
                             <li class="sub-menu-down"><a href="{{url('/')}}/products-class/{{$mains->slung}}">{{$mains->title}}</a></li>
                             @endforeach
-                            <li class="sub-menu-down">
+                            {{-- <li class="sub-menu-down">
 								<a href="{{route('county-bounty')}}"><span>County Bounty</span>  </a>
-							</li>
+							</li> --}}
                             <li class="sub-menu-down">
 								<a href="{{route('artisan-voices')}}"><span>Artisan Voices</span>  </a>
 							</li>

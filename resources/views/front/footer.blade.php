@@ -82,7 +82,7 @@
                                 <h5 class="footer-title">About Wakazi</h5>
                                 <ul>
                                     <li><a href="javascript:void(0);">About Us</a></li>
-                                    <li><a href="javascript:void(0);">Our Locations</a></li>
+                                    <li><a href="{{route('county-bounty')}}">County Bounty</a></li>
                                     <li><a href="{{route('become-supplier')}}">Become Supplier</a></li>
                                     <li><a href="javascript:void(0);">Chat with us</a></li>
                                     <li><a href="javascript:void(0);">Contact Us</a></li>
