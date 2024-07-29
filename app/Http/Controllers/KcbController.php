@@ -143,7 +143,7 @@ class KcbController extends Controller
             "sharedShortCode"=> "",
             "orgShortCode"=> "",
             "orgPassKey"=> "",
-            "callbackUrl"=> "https://wakazi.rickelectronics.co.ke/stk-callback",
+            "callbackUrl"=> "https://wakazi.co.ke/stk-callback",
             "transactionDescription"=> "school fee payment"
          );
          $prepare = json_encode($postData);
