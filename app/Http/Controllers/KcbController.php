@@ -22,10 +22,10 @@ class KcbController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -196,7 +196,6 @@ class KcbController extends Controller
 
 
     public function stkCallback(Request $request){
-        dd($request->getContent());
         Log::info($request->getContent());
         return response()->json(['message' => 'CF Form submitted successfully!']);
     }

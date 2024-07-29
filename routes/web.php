@@ -32,13 +32,16 @@ Route::get('/news-updates/{slung}', [HomeController::class, 'update'])->name('ne
 Route::get('/county-bounty', [HomeController::class, 'county'])->name('county-bounty');
 Route::get('/artisan-voices', [HomeController::class, 'voices'])->name('artisan-voices');
 
+Route::post('/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCallback'])->name('stk-callback');
+
+
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
 
 
 Route::get('/verify', [App\Http\Controllers\KcbController::class, 'verify'])->name('verify');
 
-Route::post('/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCallback'])->name('stk-callback');
+
 Route::get('/access-token', [App\Http\Controllers\KcbController::class, 'generateAccessToken'])->name('access-token');
 Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkRequest'])->name('stk-request');
 Route::get('/stk-request-ken', [App\Http\Controllers\KcbController::class, 'tryKen'])->name('stk-request-ken');
