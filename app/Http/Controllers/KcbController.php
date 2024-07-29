@@ -190,6 +190,12 @@ class KcbController extends Controller
         $mpesa_transaction->Amount =  $amount;
         $mpesa_transaction->save();
 
+        $STKMpesaTransaction = new STKMpesaTransaction;
+        $STKMpesaTransaction->user_id = $user_id;
+        $STKMpesaTransaction->CheckoutRequestID = $CheckoutRequestID;
+        $STKMpesaTransaction->MerchantRequestID = $MerchantRequestID;
+        $STKMpesaTransaction->save();
+
          return $this->checklast($CheckoutRequestID,$table,$curl_response,$user_id);
         //  return response()->json(['message' => 'CF Form submitted successfully!']);
     }
