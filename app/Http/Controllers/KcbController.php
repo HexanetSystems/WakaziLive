@@ -206,16 +206,29 @@ class KcbController extends Controller
         $content=json_decode($request->getContent(), true);
         $CheckoutRequestID = $content['Body']['stkCallback']['CheckoutRequestID'];
         $MerchantRequestID = $content['Body']['stkCallback']['MerchantRequestID'];
+        $Amount = $content['Body']['stkCallback']['CallbackMetadata']['Amount'];
+        $MpesaReceiptNumber = $content['Body']['stkCallback']['CallbackMetadata']['MpesaReceiptNumber'];
+        $Balance = $content['Body']['stkCallback']['CallbackMetadata']['Balance'];
+        $TransactionDate = $content['Body']['stkCallback']['CallbackMetadata']['TransactionDate'];
+        $PhoneNumber = $content['Body']['stkCallback']['CallbackMetadata']['PhoneNumber'];
 
+        // $nameArr = [];
+        // foreach ($content['Body']['stkCallback']['CallbackMetadata']['Item'] as $row) {
 
-        $nameArr = [];
-        foreach ($content['Body']['stkCallback']['CallbackMetadata']['Item'] as $row) {
+        //     if(empty($row['Value'])){
+        //         continue;
+        //     }
+        //     $nameArr[$row['Name']] = $row['Value'];
+        // }
+        $nameArr = array(
+            'Amount'=>$Amount,
+            'MpesaReceiptNumber'=>$MpesaReceiptNumber,
+            'Balance'=>$Balance,
+            'CheckoutRequestID'=>$CheckoutRequestID,
+            'TransactionDate'=>$TransactionDate,
+            'PhoneNumber'=>$PhoneNumber,
+        );
 
-            if(empty($row['Value'])){
-                continue;
-            }
-            $nameArr[$row['Name']] = $row['Value'];
-        }
         DB::table('lnmo_api_response')->where('MerchantRequestID',$MerchantRequestID)->update($nameArr);
         $updateStatus = array(
             'status' =>1
