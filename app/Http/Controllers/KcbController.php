@@ -37,7 +37,7 @@ class KcbController extends Controller
         $consumer_key = config('kcb.consumer');
         $consumer_secret = config('kcb.secret');
 
-        $url = 'https://kcb-wso2gw.apps.kedrocpp01.kcbgroup.com/token';
+        $url = 'https://api.buni.kcbgroup.com/token';
 
         $data=array(
             'grant_type'=>'client_credentials',
@@ -62,12 +62,11 @@ class KcbController extends Controller
             echo 'cURL error: '.curl_error($Curl);
         }
         curl_close($Curl);
-
-
-        dd($response);
         $access_token=json_decode($response);
-
-        return $access_token->access_token;
+        $NoSpace = str_replace(' ', '', $access_token->access_token);
+        // Remove ""
+        $NoQuote = str_replace('"', "", $NoSpace);
+        return $NoQuote;
     }
 
     public function tryKen(){
@@ -152,7 +151,7 @@ class KcbController extends Controller
 
          $curl = curl_init();
          curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://kcb-wso2gw.apps.kedrocpp01.kcbgroup.com/mm/api/request/1.0.0/stkpush',
+            CURLOPT_URL => 'https://api.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -163,15 +162,14 @@ class KcbController extends Controller
             CURLOPT_POSTFIELDS =>$prepare,
             CURLOPT_HTTPHEADER => array(
                 'accept: application/json',
-                'routeCode: 207',
                 'operation: STKPush',
-                'messageId: 232323_KCBOrg_8875661561',
                 'Content-Type: application/json',
                 'Authorization: Bearer '.$this->generateAccessToken(),
             ),
          ));
 
         $curl_response = curl_exec($curl);
+        dd($curl_response);
         $curl_content=json_decode($curl_response);
         curl_close($curl);
         Log::info($curl_response);
