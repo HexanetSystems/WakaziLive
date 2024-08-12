@@ -205,6 +205,8 @@ class KcbController extends Controller
         Log::info($request->getContent());
         $content=json_decode($request->getContent(), true);
         $CheckoutRequestID = $content['Body']['stkCallback']['CheckoutRequestID'];
+        $MerchantRequestID = $content['Body']['stkCallback']['MerchantRequestID'];
+
 
         $nameArr = [];
         foreach ($content['Body']['stkCallback']['CallbackMetadata']['Item'] as $row) {
@@ -214,11 +216,11 @@ class KcbController extends Controller
             }
             $nameArr[$row['Name']] = $row['Value'];
         }
-        DB::table('lnmo_api_response')->where('CheckoutRequestID',$CheckoutRequestID)->update($nameArr);
+        DB::table('lnmo_api_response')->where('MerchantRequestID',$MerchantRequestID)->update($nameArr);
         $updateStatus = array(
             'status' =>1
         );
-        DB::table('lnmo_api_response')->where('CheckoutRequestID',$CheckoutRequestID)->update($updateStatus);
+        DB::table('lnmo_api_response')->where('MerchantRequestID',$MerchantRequestID)->update($updateStatus);
         return response()->json(['message' => 'CallBack Received successfully!']);
     }
 
