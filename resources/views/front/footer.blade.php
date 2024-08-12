@@ -83,7 +83,7 @@
                                 <ul>
                                     <li><a href="javascript:void(0);">About Us</a></li>
                                     <li><a href="{{route('county-bounty')}}">County Bounty</a></li>
-                                    <li><a href="{{route('become-supplier')}}">Become Supplier</a></li>
+                                    <li><a href="{{route('become-supplier')}}">Become a Supplier</a></li>
                                     <li><a href="javascript:void(0);">Chat with us</a></li>
                                     <li><a href="javascript:void(0);">Contact Us</a></li>
                                     <li><a href="javascript:void(0);">Forum</a></li>

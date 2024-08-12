@@ -37,7 +37,8 @@ class KcbController extends Controller
         $consumer_key = config('kcb.consumer');
         $consumer_secret = config('kcb.secret');
 
-        $url = 'https://uat.buni.kcbgroup.com/token';
+        $url = 'https://kcb-wso2gw.apps.kedrocpp01.kcbgroup.com/token';
+
         $data=array(
             'grant_type'=>'client_credentials',
             'username'=>$consumer_key,
@@ -63,6 +64,7 @@ class KcbController extends Controller
         curl_close($Curl);
 
 
+        dd($response);
         $access_token=json_decode($response);
 
         return $access_token->access_token;
@@ -150,7 +152,7 @@ class KcbController extends Controller
 
          $curl = curl_init();
          curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://uat.buni.kcbgroup.com/mm/api/request/1.0.0/stkpush',
+            CURLOPT_URL => 'https://kcb-wso2gw.apps.kedrocpp01.kcbgroup.com/mm/api/request/1.0.0/stkpush',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

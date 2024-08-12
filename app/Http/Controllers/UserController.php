@@ -81,10 +81,10 @@ class UserController extends Controller
             $OrderId = $OrderID+1;
         }
 
-        $InvoiceNumber = "WAKAZI-".$OrderId;
+        $InvoiceNumber = "wkz-".$OrderId;
         // /** Send To Supplier **/ //
         $Cart = Cart::content();
-        // dd($Cart);
+
         foreach($Cart as $cart){
             $ProductID = $cart->id;
             $Product = Product::find($ProductID);
@@ -96,9 +96,7 @@ class UserController extends Controller
             if($SendEmail){
                 Log::info("Email Has been Sent:".$SupplierEmail);
             }
-
         }
-
         // /** Send To User **/ //
         $email = Auth::User()->email;
         $name = Auth::User()->name;
