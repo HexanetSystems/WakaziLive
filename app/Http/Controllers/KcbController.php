@@ -169,7 +169,7 @@ class KcbController extends Controller
          ));
 
         $curl_response = curl_exec($curl);
-        dd($curl_response);
+        // dd($curl_response);
         $curl_content=json_decode($curl_response);
         curl_close($curl);
         Log::info($curl_response);
