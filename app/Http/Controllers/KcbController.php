@@ -136,16 +136,15 @@ class KcbController extends Controller
          $mobile = $preparePhoneNumberString;
 
         //  Invoioice
-
          $postData = array(
             "phoneNumber"=> $mobile,
-            "amount"=> "1",
-            "invoiceNumber"=> "ONETILLNO#".$invoiceNumber,
-            "sharedShortCode"=> "",
+            "amount"=> 1,
+            "invoiceNumber"=> "7845649#".$invoiceNumber,
+            "sharedShortCode"=> true,
             "orgShortCode"=> "",
-            "orgPassKey"=> "",
+            "orgPassKey"=> "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
             "callbackUrl"=> "https://wakazi.co.ke/stk-callback",
-            "transactionDescription"=> "school fee payment"
+            "transactionDescription"=> "Purchase Invoice #".$invoiceNumber
          );
          $prepare = json_encode($postData);
 
