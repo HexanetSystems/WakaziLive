@@ -196,7 +196,7 @@ class KcbController extends Controller
         $STKMpesaTransaction->MerchantRequestID = $MerchantRequestID;
         $STKMpesaTransaction->save();
 
-         return $this->checklast($CheckoutRequestID,$table,$curl_response,$user_id);
+         return $this->checklast($MerchantRequestID,$table,$curl_response,$user_id);
         //  return response()->json(['message' => 'CF Form submitted successfully!']);
     }
 
@@ -223,7 +223,7 @@ class KcbController extends Controller
     }
 
     public function checklast($AccID,$table,$curl_response,$user){
-        $TableData = DB::table('lnmo_api_response')->where('CheckoutRequestID', $AccID)->where('status','1')->get();
+        $TableData = DB::table('lnmo_api_response')->where('MerchantRequestID', $AccID)->where('status','1')->get();
         if($TableData->isEmpty()){
             sleep(10);
             return $this->checklast($AccID,$table,$curl_response,$user);
