@@ -132,11 +132,11 @@
                                 <div class="">
                                     <div class="input-field col s12">
                                         <div class="form-group">
-                                            <label>Add Category Featured Image</label>
+                                            <label>Add Category Featured Image 1920 by 700</label>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
-                                                        Size: 440 by 550 Browse… <input name="image" type="file" id="imgInp">
+                                                        Size: 1920 by 700 Browse… <input name="image" type="file" id="imgInp">
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control" readonly>

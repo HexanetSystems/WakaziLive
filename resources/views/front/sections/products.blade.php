@@ -30,26 +30,29 @@
                     </div>
                 </div>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
             <div class="clearfix">
                 <ul id="masonry" class="row g-xl-4 g-3">
                     @foreach ($Product as $product)
-                    <li class="card-container col-6 col-xl-4 col-lg-3 col-md-4 col-sm-6 {{$product->main}}_cat wow fadeInUp" data-wow-delay="0.6s">
+                    <li class="card-container col-6 col-xl- col-lg-3 col-md-4 col-sm-6 {{$product->main}}_cat wow fadeInUp" data-wow-delay="0.6s">
                         <div class="shop-card">
                             <div class="dz-media product-imgs">
                                 <img class="product-img" src="{{$product->image_one}}" alt="{{$product->name}}">
                                 <div class="shop-meta">
-                                    <a href="{{url('/')}}/add-to-cart/{{$product->id}}" class="btn btn-secondary btn-md btn-rounded addToCarts" data-bs-toggle="modals" data-bs-target="#sssexampleModal">
+                                    <a href="{{url('/')}}/product/{{$product->slung}}" class="btn btn-secondary btn-md btn-rounded addToCarts" data-bs-toggle="modals" data-bs-target="exampleModal_{{$product->id}}">
                                         <i class="fa-solid fa-eye d-md-none d-block"></i>
-                                        <span class="d-md-block d-none">Buy Now  <span><img  class="loading-gif-cart" style="width:20px !important" src="{{asset('uploads')}}/loading.gif"></span></span>
+                                        <span class="d-md-block d-none"> Explore  <span><img  class="loading-gif-cart" style="width:20px !important" src="{{asset('uploads')}}/loading.gif"></span></span>
                                     </a>
-                                    <div class="btn btn-primary meta-icon dz-wishicon">
-                                        <i class="icon feather icon-heart dz-heart"></i>
-                                        <i class="icon feather icon-heart-on dz-heart-fill"></i>
-                                    </div>
-                                    <div class="btn btn-primary meta-icon dz-carticon">
-                                        <i class="flaticon flaticon-basket"></i>
-                                        <i class="flaticon flaticon-basket-on dz-heart-fill"></i>
-                                    </div>
+
+                                    <span id="productID_{{$product->price}}" >
+                                        <a href="{{url('/')}}/add-to-cart/{{$product->id}}" style=" width:45px; height:45px; border-radius:50%">
+                                            <div class="btn btn-primary meta-icon dz-carticon">
+                                                <i class="flaticon flaticon-basket"></i>
+                                                <i class="flaticon flaticon-basket-on dz-heart-fill"></i>
+                                            </div>
+                                        </a>
+                                    </span>
+
                                 </div>
                             </div>
                             <div class="dz-content">
@@ -72,6 +75,8 @@
                             @endif
                         </div>
                     </li>
+
+
                     @endforeach
                 </ul>
             </div>

@@ -92,7 +92,7 @@
                                 <div class="">
                                     <div class="input-field col s12">
                                         <div class="form-group">
-                                            <label>Add Featured Image</label>
+                                            <label>Add Featured Image 1920 by 700</label>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">

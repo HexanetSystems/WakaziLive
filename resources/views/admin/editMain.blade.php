@@ -102,7 +102,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
-                                                        Size: 440 by 550 Browse… <input name="image" type="file" id="imgInp">
+                                                        Size: 1920 by 700 Browse… <input name="image" type="file" id="imgInp">
                                                     </span>
                                                 </span>
                                                 <input type="text" class="form-control" readonly>

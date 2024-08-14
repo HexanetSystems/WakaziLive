@@ -21,7 +21,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
+        $Product = Product::where('status', 1)->limit(15)->inRandomOrder()->get();
         return view('welcome', compact('Product'));
     }
 

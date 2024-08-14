@@ -7,7 +7,7 @@
 
 	<div class="page-content bg-light">
 		<!--Banner Start-->
-        <div class="dz-bnr-inr bg-secondary overlay-black-light" style="background-image:url('{{asset('theme/images/background/bg7.jpg')}}');">
+        <div class="dz-bnr-inr bg-secondary overlay-black-light" style="background-image:url('{{$Category->image}}');">
             <div class="container">
                 <div class="dz-bnr-inr-entry">
                     <h1>{{$Category->title}}</h1>
@@ -26,7 +26,7 @@
 			<div class="container">
 				<div class="row m-auto gx-xl-4 g-3 mb-xl-0 mb-md-0 mb-3">
                     @foreach ($Product as $Pro)
-                    <div class="col-6 col-xl-4 col-lg-4 col-md-4 col-sm-6 m-md-b15 m-sm-b0 m-b30">
+                    <div class="col-6 col-xl-3 col-lg-4 col-md-4 col-sm-6 m-md-b15 m-sm-b0 m-b30">
 						<div class="shop-card style-1">
 							<div class="dz-media product-imgs">
 								<img src="{{$Pro->image_one}}" alt="image">
@@ -35,10 +35,7 @@
 															<i class="fa-solid fa-eye d-md-none d-block"></i>
 															<span class="d-md-block d-none">Buy Now</span>
 														</a>
-														<div class="btn btn-primary meta-icon dz-wishicon">
-															<i class="icon feather icon-heart dz-heart"></i>
-															<i class="icon feather icon-heart-on dz-heart-fill"></i>
-														</div>
+
 														<div class="btn btn-primary meta-icon dz-carticon">
 															<i class="flaticon flaticon-basket"></i>
 															<i class="flaticon flaticon-shopping-basket-on dz-heart-fill"></i>
