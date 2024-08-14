@@ -49,6 +49,15 @@ class HomeController extends Controller
         return Redirect::back();
     }
 
+    public function addToCartPost(Request $request){
+        $id = $request->product_id;
+        $Product = Product::find($id);
+        Cart::add($id, $Product->name, 1, $Product->price);
+        Session::flash('message', "Product Has Been Approved");
+        return response()->json(['message' => 'Cart Added Successfull'], 200);
+    }
+
+
     public function cart(){
         $CartItems = Cart::content();
         return view('front.cart', compact('CartItems'));

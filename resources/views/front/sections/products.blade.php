@@ -41,17 +41,17 @@
                                 <div class="shop-meta">
                                     <a href="{{url('/')}}/product/{{$product->slung}}" class="btn btn-secondary btn-md btn-rounded addToCarts" data-bs-toggle="modals" data-bs-target="exampleModal_{{$product->id}}">
                                         <i class="fa-solid fa-eye d-md-none d-block"></i>
-                                        <span class="d-md-block d-none"> Explore  <span><img  class="loading-gif-cart" style="width:20px !important" src="{{asset('uploads')}}/loading.gif"></span></span>
+                                        <span class="d-md-block" id="cta_{{$product->id}}"> Explore
+
+                                        </span>
                                     </a>
 
-                                    <span id="productID_{{$product->price}}" >
-                                        <a href="{{url('/')}}/add-to-cart/{{$product->id}}" style=" width:45px; height:45px; border-radius:50%">
-                                            <div class="btn btn-primary meta-icon dz-carticon">
-                                                <i class="flaticon flaticon-basket"></i>
-                                                <i class="flaticon flaticon-basket-on dz-heart-fill"></i>
-                                            </div>
-                                        </a>
-                                    </span>
+                                    <a id="productID_{{$product->id}}" href="#" style=" width:45px; height:45px; border-radius:50%">
+                                        <div class="btn btn-primary meta-icon dz-carticon">
+                                            <i class="flaticon flaticon-basket"></i>
+                                            <i class="flaticon flaticon-basket-on dz-heart-fill"></i>
+                                        </div>
+                                    </a>
 
                                 </div>
                             </div>
@@ -76,6 +76,47 @@
                         </div>
                     </li>
 
+
+                    <form method="post" action="{{route('add-to-cart-ajax')}}" style="display:none" id="form_{{$product->id}}">
+                      @csrf
+                      <input type="hidden" name="product_id" value="{{$product->id}}">
+                    </form>
+
+                    <script>
+                        $(document).ready(function() {
+                            // Submit
+                            $("#productID_{{$product->id}}").on('click', (function(e) {
+                                $("#cta_{{$product->id}}").html("Adding..");
+                                e.preventDefault();
+                                $("#form_{{$product->id}}").submit();
+                            }));
+                            //
+                            $("#form_{{$product->id}}").on('submit', (function(e) {
+                                e.preventDefault();
+                                $.ajax({
+                                url: $(this).attr('action'),
+                                type: "POST",
+                                data: new FormData(this),
+                                contentType: false,
+                                cache: false,
+                                processData: false,
+                                success: function(response) {
+                                    $("#form").trigger("reset"); // to reset form input fields
+                                    $( "#cta_{{$product->id}}" ).html("Added To Cart");
+                                    // $("#cta_{{$product->id}}").html("Explore");
+                                    // $( "#cta_{{$product->id}}" ).delay(8000).html("Explore");
+                                    $("#offcanvasRight").load(" #offcanvasRight > *");
+                                    $("#cartCount").load(" #cartCount > *");
+                                    // Open Cart
+                                    $("#cartCount").click();
+                                },
+                                error: function(e) {
+                                    console.log(e);
+                                }
+                                });
+                            }));
+                        });
+                    </script>
 
                     @endforeach
                 </ul>

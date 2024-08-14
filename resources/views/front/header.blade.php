@@ -198,7 +198,7 @@
                                     @endif
 								</li>
 
-								<li class="nav-item cart-link">
+								<li class="nav-item cart-link" id="cartCount">
 									<a href="{{url('/')}}/cart/shopping-cart" class="nav-link cart-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
 										<i class="iconly-Broken-Buy"></i>
 										<span class="badge badge-circle">{{Cart::count()}}</span>

@@ -35,6 +35,10 @@ Route::get('/artisan-voices', [HomeController::class, 'voices'])->name('artisan-
 Route::post('/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCallback'])->name('stk-callback');
 
 
+Route::post('/add-to-cart', [HomeController::class, 'addToCartPost'])->name('add-to-cart-ajax');
+
+
+
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
 
