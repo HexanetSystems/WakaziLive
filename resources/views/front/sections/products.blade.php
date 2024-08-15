@@ -86,7 +86,7 @@
                         $(document).ready(function() {
                             // Submit
                             $("#productID_{{$product->id}}").on('click', (function(e) {
-                                $("#cta_{{$product->id}}").html("Adding..");
+                                $("#cta_{{$product->id}}").html("Adding...");
                                 e.preventDefault();
                                 $("#form_{{$product->id}}").submit();
                             }));
@@ -102,13 +102,11 @@
                                 processData: false,
                                 success: function(response) {
                                     $("#form").trigger("reset"); // to reset form input fields
-                                    $( "#cta_{{$product->id}}" ).html("Added To Cart");
-                                    // $("#cta_{{$product->id}}").html("Explore");
-                                    // $( "#cta_{{$product->id}}" ).delay(8000).html("Explore");
+                                    $( "#cta_{{$product->id}}" ).html("Explore");
                                     $("#offcanvasRight").load(" #offcanvasRight > *");
                                     $("#cartCount").load(" #cartCount > *");
                                     // Open Cart
-                                    $("#cartCount").click();
+                                    // $("#cartCount").click();
                                 },
                                 error: function(e) {
                                     console.log(e);

@@ -40962,4 +40962,7 @@ footer {
         height: 200px;
         object-fit: cover;
     }
+    .site-filters{
+        display: none;
+    }
 }
