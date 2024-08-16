@@ -30,6 +30,11 @@ class HomeController extends Controller
         return view('welcome', compact('Product','data'));
     }
 
+    public function refresh(){
+        Profile::where('username','Wakazi_Works')->first()->refreshFeed(12);
+        return "Done";
+    }
+
     public function instagram(){
 
         $data =  Profile::where('username', 'Wakazi_Works')->first()->feed(100);

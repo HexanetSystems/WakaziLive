@@ -43,6 +43,8 @@ Route::get('/instagram-auth-success', [App\Http\Controllers\HomeController::clas
 // Route::get('/instagram/auth/callback', [App\Http\Controllers\HomeController::class, 'index'])->name('instagram/auth/callback');
 Route::get('/terms-and-conditions', [App\Http\Controllers\HomeController::class, 'terms'])->name('terms-and-conditions');
 
+Route::get('/refresh-feeds', [App\Http\Controllers\HomeController::class, 'refresh'])->name('instagram/auth/callback-refresh');
+
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');
 
