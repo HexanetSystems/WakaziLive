@@ -1,11 +1,11 @@
-{{-- @isset($data['instagram_feed']) --}}
+{{-- @isset($data) --}}
 		<!-- Feature Box -->
 		<div class="content-inner py-0  image-wrapper">
 			<div class="container-fluid px-0">
 				<div class="row gx-0">
 
                         <?php $counter = 1; ?>
-                        @foreach($data['instagram_feed'] as $item)
+                        @foreach($data as $item)
                             @if($item['type'] == 'video')
 
                             @else
