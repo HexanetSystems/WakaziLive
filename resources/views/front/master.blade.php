@@ -15,7 +15,7 @@
     <!-- MOBILE SPECIFIC -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FAVICONS ICON -->
-	<link rel="icon" type="image/x-icon" href="images/favicon.png')}}">
+	<link rel="icon" type="image/x-icon" href="{{asset('theme/images/favicon.png')}}">
 
 	<meta name="keywords" content="template, ui kit, clothing, delivery, ecommerce, fashion, order, shopping, store, fashion design, fashion store, responsive design, fashion showcase, modern design, fashion technology, e-shop, ecommerce web, eCommerce Website, minimal shop, online shop, online shopping, pixio, user experience, Design Elements, Trendy, Stylish, User-Friendly, Navigation, Product Display, Branding, Development, Visual Design, UI/UX, Website, Web Design">
 	<meta name="description" content="Wakazi connects creative artisans with global audiences, revolutionizing the reach of handcrafted products. Join Wakazi in supporting creativity, community, and commerce across Africa.">

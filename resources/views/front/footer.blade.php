@@ -123,7 +123,7 @@
                 <div class="dz-social-icon style-1" style="margin:0 auto">
                     <ul style="margin:0 auto">
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="https://www.facebook.com/profile.php?id=61563555572188" target="_blank">
                                 <i class="fa-brands fa-facebook-f"></i>
                             </a>
                         </li>
@@ -133,12 +133,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="https://www.linkedin.com/company/wakazi-works-platform/posts/?feedView=all" target="_blank">
                                 <i class="fa-brands fa-linkedin"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="#" target="_blank">
+                            <a href="https://www.instagram.com/wakazi_works/" target="_blank">
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </li>
