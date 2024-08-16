@@ -18,7 +18,7 @@
     {{-- @include('front.sections.about') --}}
 
     {{-- @include('front.sections.horizontal') --}}
-    {{-- @include('front.intagram-feeds') --}}
+    @include('front.intagram-feeds')
 
 </div>
 
