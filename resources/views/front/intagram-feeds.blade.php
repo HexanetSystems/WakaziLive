@@ -12,7 +12,7 @@
                             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="insta-post dz-media dz-img-effect rotate">
                                     <a target="new" href="{{$item->permalink}}">
-                                        <img src="{{$item->url}}" alt="">
+                                        <img style="height:284px; object-fit:cover" src="{{$item->url}}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -26,7 +26,7 @@
                         @endforeach
 
 
-					<a href="https://www.instagram.com/designekta/" class="instagram-link">
+					<a href="https://www.instagram.com/wakazi_works/" class="instagram-link">
 						<div class="follow-link  wow bounceIn" data-wow-delay="0.1s">
 							<div class="follow-link-icon">
 								<img src="{{asset('theme/images/insta-follow.png')}}" alt="">
