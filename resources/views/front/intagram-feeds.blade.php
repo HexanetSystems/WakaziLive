@@ -3,7 +3,7 @@
 		<div class="content-inner py-0  image-wrapper">
 			<div class="container-fluid px-0">
 				<div class="row gx-0">
-                    @isset($data['instagram_feed'])
+
                         <?php $counter = 1; ?>
                         @foreach($data['instagram_feed'] as $item)
                             @if($item['type'] == 'video')
@@ -24,7 +24,7 @@
 
                             <?php $counter++; ?>
                         @endforeach
-                    @endisset
+
 
 					<a href="https://www.instagram.com/designekta/" class="instagram-link">
 						<div class="follow-link  wow bounceIn" data-wow-delay="0.1s">
