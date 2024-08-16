@@ -5,7 +5,7 @@
 				<div class="row gx-0">
 
                         <?php $counter = 1; ?>
-                        @foreach($data['instagram_feed'] as $item)
+                        @foreach($data['instagram_feed']['items'] as $item)
                             @if($item['type'] == 'video')
 
                             @else
