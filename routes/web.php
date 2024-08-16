@@ -12,6 +12,7 @@ use App\Http\Controllers\KcbController;
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/instagram-feeds', [App\Http\Controllers\HomeController::class, 'instagram'])->name('instagram-feeds');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-page');
 
 Route::get('/product/{slung}', [App\Http\Controllers\HomeController::class, 'product'])->name('home-product');
