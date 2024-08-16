@@ -31,7 +31,7 @@ class HomeController extends Controller
     }
 
     public function refresh(){
-        Profile::where('username','Wakazi_Works')->first()->refreshFeed(12);
+        Profile::where('username','Wakazi_Works')->first()->refreshFeed(100);
         return "Done";
     }
 
