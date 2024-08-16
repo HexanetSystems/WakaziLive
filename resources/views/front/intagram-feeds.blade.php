@@ -11,7 +11,7 @@
                             @else
                             <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="insta-post dz-media dz-img-effect rotate">
-                                    <a href="{{$item['url']}}">
+                                    <a target="new" href="{{$item['permalink']}}">
                                         <img src="{{$item['url']}}" alt="">
                                     </a>
                                 </div>
