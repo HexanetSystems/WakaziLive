@@ -22,9 +22,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $profile = \Dymantic\InstagramFeed\Profile::where('username', 'designekta')->first();
+        $profile = \Dymantic\InstagramFeed\Profile::where('username', 'Wakazi_Works')->first();
         $data = [
-            'instagram_feed' => Profile::where('username', 'designekta')->first()->feed(100),
+            'instagram_feed' => Profile::where('username', 'Wakazi_Works')->first()->feed(100),
         ];
         $Product = Product::where('status', 1)->limit(15)->inRandomOrder()->get();
         return view('welcome', compact('Product','data'));
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function instagram(){
 
-        $data =  Profile::where('username', 'designekta')->first()->feed(100);
+        $data =  Profile::where('username', 'Wakazi_Works')->first()->feed(100);
         // dd($data);
 
         $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function home()
     {
         $data = [
-            'instagram_feed' => Profile::where('username', 'designekta')->first()->feed(100),
+            'instagram_feed' => Profile::where('username', 'Wakazi_Works')->first()->feed(100),
         ];
         $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
         return view('front.index', compact('Product','data'));
