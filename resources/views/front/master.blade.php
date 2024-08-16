@@ -4,7 +4,7 @@
 <head>
 
 	<!-- Title -->
-	<title>Wakazi Works: Your one stop shop for all your handcrafted products | Wakazi</title>
+	<title>Wakazi Works: Your one stop shop for all your handcrafted products</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -18,16 +18,16 @@
 	<link rel="icon" type="image/x-icon" href="images/favicon.png')}}">
 
 	<meta name="keywords" content="template, ui kit, clothing, delivery, ecommerce, fashion, order, shopping, store, fashion design, fashion store, responsive design, fashion showcase, modern design, fashion technology, e-shop, ecommerce web, eCommerce Website, minimal shop, online shop, online shopping, pixio, user experience, Design Elements, Trendy, Stylish, User-Friendly, Navigation, Product Display, Branding, Development, Visual Design, UI/UX, Website, Web Design">
-	<meta name="description" content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
+	<meta name="description" content="Wakazi connects creative artisans with global audiences, revolutionizing the reach of handcrafted products. Join Wakazi in supporting creativity, community, and commerce across Africa.">
 
-	<meta property="og:title" content="Pixio: Shop & eCommerce Bootstrap HTML Template | wakaziworks">
-	<meta property="og:description" content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
-	<meta property="og:image" content="https://pixio.wakaziworks.com/xhtml/social-image.png">
+	<meta property="og:title" content="Wakazi Works: Your one stop shop for all your handcrafted products">
+	<meta property="og:description" content="Wakazi connects creative artisans with global audiences, revolutionizing the reach of handcrafted products. Join Wakazi in supporting creativity, community, and commerce across Africa.">
+	<meta property="og:image" content="{{url('/')}}/theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg">
 
 	<!-- TWITTER META -->
-	<meta name="twitter:title" content="Pixio: Shop & eCommerce Bootstrap HTML Template | wakaziworks">
-	<meta name="twitter:description" content="Elevate your online retail presence with Pixio Shop & eCommerce HTML Template. Crafted with precision, this responsive and feature-rich template provides a seamless and visually stunning shopping experience. Explore a world of possibilities with modern design elements, intuitive navigation, and customizable features. Transform your website into a dynamic online storefront with Pixio, where style meets functionality for a captivating and user-friendly eCommerce journey.">
-	<meta name="twitter:image" content="https://pixio.wakaziworks.com/xhtml/social-image.png">
+	<meta name="twitter:title" content="Wakazi Works: Your one stop shop for all your handcrafted products">
+	<meta name="twitter:description" content="Wakazi connects creative artisans with global audiences, revolutionizing the reach of handcrafted products. Join Wakazi in supporting creativity, community, and commerce across Africa.">
+	<meta name="twitter:image" content="{{url('/')}}/theme/images/e13dcf4f-46b6-4115-8b72-84ab4e394812.jpeg">
 	<meta name="twitter:card" content="summary_large_image">
 
     <!-- GOOGLE FONTS-->
