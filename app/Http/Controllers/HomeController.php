@@ -27,7 +27,7 @@ class HomeController extends Controller
             'instagram_feed' => Profile::where('username', 'designekta')->first()->feed(100),
         ];
         $Product = Product::where('status', 1)->limit(15)->inRandomOrder()->get();
-        return view('welcome', compact('Product'));
+        return view('welcome', compact('Product','data'));
     }
 
     public function instagram(){
