@@ -1,15 +1,30 @@
-
+{{-- @isset($data['instagram_feed']) --}}
 		<!-- Feature Box -->
 		<div class="content-inner py-0  image-wrapper">
 			<div class="container-fluid px-0">
 				<div class="row gx-0">
-					<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.1s">
-						<div class="insta-post dz-media dz-img-effect rotate">
-							<a href="#">
-								<img src="{{url('/')}}/uploads/instagram/Earthenware 2.webp" alt="">
-							</a>
-						</div>
-					</div>
+                    @isset($data['instagram_feed'])
+                        <?php $counter = 1; ?>
+                        @foreach($data['instagram_feed'] as $item)
+                            @if($item['type'] == 'video')
+
+                            @else
+                            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="insta-post dz-media dz-img-effect rotate">
+                                    <a href="#">
+                                        <img src="{{url('/')}}/uploads/instagram/Earthenware 2.webp" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            @endif
+
+                            @if($counter == 6)
+                                @break
+                            @endif
+
+                            <?php $counter++; ?>
+                        @endforeach
+                    @endisset
 					<div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-4 wow fadeIn" data-wow-delay="0.2s">
 						<div class="insta-post dz-media dz-img-effect rotate">
 							<a href="#">
@@ -59,3 +74,4 @@
 			</div>
 		</div>
 		<!-- Feature Box End -->
+{{-- @endisset --}}

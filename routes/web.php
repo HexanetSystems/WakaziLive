@@ -37,7 +37,8 @@ Route::post('/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCal
 
 Route::post('/add-to-cart', [HomeController::class, 'addToCartPost'])->name('add-to-cart-ajax');
 
-
+Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy-policy');
+Route::get('/terms-and-conditions', [App\Http\Controllers\HomeController::class, 'terms'])->name('terms-and-conditions');
 
 Auth::routes();
 Route::get('/cart/checkout', [HomeController::class, 'checkout'])->name('shopping-cart-checkout');

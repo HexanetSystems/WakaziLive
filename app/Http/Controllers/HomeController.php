@@ -21,6 +21,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        $profile = \Dymantic\InstagramFeed\Profile::where('username', 'stagepassav')->first();
+        $data = [
+            'instagram_feed' => Profile::where('username', 'stagepassav')->first()->feed(100),
+        ];
         $Product = Product::where('status', 1)->limit(15)->inRandomOrder()->get();
         return view('welcome', compact('Product'));
     }
