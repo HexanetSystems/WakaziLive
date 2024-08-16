@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function instagram(){
 
         $data =  Profile::where('username', 'designekta')->first()->feed(100);
-        dd($data);
+        // dd($data);
 
         $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
         return view('front.feeds', compact('Product','data'));
