@@ -41,9 +41,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $data = [
-            'instagram_feed' => Profile::where('username', 'Wakazi_Works')->first()->feed(100),
-        ];
+        $data =  Profile::where('username', 'Wakazi_Works')->first()->feed(100);
         $Product = Product::where('status', 1)->limit(12)->inRandomOrder()->get();
         return view('front.index', compact('Product','data'));
     }
