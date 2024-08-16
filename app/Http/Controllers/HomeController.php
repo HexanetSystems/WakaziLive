@@ -40,10 +40,16 @@ class HomeController extends Controller
         return view('front.product', compact('Product'));
     }
 
-
-
     public function select(){
         return view('front.select');
+    }
+
+    public function privacy(){
+        return view('front.privacy');
+    }
+
+    public function terms(){
+        return view('front.terms');
     }
 
     public function addToCart($id){

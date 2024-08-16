@@ -40,8 +40,6 @@ Route::post('/add-to-cart', [HomeController::class, 'addToCartPost'])->name('add
 Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy-policy');
 Route::get('/instagram-auth-success', [App\Http\Controllers\HomeController::class, 'index'])->name('instagram-auth-success');
 Route::get('/instagram/auth/callback', [App\Http\Controllers\HomeController::class, 'index'])->name('instagram/auth/callback');
-
-
 Route::get('/terms-and-conditions', [App\Http\Controllers\HomeController::class, 'terms'])->name('terms-and-conditions');
 
 Auth::routes();
