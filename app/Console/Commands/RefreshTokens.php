@@ -11,7 +11,7 @@ class RefreshTokens extends Command
      *
      * @var string
      */
-    protected $signature = 'refresh-tokens';
+    protected $signature = 'app:refresh-tokens';
 
     /**
      * The console command description.
@@ -27,6 +27,6 @@ class RefreshTokens extends Command
     {
         $schedule->call(function(){
             Profile::where('username','Wakazi_Works')->first()->refreshFeed(12);
-        })->twiceDaily();
+        })->everyMinute();
     }
 }

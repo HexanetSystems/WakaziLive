@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
             } catch(Exception $e){
                 Log::error('Failed retreving Instagram', ['message' => $e->getMessage()]);
             }
-        })->twiceDaily();
+        })->everyMinute();
 
         $schedule->command("intagram-feed:refresh-tokens")->monthlyOn(15, '03:00');
     }
