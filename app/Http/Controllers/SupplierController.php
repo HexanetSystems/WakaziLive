@@ -44,7 +44,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return view('suppliers.index');
+        $Orders = \App\Models\Order::all();
+        return view('suppliers.index', compact('Orders'));
     }
 
     // my orders method
