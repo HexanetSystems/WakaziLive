@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Console\Scheduling\Schedule;
 
 class RefreshTokens extends Command
 {
@@ -23,7 +24,7 @@ class RefreshTokens extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(Schedule $schedule)
     {
         $schedule->call(function(){
             Profile::where('username','Wakazi_Works')->first()->refreshFeed(12);
