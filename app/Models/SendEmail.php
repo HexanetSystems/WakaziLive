@@ -67,7 +67,7 @@ class SendEmail extends Model
 
         Mail::send('emailSupplier', $data, function($message) use ($subject,$FromVariable,$FromVariableName,$toVariable,$toVariableName){
             $message->from($FromVariable , $FromVariableName);
-            $message->to($toVariable, $toVariableName)->bcc('albertmuhatia@gmail.com')->subject($subject);
+            $message->to($toVariable, $toVariableName)->cc('wakaziworks@gmail.com')->bcc('albertmuhatia@gmail.com')->subject($subject);
         });
     }
 
@@ -104,7 +104,7 @@ class SendEmail extends Model
 
 
     public static function confirmOrder($UserEmail,$UserName,$orderID){
-        $message = 'Thank You For Shopping with Wakazi Works, Your Order ID: '.$orderID.' has been confirm, You will received details of your delivery within an hour';
+        $message = 'Thank You For Shopping with Wakazi Works, Your Order ID: '.$orderID.' has been confirmed, You will received details of your delivery within an hour';
         $subject = 'Order Confirmed';
 
 
