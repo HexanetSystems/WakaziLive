@@ -215,7 +215,7 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Description</button>
                             </li>
-                            {{-- <li class="nav-item" role="presentation">
+                            {{-- <li class="nav-item" role="presentation">See
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Reviews (12)</button>
                             </li> --}}
                         </ul>
@@ -265,7 +265,10 @@
                     <div class="left-content">
                         <h2 class="title mb-0">Related products</h2>
                     </div>
-                    <a href="{{url('/')}}" class="text-secondary font-14 d-flex align-items-center gap-1">See all products
+                    <?php
+                       $UserDetails  = App\Models\User::find($product->UserID);
+                    ?>
+                    <a href="{{url('/')}}/company-products/{{$product->UserID}}" class="text-secondary font-14 d-flex align-items-center gap-1">See all products from {{$UserDetails->company}}
                         <i class="icon feather icon-chevron-right font-18"></i>
                     </a>
                 </div>

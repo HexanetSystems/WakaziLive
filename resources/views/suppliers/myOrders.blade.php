@@ -19,7 +19,7 @@
                        </nav>
                        <h1 class="h3 m-0">Orders</h1>
                     </div>
-                    <div class="col-auto d-flex"><a href="app-order.html" class="btn btn-primary">New order</a></div>
+                    {{-- <div class="col-auto d-flex"><a href="app-order.html" class="btn btn-primary">New order</a></div> --}}
                  </div>
               </div>
               <div class="card">
@@ -39,7 +39,7 @@
                           <th class="w-min" data-orderable="false"></th>
                        </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         @foreach($Orders as $order)
                         <?php $OrderProducts = DB::table('orders_product')->where('orders_id',$order->id)->get(); ?>
                           @foreach ($OrderProducts as $orderproducts)
@@ -48,7 +48,7 @@
                             <tr>
                                 <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block" aria-label="..."/></td>
                                 <td><a href="app-order.html" class="text-reset">#wkz-{{$order->id}}</a></td>
-                                <td>June 26, 2021</td>
+                                <td>{{date("d M. Y", strtotime($order->created_at))}}</td>
                                 <td><a href="app-customer.html" class="text-reset"><?php $Customer = \App\Models\User::find($order->user_id); echo $Customer->name; ?></a></td>
                                 <td>
                                    <div class="d-flex fs-6">
@@ -72,14 +72,11 @@
                                          </svg>
                                       </button>
                                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="order-context-menu-0">
-                                         <li><a class="dropdown-item" href="#">Edit</a></li>
-                                         <li><a class="dropdown-item" href="#">Duplicate</a></li>
-                                         <li><a class="dropdown-item" href="#">Add tag</a></li>
-                                         <li><a class="dropdown-item" href="#">Remove tag</a></li>
-                                         <li>
+                                         <li><a class="dropdown-item" href="{{url('/supplier/confirm-orders')}}/{{$order->id}}">Confirm</a></li>
+
                                             <hr class="dropdown-divider"/>
                                          </li>
-                                         <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+                                         <li><a class="dropdown-item text-danger" href="{{url('/supplier/delete-orders')}}/{{$order->id}}">Delete</a></li>
                                       </ul>
                                    </div>
                                 </td>

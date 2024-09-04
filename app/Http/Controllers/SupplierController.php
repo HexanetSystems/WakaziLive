@@ -9,6 +9,7 @@ use Hash;
 use DB;
 use Session;
 use App\Models\Product;
+use App\Models\SendEmail;
 use Redirect;
 
 use Illuminate\Support\Facades\Crypt;
@@ -72,6 +73,16 @@ class SupplierController extends Controller
         $UserID = Auth::User()->id;
         $products = \App\Models\Product::where('UserID',$UserID)->where('id',$id)->get();
         return view('suppliers.drop', compact('products'));
+    }
+
+    public function confirm_orders($orderID){
+        $Order = \App\Models\orders::find($orderID);
+        // Send Email
+        $User = \App\Models\User::find($Order->user_id);
+        $UserEmail = $User->email;
+        $UserName = $User->name;
+        SendEmail::confirmOrder($UserEmail,$UserName,$orderID);
+        return Redirect::back();
     }
 
     public  function FileUpload(Request $request)

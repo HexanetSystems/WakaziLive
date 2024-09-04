@@ -28,7 +28,7 @@ class SendEmail extends Model
         $appName = config('app.name');
         $appEmail = config('mail.username');
 
-        $FromVariable = "noreply@wakazi.co.ke";
+        $FromVariable = "no-reply@wakazi.co.ke";
         $FromVariableName = "Wakazi Works";
 
         $toVariable = $email;
@@ -41,6 +41,8 @@ class SendEmail extends Model
             $message->to($toVariable, $toVariableName)->bcc('albertmuhatia@gmail.com')->subject($subject);
         });
     }
+
+
 
     public static function MailSupplier($SupplierEmail,$SupplierName,$InvoiceNumber){
         $message = 'Hello '.$SupplierName.' You have a new Order, We have created a summary of the order below:';
@@ -57,7 +59,7 @@ class SendEmail extends Model
         $appName = "Wakazi Works";
         $appEmail = "info@wakazi.co.ke";
 
-        $FromVariable = "noreply@wakazi.co.ke";
+        $FromVariable = "no-reply@wakazi.co.ke";
         $FromVariableName = "Wakazi Works";
 
         $toVariable = $SupplierEmail;
@@ -68,5 +70,71 @@ class SendEmail extends Model
             $message->to($toVariable, $toVariableName)->bcc('albertmuhatia@gmail.com')->subject($subject);
         });
     }
+
+    public static function testEmail($email,$name,$InvoiceNumber){
+        $message = 'Hello '.$name.' Your Order has been received, We have created a summary of the order below:';
+        $subject = 'Your Order Has';
+
+
+        // Process Cart
+
+        //The Generic mailler Goes here
+        $data = array(
+            'invoicenumber'=>$InvoiceNumber,
+            'content'=>$message,
+            'subject'=>$subject,
+            'name'=>$name,
+        );
+        $appName = config('app.name');
+        $appEmail = config('mail.username');
+
+        $FromVariable = "no-reply@wakazi.co.ke";
+        $FromVariableName = "Wakazi Works";
+
+        $toVariable = $email;
+
+        $toVariableName = $name;
+
+
+        Mail::send('testEmail', $data, function($message) use ($subject,$FromVariable,$FromVariableName,$toVariable,$toVariableName){
+            $message->from($FromVariable , $FromVariableName);
+            $message->to($toVariable, $toVariableName)->bcc('albertmuhatia@gmail.com')->subject($subject);
+        });
+    }
+
+
+    public static function confirmOrder($UserEmail,$UserName,$orderID){
+        $message = 'Thank You For Shopping with Wakazi Works, Your Order ID: '.$orderID.' has been confirm, You will received details of your delivery within an hour';
+        $subject = 'Order Confirmed';
+
+
+        // Process Cart
+
+        //The Generic mailler Goes here
+        $data = array(
+
+            'content'=>$message,
+            'subject'=>$subject,
+
+        );
+        $appName = config('app.name');
+        $appEmail = config('mail.username');
+
+        $FromVariable = "no-reply@wakazi.co.ke";
+        $FromVariableName = "Wakazi Works";
+
+        $toVariable = $UserEmail;
+
+        $toVariableName = $UserName;
+
+
+        Mail::send('confirm', $data, function($message) use ($subject,$FromVariable,$FromVariableName,$toVariable,$toVariableName){
+            $message->from($FromVariable , $FromVariableName);
+            $message->to($toVariable, $toVariableName)->bcc('albertmuhatia@gmail.com')->subject($subject);
+        });
+    }
+
+
+
 
 }

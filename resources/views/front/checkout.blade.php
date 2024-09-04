@@ -130,7 +130,7 @@
                                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
                                     <div class="accordion-body">
                                         <p class="m-b0">If your order has not yet shipped, you can contact us and share your Order Number</p>
-                                        <a href="{{url('/')}}/login" class="btn btn-secondary w-100">Login Here</a>
+                                        <a href="{{url('/')}}/login-select" class="btn btn-secondary w-100">Login Here</a>
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +233,7 @@
                                         <td>Subtotal</td>
                                         <td class="price">{{Cart::subtotal()}}</td>
                                     </tr>
-                                    <tr class="title">
+                                    {{-- <tr class="title">
                                         <td><h6 class="title font-weight-500">Shipping</h6></td>
                                         <td></td>
                                     </tr>
@@ -253,7 +253,7 @@
                                             </div>
                                         </td>
                                         <td class="price">0</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr class="total">
                                         <td>Total</td>
                                         <td class="price">kes {{Cart::total()}}</td>

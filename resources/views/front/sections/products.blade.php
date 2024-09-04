@@ -102,11 +102,10 @@
                                 processData: false,
                                 success: function(response) {
                                     $("#form").trigger("reset"); // to reset form input fields
-                                    $( "#cta_{{$product->id}}" ).html("Explore");
+                                    $("#cta_{{$product->id}}").html("Explore");
                                     $("#offcanvasRight").load(" #offcanvasRight > *");
                                     $("#cartCount").load(" #cartCount > *");
-                                    // Open Cart
-                                    // $("#cartCount").click();
+                                    window.location.replace("{{url('/')}}/cart/checkout");
                                 },
                                 error: function(e) {
                                     console.log(e);

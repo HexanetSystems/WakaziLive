@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Product;
 use App\Models\orders;
+use App\Models\SendEmail;
 use App\Models\User;
 use DB;
 use Redirect;
@@ -72,7 +73,8 @@ class HomeController extends Controller
         $Product = Product::find($id);
         Cart::add($id, $Product->name, 1, $Product->price);
         Session::flash('message', "Product Has Been Approved");
-        return Redirect::back();
+        $CartItems = Cart::content();
+        return view('front.checkout', compact('CartItems'));
     }
 
     public function addToCartPost(Request $request){
@@ -176,6 +178,14 @@ class HomeController extends Controller
         return view('front.category', compact('Product','Category','ProductCount'));
     }
 
+    public function company_products($UserID){
+        $Product = DB::table('products')->where('UserID', $UserID)->where('status', '1')->paginate(12);
+        $ProductCount = DB::table('products')->where('UserID', $UserID)->where('status', '1')->get();
+        $User = User::find($UserID);
+        return view('front.company_products', compact('Product','ProductCount','User'));
+    }
+
+
     public function become_supplier(){
         $Product = DB::table('products')->paginate(12);
         return view('front.become-supplier');
@@ -214,5 +224,12 @@ class HomeController extends Controller
             $Product = DB::table('products')->where('category',$Category)->where('status','1')->where('name', 'LIKE', "%$keyword%")->paginate(100);
         }
         return view('front.search', compact('Product','Category','keyword'));
+    }
+
+    public function send(){
+        $email = "albertmuhatia@gmail.com";
+        $InvoiceNumber = "6825";
+        $name = "Albert";
+        SendEmail::testEmail($email,$name,$InvoiceNumber);
     }
 }

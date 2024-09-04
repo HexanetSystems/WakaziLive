@@ -7,14 +7,14 @@
 
 	<div class="page-content bg-light">
 		<!--Banner Start-->
-        <div class="dz-bnr-inr bg-secondary overlay-black-light" style="background-image:url('{{$Category->image}}');">
+        <div class="dz-bnr-inr bg-secondary overlay-black-light" style="background-image:url('{{$User->image}}');">
             <div class="container">
                 <div class="dz-bnr-inr-entry">
-                    <h1>{{$Category->title}}</h1>
+                    <h1>{{$User->company}}</h1>
                     <nav aria-label="breadcrumb" class="breadcrumb-row">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('/')}}"> Home</a></li>
-                            <li class="breadcrumb-item">Our Collection</li>
+                            <li class="breadcrumb-item">{{$User->company}}'s Collection</li>
                         </ul>
                     </nav>
                 </div>

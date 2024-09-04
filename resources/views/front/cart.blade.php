@@ -101,7 +101,7 @@
                 <div class="col-lg-4">
                     <h4 class="title mb15">Cart Total</h4>
                     <div class="cart-detail">
-                        <a href="javascript:void(0);" class="btn btn-outline-secondary w-100 m-b20">Starter Offer 2% Discount</a>
+                        {{-- <a href="javascript:void(0);" class="btn btn-outline-secondary w-100 m-b20">Starter Offer 2% Discount</a>
                         <div class="icon-bx-wraper style-4 m-b15">
                             <div class="icon-bx">
                                 <i class="flaticon flaticon-ship"></i>
@@ -110,14 +110,14 @@
                                 <span class=" font-14">Affordable Shipping</span>
                                 <h6 class="dz-title">Enjoy low shiping rates to be delivered to you within 24 hours</h6>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="icon-bx-wraper style-4 m-b30">
                             <div class="icon-bx">
                                 <img src="{{asset('theme/images/shop/shop-cart/icon-box/pic2.png')}}" alt="/">
                             </div>
                             <div class="icon-content">
                                 <h6 class="dz-title">Delivery Policy</h6>
-                                <p>Confirm that you have understood our <a href="#">Terms and Conditions</a> </p>
+                                <p>Confirm that you have understood our <a href="{{url('/')}}/terms-and-conditions">Terms and Conditions</a> </p>
                             </div>
                         </div>
                         <div class="save-text">

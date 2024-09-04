@@ -20,6 +20,14 @@
                 <span class="sa-nav__title">Main Website</span>
             </a>
         </li>
+        <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+            <a target="new" href="{{url('/')}}/company-products/{{Auth::User()->id}}" class="sa-nav__link">
+                <span class="sa-nav__icon fa fa-shopping-cart">
+
+                </span>
+                <span class="sa-nav__title">My Shop</span>
+            </a>
+        </li>
     </ul>
     </li>
     <li class="sa-nav__section">

@@ -12,12 +12,16 @@ use App\Http\Controllers\KcbController;
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/send-email-now', [App\Http\Controllers\HomeController::class, 'send'])->name('send-email-now');
 Route::get('/instagram-feeds', [App\Http\Controllers\HomeController::class, 'instagram'])->name('instagram-feeds');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home-page');
 
 Route::get('/product/{slung}', [App\Http\Controllers\HomeController::class, 'product'])->name('home-product');
 Route::get('/products/{slung}', [App\Http\Controllers\HomeController::class, 'category'])->name('home-category');
 Route::get('/products-class/{slung}', [App\Http\Controllers\HomeController::class, 'category_class'])->name('products-class');
+
+Route::get('/company-products/{user}', [App\Http\Controllers\HomeController::class, 'company_products'])->name('company-products');
+
 
 Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
 Route::get('/cart/shopping-cart', [HomeController::class, 'cart'])->name('shopping-cart');
@@ -101,6 +105,9 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
       Route::get('/my-orders/{id}', [SupplierController::class, 'orderDetails'])->name('supplier.order-details');
       Route::get('/my-orders/status/pending', [SupplierController::class, 'orderDetails'])->name('supplier.order-status-pending');
       Route::get('/my-orders/status/completed', [SupplierController::class, 'orderDetails'])->name('supplier.order-status-completed');
+
+      Route::get('/confirm-orders/{id}', [App\Http\Controllers\SupplierController::class, 'confirm_orders'])->name('confirm-orders');
+      Route::get('/delete-orders/{id}', [App\Http\Controllers\SupplierController::class, 'delete_orders'])->name('delete-orders');
 
       //My products Routes
       Route::get('/my-products', [SupplierController::class, 'myProducts'])->name('supplier.my-products');
