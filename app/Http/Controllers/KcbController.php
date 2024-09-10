@@ -138,7 +138,7 @@ class KcbController extends Controller
         //  Invoioice
          $postData = array(
             "phoneNumber"=> $mobile,
-            "amount"=> $amount,
+            "amount"=> "1",
             "invoiceNumber"=> "7845649#".$invoiceNumber,
             "sharedShortCode"=> true,
             "orgShortCode"=> "",

@@ -18,7 +18,6 @@ class UserAccess
         if(auth()->user()->type == $userType){
             return $next($request);
         }
-
         if (auth()->user()->type == 'admin') {
             return redirect()->route('admin.home');
         }else if (auth()->user()->type == 'supplier') {
@@ -28,6 +27,5 @@ class UserAccess
             return redirect()->route('dashboard');
         }
         return response()->json(['You do not have permission to access for this page.']);
-        /* return response()->view('errors.check-permission'); */
     }
 }
