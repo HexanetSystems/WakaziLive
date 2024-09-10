@@ -20,7 +20,7 @@
                                 </div>
                             </div>
                             <div class="content-btn m-b30">
-                                <a href="#" class="btn btn-secondary me-xl-3 me-2 btnhover20">BUY NOW</a>
+                                <a href="{{url('/')}}/add-to-cart/{{$slider->id}}" class="btn btn-secondary me-xl-3 me-2 btnhover20">BUY NOW</a>
                                 <a href="{{url('/')}}/product/{{$slider->slung}}" class="btn btn-outline-secondary btnhover20">VIEW DETAIL </a>
                             </div>
                         </div>

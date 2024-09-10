@@ -61,6 +61,8 @@ Route::get('/stk-request', [App\Http\Controllers\KcbController::class, 'stkReque
 Route::get('/stk-request-ken', [App\Http\Controllers\KcbController::class, 'tryKen'])->name('stk-request-ken');
 Route::post('/make-stk-request', [App\Http\Controllers\KcbController::class, 'stkRequestMake'])->name('make-stk-request');
 
+Route::post('/email_available/check', [App\Http\Controllers\EmailAvailable::class, 'check'])->name('email_available.check');
+
 
 // Auth
 Route::controller(GoogleController::class)->group(function(){

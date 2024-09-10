@@ -108,12 +108,7 @@
                             </div>
 
 
-                            <div class="col-md-12">
-                                <div class="form-group m-b25">
-                                    <label class="label-title">ZIP Code *</label>
-                                    <input name="zip" value="{{Auth::User()->apartment}}" required="" class="form-control">
-                                </div>
-                            </div>
+
                         </form>
                     </div>
                     @else
@@ -146,7 +141,9 @@
                             <div class="col-md-12">
                                 <div class="form-group m-b25">
                                     <label class="label-title">Email address *</label>
-                                    <input name="email"  required="" class="form-control">
+                                    <input name="email" id="email" required="" class="form-control">
+                                    {{-- <div class="text-danger">This email is already taken</div> --}}
+                                    <span id="error_email"></span>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -173,14 +170,6 @@
                                     <label class="label-title">Street address *</label>
                                     <input name="street"  required="" class="form-control m-b15" placeholder="House number and street name">
                                     <input name="apartment"  required="" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)">
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <div class="form-group m-b25">
-                                    <label class="label-title">ZIP Code *</label>
-                                    <input name="zip" required="" class="form-control">
                                 </div>
                             </div>
 

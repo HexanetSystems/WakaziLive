@@ -82,7 +82,8 @@ class SupplierController extends Controller
         $UserEmail = $User->email;
         $UserName = $User->name;
         SendEmail::confirmOrder($UserEmail,$UserName,$orderID);
-        // Change Order Status
+        $updateDetails = array('status'=>'confirmed');
+        DB::table('orders')->where('id',$orderID)->update($updateDetails);
         return Redirect::back();
     }
 

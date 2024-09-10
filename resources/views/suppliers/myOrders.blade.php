@@ -56,9 +56,15 @@
                                    </div>
                                 </td>
                                 <td>
-                                   <div class="d-flex fs-6">
-                                      <div class="badge badge-sa-danger">{{$order->status}}</div>
-                                   </div>
+                                    @if($order->status == "pending")
+                                    <div class="d-flex fs-6">
+                                        <div class="badge badge-sa-danger">{{$order->status}}</div>
+                                    </div>
+                                    @else
+                                    <div class="d-flex fs-6">
+                                        <div class="badge badge-sa-success">{{$order->status}}</div>
+                                    </div>
+                                    @endif
                                 </td>
                                 <td>{{$orderproducts->qty}} items</td>
                                 <td>

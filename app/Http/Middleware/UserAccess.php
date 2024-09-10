@@ -27,7 +27,6 @@ class UserAccess
             // Check company
             return redirect()->route('dashboard');
         }
-
         return response()->json(['You do not have permission to access for this page.']);
         /* return response()->view('errors.check-permission'); */
     }
