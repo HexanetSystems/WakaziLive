@@ -23,7 +23,6 @@ class UserAccess
         }else if (auth()->user()->type == 'supplier') {
             return redirect()->route('supplier.home');
         }else{
-            // Check company
             return redirect()->route('dashboard');
         }
         return response()->json(['You do not have permission to access for this page.']);

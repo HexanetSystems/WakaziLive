@@ -196,7 +196,6 @@ class KcbController extends Controller
         $STKMpesaTransaction->save();
 
          return $this->checklast($MerchantRequestID,$table,$curl_response,$user_id);
-        //  return response()->json(['message' => 'CF Form submitted successfully!']);
     }
 
 
@@ -214,8 +213,6 @@ class KcbController extends Controller
             }
             $nameArr[$row['Name']] = $row['Value'];
         }
-        // dd($nameArr);
-
 
         DB::table('lnmo_api_response')->where('MerchantRequestID',$MerchantRequestID)->update($nameArr);
         $updateStatus = array(
@@ -231,7 +228,7 @@ class KcbController extends Controller
             sleep(10);
             return $this->checklast($AccID,$table,$curl_response,$user);
         }else{
-            // Go To Requestes and set status to 1
+            //Go To Requestes and set status to 1, Best alternative is js sockets, We have a temporary fix
             $UpdateDetails = array(
                 'status'=>1,
             );
