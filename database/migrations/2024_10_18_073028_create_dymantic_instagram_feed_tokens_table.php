@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateInstagramFeedTokenTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('dymantic_instagram_feed_tokens', function (Blueprint $table) {
             $table->increments('id');
@@ -19,15 +19,15 @@ class CreateInstagramFeedTokenTable extends Migration
             $table->string('user_id');
             $table->string('user_fullname');
             $table->string('user_profile_picture');
-            $table->nullableTimestamps();
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('dymantic_instagram_feed_tokens');
     }
-}
+};
