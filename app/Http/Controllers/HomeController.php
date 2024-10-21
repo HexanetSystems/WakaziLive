@@ -65,6 +65,14 @@ class HomeController extends Controller
         return view('front.privacy');
     }
 
+    public function legals(){
+        return view ('front.legals');
+    }
+
+    public function about(){
+        return view ('front.sections.about');
+    }
+
     public function terms(){
         return view('front.terms');
     }
