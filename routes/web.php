@@ -43,6 +43,8 @@ Route::post('/stk-callback', [App\Http\Controllers\KcbController::class, 'stkCal
 Route::post('/add-to-cart', [HomeController::class, 'addToCartPost'])->name('add-to-cart-ajax');
 
 Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy-policy');
+Route::get('/legals', [App\Http\Controllers\HomeController::class, 'legals'])->name('legals');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/instagram-auth-success', [App\Http\Controllers\HomeController::class, 'index'])->name('instagram-auth-success');
 // Route::get('/instagram/auth/callback', [App\Http\Controllers\HomeController::class, 'index'])->name('instagram/auth/callback');
 Route::get('/terms-and-conditions', [App\Http\Controllers\HomeController::class, 'terms'])->name('terms-and-conditions');
