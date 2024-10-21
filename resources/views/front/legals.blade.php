@@ -26,31 +26,31 @@
 
 
                             <div class="col-md-8">
-                                <div id="privacy" class="content-section active">
+                                <div id="privacy" class="content-section active mb-3">
                                     <h4>Privacy Policy</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
-                                <div id="copyright" class="content-section">
+                                <div id="copyright" class="content-section" mb-3>
                                     <h4>Copyright Statement</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
-                                <div id="terms" class="content-section">
+                                <div id="terms" class="content-section mb-3">
                                     <h4>Terms & Conditions</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
-                                <div id="return" class="content-section">
+                                <div id="return" class="content-section mb-3">
                                     <h4>Return and Refunds</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
-                                <div id="wakaziplus" class="content-section">
+                                <div id="wakaziplus" class="content-section mb-3">
                                     <h4>Wakazi+</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
-                                <div id="delivery" class="content-section">
+                                <div id="delivery" class="content-section mb-3">
                                     <h4>Delivery</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
-                                <div id="sitemap" class="content-section">
+                                <div id="sitemap" class="content-section mb-3">
                                     <h4>Sitemap</h4>
                                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nec quisque natoque sodales lectus himenaeos. Fermentum vel maecenas suscipit viverra fames luctus; tristique commodo. Mus dignissim a dui ut ante sem platea enim dignissim. Volutpat molestie posuere aliquam dictumst sit mi natoque pharetra fusce. Ornare torquent suspendisse est mi volutpat dictum iaculis. Tortor blandit neque tristique nec; laoreet magna. Id phasellus finibus eros senectus aenean.</p>
                                 </div>
