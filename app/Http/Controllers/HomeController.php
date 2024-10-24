@@ -65,6 +65,34 @@ class HomeController extends Controller
         return view('front.privacy');
     }
 
+    public function legals(){
+        return view ('front.legals');
+    }
+
+    public function privacypolicy(){
+        return view('front.privacy-policy');
+    }
+
+    public function copyright(){
+        return view('front.copyright');
+    }
+
+    public function termsandconditions(){
+        return view('front.terms-and-conditions');
+    }
+
+    public function returnandrefundpolicy(){
+        return view('front.return-and-refund');
+    }
+
+    public function deliverypolicy(){
+        return view('front.delivery-policy');
+    }
+
+    public function about(){
+        return view ('front.sections.about');
+    }
+
     public function terms(){
         return view('front.terms');
     }

@@ -43,5 +43,16 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      # Creating SQLite DB file to fix CI error
+      - name: Create SQLite database file (if using sqlite)
+        if: env.DB_CONNECTION == 'sqlite'
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+
+      - name: Run migrations (for sqlite)
+        if: env.DB_CONNECTION == 'sqlite'
+        run: php artisan migrate --env=testing --force
+
       - name: Execute tests
         run: vendor/bin/phpunit

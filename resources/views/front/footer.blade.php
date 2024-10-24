@@ -81,7 +81,7 @@
                             <div class="widget widget_services">
                                 <h5 class="footer-title">About Wakazi</h5>
                                 <ul>
-                                    <li><a href="javascript:void(0);">About Us</a></li>
+                                    <li><a href="{{route('about')}}">About Us</a></li>
                                     <li><a href="{{route('county-bounty')}}">County Bounty</a></li>
                                     <li><a href="{{route('become-supplier')}}">Become a Supplier</a></li>
                                     <li><a href="javascript:void(0);">Chat with us</a></li>
@@ -92,14 +92,14 @@
                         </div>
                         <div class="col-xl-2 col-md-3 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.4s">
                             <div class="widget widget_services">
-                                <h5 class="footer-title">Legal</h5>
+                                <h5 class="footer-title"><a href="{{route('legals')}}">Legal</a></h5>
                                 <ul>
-                                    <li><a href="javascript:void(0);">Privacy Policy</a></li>
-                                    <li><a href="javascript:void(0);">Copyright Statement</a></li>
-                                    <li><a href="javascript:void(0);">Terms & Conditions</a></li>
-                                    <li><a href="javascript:void(0);">Returns and Refunds Policy Us</a></li>
-                                    <li><a href="javascript:void(0);">Delivery</a></li>
-                                    <li><a href="javascript:void(0);"> Sitemap</a></li>
+                                    <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
+                                    <li><a href="{{route('copyright')}}">Copyright Statement</a></li>
+                                    <li><a href="{{route('termsandconditions')}}">Terms & Conditions</a></li>
+                                    <li><a href="{{route('returnandrefundpolicy')}}">Return & Refund Policy</a></li>
+                                    <li><a href="{{route('deliverypolicy')}}">Delivery Policy</a></li>
+                                    <!-- <li><a href="{{route('legals')}}"> Sitemap</a></li> -->
                                 </ul>
                             </div>
                         </div>
