@@ -92,14 +92,14 @@
                         </div>
                         <div class="col-xl-2 col-md-3 col-sm-4 col-6 wow fadeInUp" data-wow-delay="0.4s">
                             <div class="widget widget_services">
-                                <h5 class="footer-title">Legal</h5>
+                                <h5 class="footer-title"><a href="{{route('legals')}}">Legal</a></h5>
                                 <ul>
-                                    <li><a href="{{route('legals')}}">Privacy Policy</a></li>
-                                    <li><a href="{{route('legals')}}">Copyright Statement</a></li>
-                                    <li><a href="{{route('legals')}}">Terms & Conditions</a></li>
-                                    <li><a href="{{route('legals')}}">Returns and Refunds Policy Us</a></li>
-                                    <li><a href="{{route('legals')}}">Delivery</a></li>
-                                    <li><a href="{{route('legals')}}"> Sitemap</a></li>
+                                    <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
+                                    <li><a href="{{route('copyright')}}">Copyright Statement</a></li>
+                                    <li><a href="{{route('termsandconditions')}}">Terms & Conditions</a></li>
+                                    <li><a href="{{route('returnandrefundpolicy')}}">Return & Refund Policy</a></li>
+                                    <li><a href="{{route('deliverypolicy')}}">Delivery Policy</a></li>
+                                    <!-- <li><a href="{{route('legals')}}"> Sitemap</a></li> -->
                                 </ul>
                             </div>
                         </div>
