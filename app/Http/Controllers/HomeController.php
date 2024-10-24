@@ -232,4 +232,43 @@ class HomeController extends Controller
         $name = "Albert";
         SendEmail::testEmail($email,$name,$InvoiceNumber);
     }
+
+    public function sendSMS($Message,$PhoneNumber){
+        $Message = "Sample Message";
+        $PhoneNumber = "254723014032";
+
+        $message = $Message;
+        $phone =$PhoneNumber;
+        $senderid = "Wakazi";
+
+        //
+        $url = '';  //Endpoint Goes here
+        $token = "nku5Yo8zRLImMg2ychrxF6v0KPQ1BTJwap3Wsj97bCA4tVSl";
+
+        $post_data=array(
+            'sender'=>$senderid,
+            'phone'=>$phone,
+            'message'=>$message
+        );
+
+        $data_string = json_encode($post_data);
+        $ch = curl_init( $url );
+        curl_setopt( $ch, CURLOPT_POST, 1);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt( $ch, CURLOPT_HEADER, 0);
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization:Bearer '.$token,
+                'Content-Length: ' . strlen($data_string)
+                )
+            );
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        print_r($response);
+    }
 }
