@@ -11,6 +11,7 @@ use Session;
 use App\Models\Product;
 use App\Models\SendEmail;
 use Redirect;
+use Illuminate\Support\Facades\Cache;
 
 use Illuminate\Support\Facades\Crypt;
 
@@ -48,13 +49,15 @@ class SupplierController extends Controller
         $Orders = \App\Models\Order::all();
         return view('suppliers.index', compact('Orders'));
     }
+    
 
     // my orders method
     public function myOrders(){
-        $UserID = Auth::User()->id;
-        $Orders = \App\Models\Order::all();
+        $UserID = Auth::id();
+        $Orders = \App\Models\Order::where('supplier_id', $UserID)->paginate(10);
         return view('suppliers.myOrders', compact('Orders'));
     }
+    
 
     // Single Order method
     public function orderDetails($id){
@@ -111,9 +114,12 @@ class SupplierController extends Controller
 
     // Add Product Method
     public function addProduct(){
-        $Categories = \App\Models\Category::all();
+        $Categories = Cache::remember('categories', 60*60, function () {
+            return \App\Models\Category::all();
+        });
         return view('suppliers.addProduct', compact('Categories'));
     }
+    
 
     // post method for addProduct
     public function addProductPost(Request $request){
