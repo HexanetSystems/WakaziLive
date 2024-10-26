@@ -1205,6 +1205,7 @@ class AdminsController extends Controller
         Session::flash('message', "Changes have been saved");
         return Redirect::back();
     }
+    
     public function about()
     {
         return view('admin.about'); // Adjust the view path as needed
