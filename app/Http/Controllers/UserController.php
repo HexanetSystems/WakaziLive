@@ -2,62 +2,77 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Auth;
-use Hash;
-use DB;
-use Session;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\SendEmail;
-use Redirect;
+use App\Models\Orders;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Log;
-use App\Models\orders;
+use Redirect;
 
 class UserController extends Controller
 {
-    public function index(){
-        $Order = DB::table('orders')->where('user_id', Auth::User()->id)->get();
-        $Pending = DB::table('orders')->where('status','pending')->where('user_id', Auth::User()->id)->get();
-        $Complete = DB::table('orders')->where('status','complete')->where('user_id', Auth::User()->id)->get();
+    public function index()
+    {
+        $userId = Auth::id();
 
-        return view('dashboard.index', compact('Order','Pending','Complete'));
+        $orders = Orders::where('user_id', $userId)->get();
+        $pending = $orders->where('status', 'pending');
+        $complete = $orders->where('status', 'complete');
+
+        return view('dashboard.index', compact('orders', 'pending', 'complete'));
     }
 
-    public function orders(){
-        $Order = DB::table('orders')->where('user_id', Auth::User()->id)->get();
-        $Pending = DB::table('orders')->where('status','pending')->where('user_id', Auth::User()->id)->get();
-        $Complete = DB::table('orders')->where('status','complete')->where('user_id', Auth::User()->id)->get();
-
-        return view('dashboard.orders', compact('Order','Pending','Complete'));
+    public function orders()
+    {
+        return $this->index();  // Reuse the index logic for listing orders
     }
 
-    public function order($id){
-        $Order = DB::table('orders')->where('user_id', Auth::User()->id)->where('id',$id)->get();
-        $Pending = DB::table('orders')->where('status','pending')->where('user_id', Auth::User()->id)->get();
-        $Complete = DB::table('orders')->where('status','complete')->where('user_id', Auth::User()->id)->get();
-        return view('dashboard.order', compact('Order','Pending','Complete'));
+    public function order($id)
+    {
+        $userId = Auth::id();
+
+        $order = Orders::where('user_id', $userId)->where('id', $id)->first();
+        if (!$order) {
+            return redirect()->route('dashboard.index')->withErrors('Order not found');
+        }
+
+        $orders = Orders::where('user_id', $userId)->get();
+        $pending = $orders->where('status', 'pending');
+        $complete = $orders->where('status', 'complete');
+
+        return view('dashboard.order', compact('order', 'pending', 'complete'));
     }
 
-    public function cancel($id){
-        DB::table('orders')->where('id', $id)->delete();
+    public function cancel($id)
+    {
+        $userId = Auth::id();
+
+        $order = Orders::where('user_id', $userId)->where('id', $id)->first();
+        if (!$order) {
+            return redirect()->route('dashboard.index')->withErrors('Order not found or already deleted');
+        }
+
+        $order->delete();
         DB::table('orders_product')->where('orders_id', $id)->delete();
-        $Order = DB::table('orders')->where('user_id', Auth::User()->id)->get();
-        $Pending = DB::table('orders')->where('status','pending')->where('user_id', Auth::User()->id)->get();
-        $Complete = DB::table('orders')->where('status','complete')->where('user_id', Auth::User()->id)->get();
-        return view('dashboard.index', compact('Order','Pending','Complete'));
+
+        return redirect()->route('dashboard.index')->with('success', 'Order canceled successfully');
     }
 
-    public function profile(){
+    public function profile()
+    {
+        return view('dashboard.profile', ['user' => Auth::user()]);
+    }
+
+    public function profile_save(Request $request)
+    {
         $user = Auth::user();
-        return view('dashboard.profile', compact('user'));
-    }
-
-    public function profile_save(Request $request){
-        $user = Auth::user()->id;
-        $updatedetails = array(
+        
+        $user->update([
             'name' => $request->name,
             'company' => $request->company,
             'address' => $request->address,
@@ -66,47 +81,41 @@ class UserController extends Controller
             'mobile' => $request->mobile,
             'country' => $request->country,
             'zip' => $request->zip,
-        );
-        DB::table('users')->where('id', $user)->update($updatedetails);
+        ]);
+
         return redirect()->back()->with('success', 'Profile updated successfully');
     }
 
     public function thankYou()
     {
-        $latest = orders::orderBy('created_at','DESC')->first();
-        if($latest == null){
-            $OrderId = 1;
-        }else{
-            $OrderID = $latest->id;
-            $OrderId = $OrderID+1;
-        }
+        $latestOrder = Orders::latest()->first();
+        $orderId = $latestOrder ? $latestOrder->id + 1 : 1;
+        $invoiceNumber = "wkz-" . $orderId;
 
-        $InvoiceNumber = "wkz-".$OrderId;
-        // /** Send To Supplier **/ //
-        $Cart = Cart::content();
+        // ** Send to Supplier **
+        foreach (Cart::content() as $cartItem) {
+            $product = Product::find($cartItem->id);
 
-        foreach($Cart as $cart){
-            $ProductID = $cart->id;
-            $Product = Product::find($ProductID);
-            $SupplierID = $Product->UserID;
-            $Supplier = User::find($SupplierID);
-            $SupplierEmail = $Supplier->email;
-            $SupplierName = $Supplier->name;
-            $SendEmail = SendEmail::MailSupplier($SupplierEmail,$SupplierName,$InvoiceNumber);
-            if($SendEmail){
-                Log::info("Email Has been Sent:".$SupplierEmail);
+            if ($product) {
+                $supplier = User::find($product->UserID);
+                if ($supplier && $supplier->email) {
+                    $emailSent = SendEmail::MailSupplier($supplier->email, $supplier->name, $invoiceNumber);
+                    if ($emailSent) {
+                        Log::info("Email has been sent to: " . $supplier->email);
+                    }
+                }
             }
         }
-        // /** Send To User **/ //
-        $email = Auth::User()->email;
-        $name = Auth::User()->name;
-        SendEmail::mailUser($email,$name,$InvoiceNumber);
+
+        // ** Send to User **
+        SendEmail::mailUser(Auth::user()->email, Auth::user()->name, $invoiceNumber);
+
         // Create Order
-        orders::createOrder();
-        // Destroy Cart
-        \Cart::destroy();
+        Orders::createOrder();
+
+        // Clear Cart
+        Cart::destroy();
 
         return view('dashboard.thankYou');
     }
-
 }

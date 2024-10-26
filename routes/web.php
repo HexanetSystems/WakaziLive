@@ -260,6 +260,11 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         Route::get('product-approve', [AdminsController::class, 'approve'])->name('product-approve');
 
 
+
+        Route::middleware(['auth', 'userAccess:admin'])->group(function () {
+            Route::get('/admin/about', [AdminsController::class, 'about'])->name('admin.about'); // Add this route
+        });
+        
         // Blog
         Route::get('blog', [AdminsController::class, 'blog']);
         Route::get('addBlog', [AdminsController::class, 'addBlog']);
