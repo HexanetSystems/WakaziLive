@@ -255,11 +255,20 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
         //supplier products
         Route::get('supplier-products/{id}', [AdminsController::class, 'supplier_products'])->name('supplier-products');
 
+        Route::get('/suppliers/make-payment', [KcbController::class, 'makePayment'])->name('suppliers.makePayment');
 
+
+
+        Route::post('/kcb/stk-request', [KcbController::class, 'stkRequestMake'])->name('kcb.stkRequestMake');
 
         Route::get('product-approve', [AdminsController::class, 'approve'])->name('product-approve');
 
 
+
+        Route::middleware(['auth', 'userAccess:admin'])->group(function () {
+            Route::get('/admin/about', [AdminsController::class, 'about'])->name('admin.about'); // Add this route
+        });
+        
         // Blog
         Route::get('blog', [AdminsController::class, 'blog']);
         Route::get('addBlog', [AdminsController::class, 'addBlog']);
