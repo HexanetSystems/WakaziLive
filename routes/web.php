@@ -21,7 +21,7 @@ Route::get('/products/{slung}', [App\Http\Controllers\HomeController::class, 'ca
 Route::get('/products-class/{slung}', [App\Http\Controllers\HomeController::class, 'category_class'])->name('products-class');
 
 Route::get('/company-products/{user}', [App\Http\Controllers\HomeController::class, 'company_products'])->name('company-products');
-
+Route::post('/sms-send', [HomeController::class, 'sendSMS'])->name('/sms-send');
 
 Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
 Route::get('/cart/shopping-cart', [HomeController::class, 'cart'])->name('shopping-cart');
@@ -174,7 +174,11 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
-         Route::get('/', [AdminsController::class, 'adminHome'])->name('admin.home');
+        Route::get('/', [AdminsController::class, 'adminHome'])->name('admin.home');
+
+        //
+        Route::get('/sms-balance', [AdminsController::class, 'smsBalance'])->name('admin.home.sms');
+        Route::post('/sms-send', [AdminsController::class, 'sendSMS'])->name('admin.home.sms.bulk');
 
          // SiteSettings
         Route::get('credentials', [AdminsController::class, 'systemsCredentials']);

@@ -21,8 +21,8 @@
             </div>
             <div class="col-xxl-6 col-xl-6 col-lg-6 end-side-content">
                 <div class="login-area">
-                    <h2 class="text-secondary text-center">Registration Now</h2>
-                    <p class="text-center m-b30">Welcome please registration to your account</p>
+                    <h2 class="text-secondary text-center">Login</h2>
+                    <p class="text-center m-b30">Welcome please login to your account</p>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="m-b25">

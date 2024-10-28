@@ -86,24 +86,24 @@
                                     <input name="mobile" value="{{Auth::User()->mobile}}" required="" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <div class="form-group m-b25">
                                     <label class="label-title">Company name (optional)</label>
                                     <input name="company" required="" value="{{Auth::User()->company}}" class="form-control">
                                 </div>
-                            </div>
-                            <div class="col-md-12">
+                            </div> --}}
+                            {{-- <div class="col-md-12">
                                 <div class="form-group m-b25">
                                     <label class="label-title">Country</label>
                                     <input name="country" required="" value="{{Auth::User()->country}}" class="form-control">
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-12">
                                 <div class="form-group m-b25">
-                                    <label class="label-title">Street address *</label>
-                                    <input name="street" value="{{Auth::User()->street}}" required="" class="form-control m-b15" placeholder="House number and street name">
-                                    <input name="apartment" value="{{Auth::User()->apartment}}" required="" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)">
+                                    <label class="label-title">Delivery Address *</label>
+                                    <input name="street" value="{{Auth::User()->street}}" required="" class="form-control m-b15" placeholder="Delivery Address">
+                                    {{-- <input name="apartment" value="{{Auth::User()->apartment}}" required="" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)"> --}}
                                 </div>
                             </div>
 
@@ -152,24 +152,16 @@
                                     <input name="mobile" required="" value="254" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="form-group m-b25">
-                                    <label class="label-title">Company name (optional)</label>
-                                    <input name="company" required=""  class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group m-b25">
-                                    <label class="label-title">Country</label>
-                                    <input name="country" required=""  class="form-control">
-                                </div>
-                            </div>
+
+
+                            <input name="company" type="hidden" value="N/A"  class="form-control">
+                            <input name="country" type="hidden" value="N/A"  class="form-control">
 
                             <div class="col-md-12">
                                 <div class="form-group m-b25">
-                                    <label class="label-title">Street address *</label>
-                                    <input name="street"  required="" class="form-control m-b15" placeholder="House number and street name">
-                                    <input name="apartment"  required="" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)">
+                                    <label class="label-title">Delivery Address *</label>
+                                    <input name="street"  required="" class="form-control m-b15" placeholder="Delivery Address">
+                                    {{-- <input name="apartment"  required="" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)"> --}}
                                 </div>
                             </div>
 
@@ -181,10 +173,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="form-check-input" id="basic_checkbox_2">
-                                        <label class="form-check-label" for="basic_checkbox_2">Ship to a different address?</label>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-md-12 m-b25">

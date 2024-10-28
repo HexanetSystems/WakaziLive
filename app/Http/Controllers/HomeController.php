@@ -233,7 +233,7 @@ class HomeController extends Controller
         SendEmail::testEmail($email,$name,$InvoiceNumber);
     }
 
-    public function sendSMS($Message,$PhoneNumber){
+    public function sendSMSs($Message,$PhoneNumber){
         $Message = "Sample Message";
         $PhoneNumber = "254723014032";
 
@@ -271,4 +271,50 @@ class HomeController extends Controller
         curl_close($ch);
         print_r($response);
     }
+
+    public function sendSMS (){
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+        $url = 'https://api.onfonmedia.co.ke/v1/sms/SendBulkSMS';
+
+        $MessageParameters = array
+            (
+                'Number' => '254723014032',
+                'Text' => 'This is a test message'
+            );
+
+        $data=array(
+            'ApiKey'=>$key,
+            'ClientId'=>$clientID,
+            'MessageParameters'=>$MessageParameters,
+            'SenderId'=>'Wakazi',
+            'MobileNumber'=>'254723014032',
+            'MessageId'=>'This is a test message',
+            'IsFlash'=> true,
+            'IsUnicode'=> true,
+        );
+
+
+        $payload = http_build_query($data);
+        $options=array(
+             CURLOPT_URL=>$url,
+             CURLOPT_POST=>true,
+             CURLOPT_POSTFIELDS=>$payload,
+             CURLOPT_RETURNTRANSFER=>true,
+             CURLOPT_SSL_VERIFYPEER=>false,
+             CURLOPT_HTTPHEADER=>array(
+                'AccessKey: '.$key,
+             ),
+        );
+        $Curl = curl_init();
+        curl_setopt_array($Curl,$options);
+        $response = curl_exec($Curl);
+        dd($response);
+        if(curl_errno($Curl)){
+            echo 'cURL error: '.curl_error($Curl);
+        }
+        curl_close($Curl);
+    }
 }
+
+

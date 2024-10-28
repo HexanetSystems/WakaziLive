@@ -1138,4 +1138,72 @@ class AdminsController extends Controller
         $image_path = "$url/$dir/" . $image_name;
         return $image_path;
     }
+
+    public function smsBalance(){
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+
+        $headers = array(
+            'Content-Type: application/json',
+            "x-access-token: ".config('sms.key').""
+        );
+
+        $url = "https://api.onfonmedia.co.ke/v1/sms/Balance?ApiKey=".config('sms.key')."&ClientId=".config('sms.clientID')."";
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $jsonObject = json_decode($response);
+        return $jsonObject;
+
+    }
+
+
+
+    public function sendSMS (){
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+        $url = 'https://api.onfonmedia.co.ke/v1/sms/SendBulkSMS';
+
+        $MessageParameters = array
+            (
+                'Number' => '254723014032',
+                'Text' => 'This is a test message'
+            );
+
+        $data=array(
+            'ApiKey'=>$key,
+            'ClientId'=>$clientID,
+            'MessageParameters'=>$MessageParameters,
+            'SenderId'=>'Wakazi',
+            'ScheduleDateTime'=>null,
+            'IsFlash'=> true,
+            'IsUnicode'=> true,
+        );
+
+
+        $payload = http_build_query($data);
+        $options=array(
+             CURLOPT_URL=>$url,
+             CURLOPT_POST=>true,
+             CURLOPT_POSTFIELDS=>$payload,
+             CURLOPT_RETURNTRANSFER=>true,
+             CURLOPT_SSL_VERIFYPEER=>false,
+             CURLOPT_HTTPHEADER=>array(
+                'AccessKey: '.$key,
+             ),
+        );
+        $Curl = curl_init();
+        curl_setopt_array($Curl,$options);
+        $response = curl_exec($Curl);
+        if(curl_errno($Curl)){
+            echo 'cURL error: '.curl_error($Curl);
+        }
+        curl_close($Curl);
+    }
+
+
 }
