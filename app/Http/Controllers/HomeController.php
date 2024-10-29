@@ -130,11 +130,9 @@ class HomeController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'country' => 'required',
-            'company' => 'required',
+
             'street' => 'required',
-            'apartment' => 'required',
-            'zip' => 'required',
+
             'comment' => 'required',
         ]);
 
@@ -152,7 +150,7 @@ class HomeController extends Controller
         ]);
 
         // Login
-        $user = User::where('email','=',$request->email)->first();
+        $user = User::where('email',$request->email)->first();
         Auth::loginUsingId($user->id, TRUE);
         return Redirect::back();
     }

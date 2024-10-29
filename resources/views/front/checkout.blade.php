@@ -179,7 +179,7 @@
                             <div class="col-md-12 m-b25">
                                 <div class="form-group">
                                     <label class="label-title">Order notes (optional)</label>
-                                    <textarea id="comments" placeholder="Notes about your order, e.g. special notes for delivery." class="form-control" name="comment" cols="90" rows="5" required="required"></textarea>
+                                    <textarea id="comments" placeholder="Notes about your order, e.g. special notes for delivery." class="form-control" name="comment" cols="90" rows="5"></textarea>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-secondary w-50">Register</button>
