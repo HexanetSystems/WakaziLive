@@ -223,7 +223,7 @@ class KcbController extends Controller
     }
 
     public function checklast($AccID,$table,$curl_response,$user){
-        $TableData = DB::table('lnmo_api_response')->where('MerchantRequestID', $AccID)->where('status','1')->where('')->get();
+        $TableData = DB::table('lnmo_api_response')->where('MerchantRequestID', $AccID)->where('status','1')->get();
         if($TableData->isEmpty()){
             sleep(10);
             return $this->checklast($AccID,$table,$curl_response,$user);
