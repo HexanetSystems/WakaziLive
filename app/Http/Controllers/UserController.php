@@ -106,9 +106,9 @@ class UserController extends Controller
         $SMSMessage = "Dear $name, Your order #$InvoiceNumber has been received for processing, We will contact you about delivery";
         $SMSSupplier= "Dear $SupplierName, You have a new order!! Order number #$InvoiceNumber, Kindly login and fulfill at your earlierst convinience";
         // Send SMS
-        $this->sendSMS($phone,$SMSMessage);
+        $this->sendSMS(str_replace( '+', '', $phone),$SMSMessage);
         // SMS Supplier
-        $this->sendSMS($SupplierMobile,$SMSMessage);
+        $this->sendSMS(str_replace( '+', '', $SupplierMobile),$SMSMessage);
         // Create Order
         orders::createOrder();
         // Destroy Cart
