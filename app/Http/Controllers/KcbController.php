@@ -223,7 +223,7 @@ class KcbController extends Controller
     }
 
     public function checklast($AccID,$table,$curl_response,$user){
-        $TableData = DB::table('lnmo_api_response')->where('MerchantRequestID', $AccID)->where('status','1')->get();
+        $TableData = DB::table('lnmo_api_response')->where('MerchantRequestID', $AccID)->where('status','1')->where('')->get();
         if($TableData->isEmpty()){
             sleep(10);
             return $this->checklast($AccID,$table,$curl_response,$user);
@@ -235,6 +235,8 @@ class KcbController extends Controller
             $UpdateDetail = array(
                 'user_id'=>$user,
             );
+            // Update Payments Table
+            $OrderId =
             DB::table('s_t_k_requests')->where('CheckoutRequestID',$AccID)->update($UpdateDetails);
             DB::table('lnmo_api_response')->where('CheckoutRequestID',$AccID)->update($UpdateDetail);
             return $curl_response;

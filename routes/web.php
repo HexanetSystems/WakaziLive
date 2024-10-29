@@ -134,7 +134,7 @@ Route::middleware(['auth', 'user-access:supplier'])->group(function () {
       Route::get('/my-payments', [SupplierController::class, 'myPayments'])->name('supplier.my-payments');
       Route::get('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
       Route::post('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.make-payment');
-      Route::get('/make-payment', [SupplierController::class, 'makePayment'])->name('supplier.commisions');
+      Route::get('/make-payment', [SupplierController::class, 'myCommisions'])->name('supplier.commisions');
 
       Route::get('/my-profile', [SupplierController::class, 'my_profile'])->name('my-profile');
       Route::post('/update-my-profile', [SupplierController::class, 'my_profile_update'])->name('update-my-profile');
