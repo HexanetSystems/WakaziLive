@@ -272,34 +272,22 @@ class HomeController extends Controller
         print_r($response);
     }
 
-    public function sendSMS (){
+    public function sendSMSz (){
         $key = config('sms.key');
         $clientID = config('sms.clientID');
-        $url = 'https://api.onfonmedia.co.ke/v1/sms/SendBulkSMS';
+        $url = 'https://api.onfonmedia.com/v1/sms/SendBulkSMS';
 
-        $MessageParameters = array
-            (
-                'Number' => '254723014032',
-                'Text' => 'This is a test message'
-            );
 
+        $MessageParameters=array('Number' => '254723014032','Text' => 'This is a test message');
         $data=array(
-            'ApiKey'=>$key,
             'ClientId'=>$clientID,
             'MessageParameters'=>$MessageParameters,
-            'SenderId'=>'Wakazi',
-            'MobileNumber'=>'254723014032',
-            'MessageId'=>'This is a test message',
-            'IsFlash'=> true,
-            'IsUnicode'=> true,
+            'SenderId'=>'WAKAZIWORKS',
         );
-
-
-        $payload = http_build_query($data);
         $options=array(
              CURLOPT_URL=>$url,
              CURLOPT_POST=>true,
-             CURLOPT_POSTFIELDS=>$payload,
+             CURLOPT_POSTFIELDS=>$data,
              CURLOPT_RETURNTRANSFER=>true,
              CURLOPT_SSL_VERIFYPEER=>false,
              CURLOPT_HTTPHEADER=>array(
@@ -315,6 +303,71 @@ class HomeController extends Controller
         }
         curl_close($Curl);
     }
+
+    public function sendSMS(){
+
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+        $MessageParameters=array([
+            'Number' => '254723014032',
+            'Text' => 'This is a test message'
+        ]);
+        $senderid = "WAKAZIWORKS";
+        //
+        $url = 'https://api.onfonmedia.com/v1/sms/SendBulkSMS';
+
+            $post_data=array(
+            'SenderId'=>$senderid,
+            'MessageParameters'=>$MessageParameters,
+            'ClientId'=>$clientID,
+            'ApiKey'=>$key,
+            );
+
+        $data_string = json_encode($post_data);
+        // dd($data_string);
+        $ch = curl_init( $url );
+        curl_setopt( $ch, CURLOPT_POST, 1);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt( $ch, CURLOPT_HEADER, 0);
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization:Bearer '.$key,
+                'Content-Length: ' . strlen($data_string)
+                )
+            );
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        print_r($response);
+    }
+
+
+    public function smsBalance(){
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+
+        $headers = array(
+            'Content-Type: application/json',
+            "x-access-token: ".config('sms.key').""
+        );
+
+        $url = "https://api.onfonmedia.co.ke/v1/sms/Balance?ApiKey=".config('sms.key')."&ClientId=".config('sms.clientID')."";
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $jsonObject = json_decode($response);
+        return $jsonObject;
+
+    }
 }
+
 
 

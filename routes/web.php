@@ -22,6 +22,7 @@ Route::get('/products-class/{slung}', [App\Http\Controllers\HomeController::clas
 
 Route::get('/company-products/{user}', [App\Http\Controllers\HomeController::class, 'company_products'])->name('company-products');
 Route::post('/sms-send', [HomeController::class, 'sendSMS'])->name('/sms-send');
+Route::get('/sms-balance', [AdminsController::class, 'smsBalance'])->name('home.home.sms');
 
 Route::get('/login-select', [HomeController::class, 'select'])->name('login-select');
 Route::get('/cart/shopping-cart', [HomeController::class, 'cart'])->name('shopping-cart');

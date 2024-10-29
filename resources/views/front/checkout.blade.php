@@ -117,17 +117,17 @@
                         <div class="accordion dz-accordion accordion-sm" id="accordionFaq">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <a href="{{url('/')}}/login" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <a href="{{url('/')}}/login-select" class=""  aria-expanded="true" aria-controls="collapseOne">
                                         Returning customer? Click here to login
                                         <span class="toggle-close"></span>
                                     </a>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
+                                {{-- <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFaq">
                                     <div class="accordion-body">
                                         <p class="m-b0">If your order has not yet shipped, you can contact us and share your Order Number</p>
                                         <a href="{{url('/')}}/login-select" class="btn btn-secondary w-100">Login Here</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <form class="row" method="POST" action="{{route('custom-register')}}">

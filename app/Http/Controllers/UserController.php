@@ -92,6 +92,7 @@ class UserController extends Controller
             $Supplier = User::find($SupplierID);
             $SupplierEmail = $Supplier->email;
             $SupplierName = $Supplier->name;
+            $SupplierMobile = $Supplier->mobile;
             $SendEmail = SendEmail::MailSupplier($SupplierEmail,$SupplierName,$InvoiceNumber);
             if($SendEmail){
                 Log::info("Email Has been Sent:".$SupplierEmail);
@@ -100,7 +101,14 @@ class UserController extends Controller
         // /** Send To User **/ //
         $email = Auth::User()->email;
         $name = Auth::User()->name;
+        $phone = Auth::User()->mobile;
         SendEmail::mailUser($email,$name,$InvoiceNumber);
+        $SMSMessage = "Dear $name, Your order #$InvoiceNumber has been received for processing, We will contact you about delivery";
+        $SMSSupplier= "Dear $SupplierName, You have a new order!! Order number #$InvoiceNumber, Kindly login and fulfill at your earlierst convinience";
+        // Send SMS
+        $this->sendSMS($phone,$SMSMessage);
+        // SMS Supplier
+        $this->sendSMS($SupplierMobile,$SMSMessage);
         // Create Order
         orders::createOrder();
         // Destroy Cart
@@ -109,4 +117,43 @@ class UserController extends Controller
         return view('dashboard.thankYou');
     }
 
+    public function sendSMS($phone,$message){
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+        $MessageParameters=array([
+            'Number' => $phone,
+            'Text' => $message
+        ]);
+        $senderid = "WAKAZIWORKS";
+        //
+        $url = 'https://api.onfonmedia.com/v1/sms/SendBulkSMS';
+
+            $post_data=array(
+            'SenderId'=>$senderid,
+            'MessageParameters'=>$MessageParameters,
+            'ClientId'=>$clientID,
+            'ApiKey'=>$key,
+            );
+
+        $data_string = json_encode($post_data);
+        // dd($data_string);
+        $ch = curl_init( $url );
+        curl_setopt( $ch, CURLOPT_POST, 1);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt( $ch, CURLOPT_HEADER, 0);
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization:Bearer '.$key,
+                'Content-Length: ' . strlen($data_string)
+                )
+            );
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        // print_r($response);
+    }
 }
