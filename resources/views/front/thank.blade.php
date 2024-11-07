@@ -12,7 +12,7 @@
                         </div>
                         <div class="error-inner">
                             {{-- <h1 class="dz_error">Thank You</h1> --}}
-                            <p class="error-head">Thank You For Shopping With Us</p>
+                            <p class="error-head">Thank You For Shopping With Wakazi, Your Order is being Processed, Incase of any queries please call/sms 0705 027 335</p>
                             <a href="{{url('/')}}" class="btn btn-secondary  text-uppercase">Go to Main Page</a>
                         </div>
                     </div>

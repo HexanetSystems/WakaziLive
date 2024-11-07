@@ -69,6 +69,14 @@ class SupplierController extends Controller
         return view('suppliers.myProducts', compact('products'));
     }
 
+    public function myCommisions(){
+        $UserID = Auth::User()->id;
+        $Commisions = \App\Models\Commisions::where('user_id',$UserID)->get();
+        return view('suppliers.myCommisions', compact('Commisions'));
+    }
+
+
+
     public function uploadUi ($id){
         $UserID = Auth::User()->id;
         $products = \App\Models\Product::where('UserID',$UserID)->where('id',$id)->get();
@@ -81,10 +89,52 @@ class SupplierController extends Controller
         $User = \App\Models\User::find($Order->user_id);
         $UserEmail = $User->email;
         $UserName = $User->name;
+        $UserPhone = $User->mobile;
         SendEmail::confirmOrder($UserEmail,$UserName,$orderID);
+        $SMSMessage = "Thank you for shopping on Wakazi, Your order: WKZ-$orderID has been successfully confirmed. It will be packaged and shipped as soon as possible. Once the item(s) is out for delivery or available for pick-up you will receive a notification from us.";
+        $this->sendSMS(str_replace( '+', '', $UserPhone),$SMSMessage);
         $updateDetails = array('status'=>'confirmed');
         DB::table('orders')->where('id',$orderID)->update($updateDetails);
         return Redirect::back();
+    }
+
+    public function sendSMS($phone,$message){
+        $key = config('sms.key');
+        $clientID = config('sms.clientID');
+        $MessageParameters=array([
+            'Number' => $phone,
+            'Text' => $message
+        ]);
+        $senderid = "WAKAZIWORKS";
+        //
+        $url = 'https://api.onfonmedia.com/v1/sms/SendBulkSMS';
+
+            $post_data=array(
+            'SenderId'=>$senderid,
+            'MessageParameters'=>$MessageParameters,
+            'ClientId'=>$clientID,
+            'ApiKey'=>$key,
+            );
+
+        $data_string = json_encode($post_data);
+        // dd($data_string);
+        $ch = curl_init( $url );
+        curl_setopt( $ch, CURLOPT_POST, 1);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt( $ch, CURLOPT_HEADER, 0);
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization:Bearer '.$key,
+                'Content-Length: ' . strlen($data_string)
+                )
+            );
+
+        $response = curl_exec($ch);
+        curl_close($ch);
     }
 
     public  function FileUpload(Request $request)

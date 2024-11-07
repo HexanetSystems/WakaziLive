@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->validateCsrfTokens(except: [
             '/stk-callback', // <-- exclude this route
+            '/sms-send'
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -235,6 +235,7 @@ class KcbController extends Controller
             $UpdateDetail = array(
                 'user_id'=>$user,
             );
+            // Update Payments Table
             DB::table('s_t_k_requests')->where('CheckoutRequestID',$AccID)->update($UpdateDetails);
             DB::table('lnmo_api_response')->where('CheckoutRequestID',$AccID)->update($UpdateDetail);
             return $curl_response;
